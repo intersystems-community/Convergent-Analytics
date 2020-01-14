@@ -1,3 +1,9 @@
+# Links to Downloads
+
+- `InterSystems IRIS Community Edition`: download a community edition of InterSystems IRIS data platform [here](https://download.intersystems.com/download) - create an account to start the download
+- `ML Toolkit: Python Gateway`: download an open-source set of extensions to InterSystems IRIS for in-platform orchestration of Python [here](https://openexchange.intersystems.com/package/PythonGateway)
+- `ML Toolkit: R Gateway`: download an open-source set of extensions to InterSystems IRIS for in-platform orchestration of R [here](https://openexchange.intersystems.com/package/RGateway)
+
 # Repository Catalog
 - `Programs`: program classes for pre-configured showcases
 - `Data`: source data for showcases
