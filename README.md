@@ -1,6 +1,6 @@
 # Featured Materials
 
-# `Global Webinars`
+## Global Webinars
 
 - [AI Robotization (Python, R, Interoperability) for InterSystems IRIS](https://youtu.be/-gyvCTBHh-0) on November 7th, 2019
 - [Machine Learning Toolkit (Python, R, ObjectScript, Interoperability, Analytics) for InterSystems IRIS](https://youtu.be/z9O0F1ovBUY) on April 23rd, 2019
