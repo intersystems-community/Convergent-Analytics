@@ -31,7 +31,7 @@
 
 ## Tutorials
 
-- [Predictive Modeling with the Machine Learning Toolkit](https://learning.intersystems.com/enrol/index.php?id=1182) on September 23rd and 25th, 2019
+- [Predictive Modeling with the Machine Learning Toolkit](https://learning.intersystems.com/course/view.php?id=1182&ssoPass=1) on September 23rd and 25th, 2019
 
 # Links to Required Downloads
 
