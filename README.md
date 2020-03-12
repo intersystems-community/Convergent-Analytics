@@ -18,6 +18,7 @@
 
 ## Articles
 
+- [Python Gateway в InterSystems IRIS](https://habr.com/ru/company/intersystems/blog/486984/) as of February 5th, 2020
 - [AI Robotization with InterSystems IRIS Data Platform](https://habr.com/en/company/intersystems/blog/478822/) as of December 5th, 2019
 - [MLOps can help overcome risk in AI and ML projects](https://dataconomy.com/2019/10/mlops-can-help-overcome-risk-in-ai-and-ml-projects/) as of October 30th, 2019
 - [Роботизация искусственного интеллекта на платформе InterSystems IRIS](https://habr.com/ru/company/intersystems/blog/473452/) as of October 28th, 2019
