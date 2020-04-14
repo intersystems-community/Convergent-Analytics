@@ -13,6 +13,7 @@
 
 ## Local Webinars CIS
 
+- [Лучшие практики платформенного AI/ML](https://youtu.be/43gPdnwQWsE) on April 10th, 2020 | Acknowledgements: [Aleksandr Kalinin](https://github.com/drakut), Software Engineer, [Escape](http://esc.ru/), Russia
 - [InterSystems ML Toolkit: роботизация искусственного интеллекта](https://youtu.be/mk3iqBQHGVM) on September 18th, 2019
 - [Machine Learning Toolkit (Python, R, ObjectScript, Interoperability, Analytics) для InterSystems IRIS](https://youtu.be/FteNyfLOjyA) on March 26th, 2019 
 
