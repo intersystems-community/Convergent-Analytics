@@ -2,6 +2,7 @@
 
 ## Global Webinars
 
+- [Best Practices of In-Platform AI/ML](https://youtu.be/N6tN48hCnE4) on April 28th, 2020
 - [AI Robotization (Python, R, Interoperability) for InterSystems IRIS](https://youtu.be/-gyvCTBHh-0) on November 7th, 2019
 - [Machine Learning Toolkit (Python, R, ObjectScript, Interoperability, Analytics) for InterSystems IRIS](https://youtu.be/z9O0F1ovBUY) on April 23rd, 2019
 
