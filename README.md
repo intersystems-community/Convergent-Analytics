@@ -1,31 +1,20 @@
 # Featured Materials
 
-## Global Webinars
+# In English
+
+## Webinars
 
 - [Best Practices of In-Platform AI/ML](https://youtu.be/N6tN48hCnE4) on April 28th, 2020
 - [AI Robotization (Python, R, Interoperability) for InterSystems IRIS](https://youtu.be/-gyvCTBHh-0) on November 7th, 2019
 - [Machine Learning Toolkit (Python, R, ObjectScript, Interoperability, Analytics) for InterSystems IRIS](https://youtu.be/z9O0F1ovBUY) on April 23rd, 2019
 
-## Local Webinars DACH
-
-- [Wie Machine Learning zu Advanced Analytics führt](https://youtu.be/Fyh7aMuFAkc) on August 9th, 2019
-- [Machine Learning Projekte mit R erfolgreich umsetzen](https://youtu.be/TPlFHsoc4QY) on August 2nd, 2019
-- [Machine Learning Projekte mit Python erfolgreich umsetzen](https://youtu.be/S_eE6yt80yo) on July 26th, 2019
-
-## Local Webinars CIS
-
-- [Лучшие практики платформенного AI/ML](https://youtu.be/43gPdnwQWsE) on April 10th, 2020 | Acknowledgements: [Aleksandr Kalinin](https://github.com/drakut), Software Engineer, [Escape](http://esc.ru/), Russia
-- [InterSystems ML Toolkit: роботизация искусственного интеллекта](https://youtu.be/mk3iqBQHGVM) on September 18th, 2019
-- [Machine Learning Toolkit (Python, R, ObjectScript, Interoperability, Analytics) для InterSystems IRIS](https://youtu.be/FteNyfLOjyA) on March 26th, 2019 
-
 ## Articles
 
-- [Python Gateway в InterSystems IRIS](https://habr.com/ru/company/intersystems/blog/486984/) as of February 5th, 2020
 - [AI Robotization with InterSystems IRIS Data Platform](https://habr.com/en/company/intersystems/blog/478822/) as of December 5th, 2019
 - [MLOps can help overcome risk in AI and ML projects](https://dataconomy.com/2019/10/mlops-can-help-overcome-risk-in-ai-and-ml-projects/) as of October 30th, 2019
-- [Роботизация искусственного интеллекта на платформе InterSystems IRIS](https://habr.com/ru/company/intersystems/blog/473452/) as of October 28th, 2019
+- [Python Gateway](https://community.intersystems.com/post/python-gateway-part-i-introduction) as of 12 April 2019
 
-## Collaboration Experience
+## Collaboration Experiences
 
 - [An ML Toolkit for InterSystems IRIS: Co-Innovation in Healthcare](https://youtu.be/o0T0AgvxaNk) on September 25th, 2019
 - [An ML Toolkit for InterSystems IRIS: Co-Innovation In Banking](https://youtu.be/pSMyKeuAZ80) on September 24th, 2019
@@ -34,6 +23,31 @@
 ## Tutorials
 
 - [Predictive Modeling with the Machine Learning Toolkit](https://learning.intersystems.com/course/view.php?id=1182&ssoPass=1) on September 23rd and 25th, 2019
+
+# In German
+
+## Webinars
+- [Wie Machine Learning zu Advanced Analytics führt](https://youtu.be/Fyh7aMuFAkc) on August 9th, 2019
+- [Machine Learning Projekte mit R erfolgreich umsetzen](https://youtu.be/TPlFHsoc4QY) on August 2nd, 2019
+- [Machine Learning Projekte mit Python erfolgreich umsetzen](https://youtu.be/S_eE6yt80yo) on July 26th, 2019
+
+# In Russian
+
+## Webinars
+
+- [Лучшие практики платформенного AI/ML](https://youtu.be/43gPdnwQWsE) on April 10th, 2020 | Acknowledgements: [Aleksandr Kalinin](https://github.com/drakut), Software Engineer, [Escape](http://esc.ru/), Russia
+- [InterSystems ML Toolkit: роботизация искусственного интеллекта](https://youtu.be/mk3iqBQHGVM) on September 18th, 2019
+- [Machine Learning Toolkit (Python, R, ObjectScript, Interoperability, Analytics) для InterSystems IRIS](https://youtu.be/FteNyfLOjyA) on March 26th, 2019 
+
+## Articles
+
+- [Python Gateway в InterSystems IRIS](https://habr.com/ru/company/intersystems/blog/486984/) as of February 5th, 2020
+- [Роботизация искусственного интеллекта на платформе InterSystems IRIS](https://habr.com/ru/company/intersystems/blog/473452/) as of October 28th, 2019
+
+## Tutorials
+
+- [Predictive Modeling with the Machine Learning Toolkit](https://learning.intersystems.com/course/view.php?id=1182&ssoPass=1) on September 23rd and 25th, 2019
+
 
 # Links to Required Downloads
 
