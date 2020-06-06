@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Export generator="IRIS" version="26" zv="IRIS for Windows (x86-64) 2018.1.2 (Build 609U)" ts="2019-07-25 10:45:35">
+<Export generator="IRIS" version="26" zv="IRIS for Windows (x86-64) 2020.2.0ML (Build 265U)" ts="2020-06-06 01:42:40">
 <Class name="CONVERGENCE.WEB.FACTORYANALYZER">
 <Description>
 Author BPL: Sergey Lukyanchikov
 Author ML: Eduard Lebedyuk
-Version: 1</Description>
+Version: 2</Description>
 <Super>Ens.BusinessProcessBPL,isc.py.ens.ProcessUtils</Super>
-<TimeChanged>65218,77970.50458</TimeChanged>
+<TimeChanged>65513,52226.958614</TimeChanged>
 <TimeCreated>65167,64135.510924</TimeCreated>
 
 <Storage name="Default">
@@ -33,7 +33,7 @@ BPL Definition</Description>
 <property name='buffersize' type='%Integer' initialexpression='86400' instantiate='0' />
 <property name='idletime' type='%Integer' initialexpression='5' instantiate='0' />
 </context>
-<sequence xend='200' yend='550' >
+<sequence xend='200' yend='650' >
 <code name='ANALYZER/MONITOR Cleanup' xpos='200' ypos='250' >
 <![CDATA[ &sql(DELETE FROM User_WEB.FACTORYANALYZER)
  &sql(DELETE FROM User_WEB.FACTORYMONITOR)]]]]><![CDATA[>
@@ -44,31 +44,8 @@ BPL Definition</Description>
  set monitrosize=86400
  set idletime=5]]]]><![CDATA[>
 </code>
-<while name='Analysis Loop' condition='##class(%File).Exists("D:\InterSystems\IRIS\CSP\factory\go.txt")' xpos='200' ypos='450' xend='200' yend='1750' >
-<if name='Initial Model Built?' condition='context.initmod=1' xpos='200' ypos='250' xend='200' yend='1550' >
-<true>
-<if name='Retrain?' condition='##class(%File).Exists("D:\InterSystems\IRIS\CSP\factory\retrain.txt")' xpos='470' ypos='400' xend='470' yend='1450' >
-<true>
-<code name='Check Buffer Fill' xpos='1280' ypos='550' >
-<![CDATA[ &sql(SELECT COUNT(*) INTO :fill FROM User_WEB.FACTORYBUFFER)
- set context.fill=fill]]]]><![CDATA[>
-</code>
-<if name='Buffer Complete?' condition='context.fill=context.buffersize' xpos='1280' ypos='650' xend='1280' yend='1350' >
-<true>
-<if name='Folder Locked?' condition='##class(%File).Exists("D:\InterSystems\IRIS\CSP\factory\wait.csv")' xpos='1415' ypos='800' xend='1415' yend='1250' >
-<false>
-<code name='Copy Buffer/Build Features' xpos='1550' ypos='950' >
-<![CDATA[ set lock=##class(%File).%New("D:\InterSystems\IRIS\CSP\factory\wait.csv")
- set sc=lock.Open("WN")
- do lock.Close()
- &sql(DELETE FROM User_WEB.FACTORYANALYZER)
- &sql(INSERT INTO User_WEB.FACTORYANALYZER SELECT *, NOW(), NULL, NULL FROM User_WEB.FACTORYBUFFER)
- &sql(UPDATE User_WEB.FACTORYANALYZER SET Y=(CASE WHEN R11>=(SELECT AVG(R11) FROM User_WEB.FACTORYANALYZER) THEN 1 ELSE 0 END))
- do ##class(%File).Delete("D:\InterSystems\IRIS\CSP\factory\retrain.txt",.sc)
- do ##class(%File).Delete("D:\InterSystems\IRIS\CSP\factory\wait.csv",.sc)]]]]><![CDATA[>
-</code>
-<sequence name='** ML Training **' xpos='1550' ypos='1050' xend='200' yend='1350' >
-<call name='Import' target='isc.py.ens.Operation' async='0' xpos='200' ypos='250' >
+<sequence name='** ML Load Packages **' xpos='200' ypos='450' xend='200' yend='450' >
+<call name='Import Python Modules' target='isc.py.ens.Operation' async='0' xpos='200' ypos='250' >
 <annotation><![CDATA[import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -84,11 +61,45 @@ import seaborn as sns
 sns.set_style('darkgrid')
 import sys]]]]><![CDATA[></annotation>
 <request type='isc.py.msg.ExecutionRequest' >
-<assign property="callrequest.Code" value="process.GetAnnotation(&quot;Import&quot;)" action="set" />
+<assign property="callrequest.Code" value="process.GetAnnotation(&quot;Import Python Modules&quot;)" action="set" />
 </request>
 <response type='isc.py.msg.ExecutionResponse' />
 </call>
-<call name='Load Data for Training' target='isc.py.ens.Operation' async='0' xpos='200' ypos='350' >
+<call name='Import Julia Packages' target='isc.julia.ens.Operation' async='0' xpos='200' ypos='350' >
+<annotation><![CDATA[using DataFrames
+using ROCAnalysis
+using Plots]]]]><![CDATA[></annotation>
+<request type='isc.julia.msg.ExecutionRequest' >
+<assign property="callrequest.Code" value="process.GetAnnotation(&quot;Import Julia Packages&quot;)" action="set" />
+</request>
+<response type='isc.py.msg.ExecutionResponse' />
+</call>
+</sequence>
+<while name='Analysis Loop' condition='##class(%File).Exists("C:\InterSystems\IRIS\CSP\factory\go.txt")' xpos='200' ypos='550' xend='200' yend='1850' >
+<if name='Initial Model Built?' condition='context.initmod=1' xpos='200' ypos='250' xend='200' yend='1650' >
+<true>
+<if name='Retrain?' condition='##class(%File).Exists("C:\InterSystems\IRIS\CSP\factory\retrain.txt")' xpos='470' ypos='400' xend='470' yend='1550' >
+<true>
+<code name='Check Buffer Fill' xpos='1280' ypos='550' >
+<![CDATA[ &sql(SELECT COUNT(*) INTO :fill FROM User_WEB.FACTORYBUFFER)
+ set context.fill=fill]]]]><![CDATA[>
+</code>
+<if name='Buffer Complete?' condition='context.fill=context.buffersize' xpos='1280' ypos='650' xend='1280' yend='1450' >
+<true>
+<if name='Folder Locked?' condition='##class(%File).Exists("C:\InterSystems\IRIS\CSP\factory\wait.csv")' xpos='1415' ypos='800' xend='1415' yend='1350' >
+<false>
+<code name='Copy Buffer/Build Features' xpos='1550' ypos='950' >
+<![CDATA[ set lock=##class(%File).%New("C:\InterSystems\IRIS\CSP\factory\wait.csv")
+ set sc=lock.Open("WN")
+ do lock.Close()
+ &sql(DELETE FROM User_WEB.FACTORYANALYZER)
+ &sql(INSERT INTO User_WEB.FACTORYANALYZER SELECT *, NOW(), NULL, NULL FROM User_WEB.FACTORYBUFFER)
+ &sql(UPDATE User_WEB.FACTORYANALYZER SET Y=(CASE WHEN R11>=(SELECT AVG(R11) FROM User_WEB.FACTORYANALYZER) THEN 1 ELSE 0 END))
+ do ##class(%File).Delete("C:\InterSystems\IRIS\CSP\factory\retrain.txt",.sc)
+ do ##class(%File).Delete("C:\InterSystems\IRIS\CSP\factory\wait.csv",.sc)]]]]><![CDATA[>
+</code>
+<sequence name='** ML Training **' xpos='1550' ypos='1050' xend='200' yend='1250' >
+<call name='Load Data for Training' target='isc.py.ens.Operation' async='0' xpos='200' ypos='250' >
 <annotation><![CDATA[SELECT ID, * FROM User_WEB.FACTORYANALYZER]]]]><![CDATA[></annotation>
 <request type='isc.py.msg.QueryRequest' >
 <assign property="callrequest.Query" value="process.GetAnnotation(&quot;Load Data for Training&quot;)" action="set" />
@@ -97,7 +108,7 @@ import sys]]]]><![CDATA[></annotation>
 </request>
 <response type='Ens.Response' />
 </call>
-<call name='Extract Y &amp; X' target='isc.py.ens.Operation' async='0' xpos='200' ypos='450' >
+<call name='Extract Y &amp; X' target='isc.py.ens.Operation' async='0' xpos='200' ypos='350' >
 <annotation><![CDATA[Y=df['Y']
 X=df.drop(columns=['ID','R11','DATE','TIME','BATCH','STAMPBUFFER','STAMPANALYZER','Y','YHAT'])]]]]><![CDATA[></annotation>
 <request type='isc.py.msg.ExecutionRequest' >
@@ -105,7 +116,7 @@ X=df.drop(columns=['ID','R11','DATE','TIME','BATCH','STAMPBUFFER','STAMPANALYZER
 </request>
 <response type='isc.py.msg.ExecutionResponse' />
 </call>
-<call name='PCA' target='isc.py.ens.Operation' async='0' xpos='200' ypos='550' >
+<call name='PCA' target='isc.py.ens.Operation' async='0' xpos='200' ypos='450' >
 <annotation><![CDATA[pca = PCA()
 X_reduced = pca.fit_transform(scale(X))]]]]><![CDATA[></annotation>
 <request type='isc.py.msg.ExecutionRequest' >
@@ -113,7 +124,7 @@ X_reduced = pca.fit_transform(scale(X))]]]]><![CDATA[></annotation>
 </request>
 <response type='isc.py.msg.ExecutionResponse' />
 </call>
-<call name='Linear Regression CV' target='isc.py.ens.Operation' async='0' xpos='200' ypos='650' >
+<call name='Logistic Regression CV' target='isc.py.ens.Operation' async='0' xpos='200' ypos='550' >
 <annotation><![CDATA[kf_3 = KFold(n_splits=3, shuffle=True, random_state=2)
 regr = LogisticRegression() 
 mse = []
@@ -131,7 +142,7 @@ mse.columns = ['MSE']
 mse['COMPMIN']=0
 mse.at[numcompmin,'COMPMIN']=1]]]]><![CDATA[></annotation>
 <request type='isc.py.msg.ExecutionRequest' >
-<assign property="callrequest.Code" value="process.GetAnnotation(&quot;Linear Regression CV&quot;)" action="set" />
+<assign property="callrequest.Code" value="process.GetAnnotation(&quot;Logistic Regression CV&quot;)" action="set" />
 <assign property="callrequest.SeparateLines" value="0" action="set" />
 <assign property="callrequest.Variables" value="&quot;mse&quot;" action="set" />
 <assign property="callrequest.Serialization" value="&quot;JSON&quot;" action="set" />
@@ -140,21 +151,21 @@ mse.at[numcompmin,'COMPMIN']=1]]]]><![CDATA[></annotation>
 <assign property="context.mse" value="callresponse.Variables.GetAt(&quot;mse&quot;)" action="set" />
 </response>
 </call>
-<call name='Linear Regression Fit' target='isc.py.ens.Operation' async='0' xpos='200' ypos='750' >
+<call name='Logistic Regression Fit' target='isc.py.ens.Operation' async='0' xpos='200' ypos='650' >
 <annotation><![CDATA[regr.fit(X_reduced[:,:numcompmin],Y)]]]]><![CDATA[></annotation>
 <request type='isc.py.msg.ExecutionRequest' >
-<assign property="callrequest.Code" value="process.GetAnnotation(&quot;Linear Regression Fit&quot;)" action="set" />
+<assign property="callrequest.Code" value="process.GetAnnotation(&quot;Logistic Regression Fit&quot;)" action="set" />
 </request>
 <response type='isc.py.msg.ExecutionResponse' />
 </call>
-<code name='MSE from Python to Context' xpos='200' ypos='850' >
+<code name='MSE from Python to Context' xpos='200' ypos='750' >
 <![CDATA[ set var={}.%FromJSON(context.mse)
  set i=var."MSE".%GetIterator()
  while i.%GetNext(.key,.line) { set sc=context.msevalues.Insert(line) }
  set i=var."COMPMIN".%GetIterator()
  while i.%GetNext(.key,.line) { set sc=context.msecompmin.Insert(line) }]]]]><![CDATA[>
 </code>
-<call name='Initialize MSE in R' target='R.Ens.Operation' async='0' xpos='200' ypos='950' >
+<call name='Initialize MSE in R' target='R.Ens.Operation' async='0' xpos='200' ypos='850' >
 <annotation><![CDATA[msevaluesall=vector()
 msevaluespc=vector()
 msecompmin=vector()]]]]><![CDATA[></annotation>
@@ -163,7 +174,7 @@ msecompmin=vector()]]]]><![CDATA[></annotation>
 </request>
 <response type='Ens.Response' />
 </call>
-<foreach name='MSE from Context to R' property='context.msevalues' key='context.i' xpos='200' ypos='1050' xend='200' yend='450' >
+<foreach name='MSE from Context to R' property='context.msevalues' key='context.i' xpos='200' ypos='950' xend='200' yend='450' >
 <call name='Feed MSE Values' target='R.Ens.Operation' async='0' xpos='200' ypos='250' >
 <request type='R.Msg.AssignRequest' >
 <assign property="callrequest.Data.Class" value="&quot;Vector&quot;" action="set" />
@@ -183,16 +194,16 @@ msecompmin=vector()]]]]><![CDATA[></annotation>
 <response type='Ens.Response' />
 </call>
 </foreach>
-<call name='Plot' target='R.Ens.Operation' async='0' xpos='200' ypos='1150' >
+<call name='Plot' target='R.Ens.Operation' async='0' xpos='200' ypos='1050' >
 <annotation><![CDATA[for (i in 1:25) {msevaluesall=c(msevaluesall,eval(parse(text=paste("msevalues",i,sep=""))))}
 for (i in 1:25) {msecompmin=c(msecompmin,eval(parse(text=paste("msecompmin",i,sep=""))))}
 benchmark=match(1,msecompmin)
-jpeg(filename='D:/InterSystems/IRIS/CSP/factory/FACTORY001.jpg',width=480,height=480,quality=75)
+jpeg(filename='C:/InterSystems/IRIS/CSP/factory/FACTORY001.jpg',width=480,height=480,quality=75)
 plot(msevaluesall,type="b",main="Selection of PC for LR (starting from intercept)",xlab="Principal components (PC)",ylab="Linear regression (LR) mean squared error (MSE)")
 abline(v=benchmark,col="red",lty=2)
 dev.off()
 for (i in 2:25) {msevaluespc=c(msevaluespc,eval(parse(text=paste("msevalues",i,sep=""))))}
-jpeg(filename='D:/InterSystems/IRIS/CSP/factory/FACTORY002.jpg',width=480,height=480,quality=75)
+jpeg(filename='C:/InterSystems/IRIS/CSP/factory/FACTORY002.jpg',width=480,height=480,quality=75)
 plot(msevaluespc,type="b",main="Selection of PC for LR (without intercept)",xlab="Principal components (PC)",ylab="Linear regression (LR) mean squared error (MSE)")
 abline(v=benchmark-1,col="red",lty=2)
 dev.off()]]]]><![CDATA[></annotation>
@@ -201,10 +212,12 @@ dev.off()]]]]><![CDATA[></annotation>
 </request>
 <response type='Ens.Response' />
 </call>
-<call name='Validate' target='isc.py.ens.Operation' async='0' xpos='200' ypos='1250' >
+<call name='Validate' target='isc.py.ens.Operation' async='0' xpos='200' ypos='1150' >
 <annotation><![CDATA[validation = regr.predict(X_reduced[:,:numcompmin])
+#validation = regr.predict_proba(X_reduced[:,:numcompmin])[:,0]
 validation = pd.DataFrame(validation)
 validation.columns = ['YHAT']
+#validation = pd.concat([df['Y'],validation], axis=1)
 validation = pd.concat([df['ID'],validation], axis=1)]]]]><![CDATA[></annotation>
 <request type='isc.py.msg.ExecutionRequest' >
 <assign property="callrequest.Code" value="process.GetAnnotation(&quot;Validate&quot;)" action="set" />
@@ -223,6 +236,34 @@ validation = pd.concat([df['ID'],validation], axis=1)]]]]><![CDATA[></annotation
  set i=var."YHAT".%GetIterator()
  while i.%GetNext(.key,.line) { set yhatvalue(key)=line set value=yhatvalue(key) set id=yhatid(key) &sql(UPDATE User_WEB.FACTORYANALYZER SET YHAT=:value WHERE ID=:id) }]]]]><![CDATA[>
 </code>
+<sequence name='** ML ROC Analysis **' xpos='1550' ypos='1250' xend='200' yend='550' >
+<call name='Query in Y &amp; YHAT' target='isc.julia.ens.Operation' async='0' xpos='200' ypos='250' >
+<annotation><![CDATA[SELECT Y, YHAT FROM User_WEB.FACTORYANALYZER]]]]><![CDATA[></annotation>
+<request type='isc.julia.msg.QueryRequest' >
+<assign property="callrequest.Query" value="process.GetAnnotation(&quot;Query in Y &amp; YHAT&quot;)" action="set" />
+<assign property="callrequest.Variable" value="&quot;yyhat&quot;" action="set" />
+<assign property="callrequest.Type" value="&quot;dataframe&quot;" action="set" />
+</request>
+<response type='Ens.Response' />
+</call>
+<call name='Compute ROC' target='isc.julia.ens.Operation' async='0' xpos='200' ypos='350' >
+<annotation><![CDATA[targs=yyhat[in([1]).(yyhat.Y), :]
+nonts=yyhat[in([0]).(yyhat.Y), :]
+r=roc(targs.YHAT,nonts.YHAT)]]]]><![CDATA[></annotation>
+<request type='isc.julia.msg.ExecutionRequest' >
+<assign property="callrequest.Code" value="process.GetAnnotation(&quot;Compute ROC&quot;)" action="set" />
+</request>
+<response type='Ens.Response' />
+</call>
+<call name='Visualize ROC' target='isc.julia.ens.Operation' async='0' xpos='200' ypos='450' >
+<annotation><![CDATA[plot(r,traditional=true)
+savefig("C:/InterSystems/IRIS/CSP/factory/FACTORY003.png")]]]]><![CDATA[></annotation>
+<request type='isc.julia.msg.ExecutionRequest' >
+<assign property="callrequest.Code" value="process.GetAnnotation(&quot;Visualize ROC&quot;)" action="set" />
+</request>
+<response type='Ens.Response' />
+</call>
+</sequence>
 </false>
 </if>
 </true>
@@ -235,16 +276,16 @@ validation = pd.concat([df['ID'],validation], axis=1)]]]]><![CDATA[></annotation
 </code>
 <if name='Monitor Full?' condition='context.fill&gt;(context.monitorsize-context.batchsize)' xpos='470' ypos='650' xend='470' yend='1350' >
 <false>
-<if name='Folder Locked?' condition='##class(%File).Exists("D:\InterSystems\IRIS\CSP\factory\wait.csv")' xpos='605' ypos='800' xend='605' yend='1250' >
+<if name='Folder Locked?' condition='##class(%File).Exists("C:\InterSystems\IRIS\CSP\factory\wait.csv")' xpos='605' ypos='800' xend='605' yend='1250' >
 <false>
 <code name='Consume from Buffer' xpos='740' ypos='950' >
-<![CDATA[ set lock=##class(%File).%New("D:\InterSystems\IRIS\CSP\factory\wait.csv")
+<![CDATA[ set lock=##class(%File).%New("C:\InterSystems\IRIS\CSP\factory\wait.csv")
  set sc=lock.Open("WN")
  do lock.Close()
  &sql(INSERT INTO User_WEB.FACTORYMONITOR SELECT *, NOW(), NULL, NULL, NULL FROM User_WEB.FACTORYBUFFER WHERE BATCH=(SELECT MIN(BATCH) FROM User_WEB.FACTORYBUFFER))
  &sql(UPDATE User_WEB.FACTORYMONITOR SET Y=(CASE WHEN R11>=(SELECT AVG(R11) FROM User_WEB.FACTORYBUFFER) THEN 1 ELSE 0 END) WHERE BATCH=(SELECT MIN(BATCH) FROM User_WEB.FACTORYBUFFER))
  &sql(DELETE FROM User_WEB.FACTORYBUFFER WHERE BATCH=(SELECT MIN(BATCH) FROM User_WEB.FACTORYBUFFER))
- do ##class(%File).Delete("D:\InterSystems\IRIS\CSP\factory\wait.csv",.sc)]]]]><![CDATA[>
+ do ##class(%File).Delete("C:\InterSystems\IRIS\CSP\factory\wait.csv",.sc)]]]]><![CDATA[>
 </code>
 <sequence name='** ML Scoring **' xpos='740' ypos='1050' xend='200' yend='550' >
 <call name='Load Data for Prediction' target='isc.py.ens.Operation' async='0' xpos='200' ypos='250' >
@@ -295,14 +336,14 @@ prediction = pd.concat([df1['ID'],prediction], axis=1)]]]]><![CDATA[></annotatio
 </true>
 <false>
 <code name='Initial Model Training' xpos='200' ypos='400' >
-<![CDATA[ set trigger=##class(%File).%New("D:\InterSystems\IRIS\CSP\factory\retrain.txt")
+<![CDATA[ set trigger=##class(%File).%New("C:\InterSystems\IRIS\CSP\factory\retrain.txt")
  set sc=trigger.Open("WN")
  do trigger.Close()
  set context.initmod=1]]]]><![CDATA[>
 </code>
 </false>
 </if>
-<code name='Idle State' xpos='200' ypos='1650' >
+<code name='Idle State' xpos='200' ypos='1750' >
 <![CDATA[ hang context.idletime]]]]><![CDATA[>
 </code>
 </while>
@@ -316,9 +357,9 @@ prediction = pd.concat([df1['ID'],prediction], axis=1)]]]]><![CDATA[></annotatio
 <Class name="CONVERGENCE.WEB.FACTORYBUFFER">
 <Description>
 Author: Sergey Lukyanchikov
-Version: 1</Description>
+Version: 2</Description>
 <Super>Ens.BusinessProcessBPL</Super>
-<TimeChanged>65218,77956.971927</TimeChanged>
+<TimeChanged>65513,52189.691207</TimeChanged>
 <TimeCreated>65154,62464.805187</TimeCreated>
 
 <Storage name="Default">
@@ -367,10 +408,10 @@ BPL Definition</Description>
  set context.replaceto="."
  set context.delimiter=";"]]]]><![CDATA[>
 </code>
-<while name='Buffering Loop' condition='##class(%File).Exists("D:\InterSystems\IRIS\CSP\factory\go.txt")' xpos='200' ypos='450' xend='200' yend='1300' >
-<if name='Folder Locked?' condition='##class(%File).Exists("D:\InterSystems\IRIS\CSP\factory\wait.csv")' xpos='200' ypos='250' xend='200' yend='1100' >
+<while name='Buffering Loop' condition='##class(%File).Exists("C:\InterSystems\IRIS\CSP\factory\go.txt")' xpos='200' ypos='450' xend='200' yend='1300' >
+<if name='Folder Locked?' condition='##class(%File).Exists("C:\InterSystems\IRIS\CSP\factory\wait.csv")' xpos='200' ypos='250' xend='200' yend='1100' >
 <false>
-<if name='File Exists?' condition='##class(%File).Exists("D:\InterSystems\IRIS\CSP\factory\work.csv")' xpos='335' ypos='400' xend='335' yend='1000' >
+<if name='File Exists?' condition='##class(%File).Exists("C:\InterSystems\IRIS\CSP\factory\work.csv")' xpos='335' ypos='400' xend='335' yend='1000' >
 <true>
 <code name='Check Buffer Fill' xpos='470' ypos='550' >
 <![CDATA[ &sql(SELECT COUNT(*) INTO :fill FROM User_WEB.FACTORYBUFFER)
@@ -380,15 +421,15 @@ BPL Definition</Description>
 <false>
 <code name='Import to Buffer' xpos='605' ypos='800' >
 <![CDATA[ set context.batch=context.batch+1
- set lock=##class(%File).%New("D:\InterSystems\IRIS\CSP\factory\wait.csv")
+ set lock=##class(%File).%New("C:\InterSystems\IRIS\CSP\factory\wait.csv")
  set sc=lock.Open("WN")
  do lock.Close()
- set input=##class(%File).%New("D:\InterSystems\IRIS\CSP\factory\work.csv")
+ set input=##class(%File).%New("C:\InterSystems\IRIS\CSP\factory\work.csv")
  set sc=input.Open("R")
  while 'input.AtEnd { set line=input.ReadLine() set line=$extract(line,1,*-1) set line=$replace(line,context.replacefrom,context.replaceto) for i=2:1:context.linepieces+1 { set record(i)=$piece(line,context.delimiter,i-1) } set offset1=context.linepieces+2 set record(offset1)=context.batch set offset2=context.linepieces+3 set record(offset2)=$extract($now(),7,*) if record(2)'="" { &sql(INSERT INTO User_WEB.FACTORYBUFFER VALUES :record()) } }
  do input.Close()
- do ##class(%File).Delete("D:\InterSystems\IRIS\CSP\factory\work.csv",.sc)
- do ##class(%File).Delete("D:\InterSystems\IRIS\CSP\factory\wait.csv",.sc)]]]]><![CDATA[>
+ do ##class(%File).Delete("C:\InterSystems\IRIS\CSP\factory\work.csv",.sc)
+ do ##class(%File).Delete("C:\InterSystems\IRIS\CSP\factory\wait.csv",.sc)]]]]><![CDATA[>
 </code>
 </false>
 </if>
@@ -407,35 +448,12 @@ BPL Definition</Description>
 </Class>
 
 
-<Class name="CONVERGENCE.WEB.FACTORYDASHBOARD">
-<Description>
-</Description>
-<ProcedureBlock>1</ProcedureBlock>
-<Super>%DeepSee.CubeDefinition</Super>
-<TimeChanged>65168,48450.970244</TimeChanged>
-<TimeCreated>65168,48450.9561</TimeCreated>
-<DependsOn>User.WEB.FACTORYBUFFER</DependsOn>
-
-<XData name="Cube">
-<Description>
-Cube definition from Architect.</Description>
-<XMLNamespace>http://www.intersystems.com/deepsee</XMLNamespace>
-<Data><![CDATA[
-<cube xmlns="http://www.intersystems.com/deepsee" name="CONVERGENCE.WEB.FACTORYDASHBOARD" displayName="CONVERGENCE.WEB.FACTORYDASHBOARD" disabled="false" abstract="false" sourceClass="User.WEB.FACTORYBUFFER" countMeasureName="%COUNT" bucketSize="8" bitmapChunkInMemory="false" precompute="0" disableListingGroups="false">
-</cube>
-]]></Data>
-</XData>
-
-<Parameter name="DOMAIN"/>
-</Class>
-
-
 <Class name="CONVERGENCE.WEB.FACTORYGENERATOR">
 <Description>
 Author: Sergey Lukyanchikov
-Version: 1</Description>
+Version: 2</Description>
 <Super>Ens.BusinessProcessBPL</Super>
-<TimeChanged>65217,63373.292441</TimeChanged>
+<TimeChanged>65513,52168.694464</TimeChanged>
 <TimeCreated>65154,62464.805187</TimeCreated>
 
 <Storage name="Default">
@@ -455,37 +473,37 @@ BPL Definition</Description>
 </context>
 <sequence xend='200' yend='750' >
 <code name='CSV/TXT Cleanup' xpos='200' ypos='250' >
-<![CDATA[ set filecleanup=##class(%File).Exists("D:\InterSystems\IRIS\CSP\factory\work.csv")
- if filecleanup=1 { do ##class(%File).Delete("D:\InterSystems\IRIS\CSP\factory\work.csv",.sc) }
- set filecleanup=##class(%File).Exists("D:\InterSystems\IRIS\CSP\factory\wait.csv")
- if filecleanup=1 { do ##class(%File).Delete("D:\InterSystems\IRIS\CSP\factory\wait.csv",.sc) }
- set filecleanup=##class(%File).Exists("D:\InterSystems\IRIS\CSP\factory\retrain.txt")
- if filecleanup=1 { do ##class(%File).Delete("D:\InterSystems\IRIS\CSP\factory\retrain.txt",.sc) }]]]]><![CDATA[>
+<![CDATA[ set filecleanup=##class(%File).Exists("C:\InterSystems\IRIS\CSP\factory\work.csv")
+ if filecleanup=1 { do ##class(%File).Delete("C:\InterSystems\IRIS\CSP\factory\work.csv",.sc) }
+ set filecleanup=##class(%File).Exists("C:\InterSystems\IRIS\CSP\factory\wait.csv")
+ if filecleanup=1 { do ##class(%File).Delete("C:\InterSystems\IRIS\CSP\factory\wait.csv",.sc) }
+ set filecleanup=##class(%File).Exists("C:\InterSystems\IRIS\CSP\factory\retrain.txt")
+ if filecleanup=1 { do ##class(%File).Delete("C:\InterSystems\IRIS\CSP\factory\retrain.txt",.sc) }]]]]><![CDATA[>
 </code>
 <code name='Open Source Data' xpos='200' ypos='350' >
-<![CDATA[ set context.source=##class(%File).%New("D:\InterSystems\IRIS\CSP\factory\provide.csv")
+<![CDATA[ set context.source=##class(%File).%New("C:\InterSystems\IRIS\CSP\factory\provide.csv")
  set sc=context.source.Open("R")]]]]><![CDATA[>
 </code>
 <code name='Set GENERATOR Parameters' xpos='200' ypos='450' >
 <![CDATA[ set context.batchsize=3600
  set context.idletime=5]]]]><![CDATA[>
 </code>
-<while name='Generation Loop' condition='##class(%File).Exists("D:\InterSystems\IRIS\CSP\factory\go.txt")' xpos='200' ypos='550' xend='200' yend='950' >
-<if name='Folder Locked?' condition='##class(%File).Exists("D:\InterSystems\IRIS\CSP\factory\wait.csv")' xpos='200' ypos='250' xend='200' yend='750' >
+<while name='Generation Loop' condition='##class(%File).Exists("C:\InterSystems\IRIS\CSP\factory\go.txt")' xpos='200' ypos='550' xend='200' yend='950' >
+<if name='Folder Locked?' condition='##class(%File).Exists("C:\InterSystems\IRIS\CSP\factory\wait.csv")' xpos='200' ypos='250' xend='200' yend='750' >
 <false>
-<if name='File Exists?' condition='##class(%File).Exists("D:\InterSystems\IRIS\CSP\factory\work.csv")' xpos='335' ypos='400' xend='335' yend='650' >
+<if name='File Exists?' condition='##class(%File).Exists("C:\InterSystems\IRIS\CSP\factory\work.csv")' xpos='335' ypos='400' xend='335' yend='650' >
 <false>
 <code name='Generate File' xpos='470' ypos='550' >
-<![CDATA[ set lock=##class(%File).%New("D:\InterSystems\IRIS\CSP\factory\wait.csv")
+<![CDATA[ set lock=##class(%File).%New("C:\InterSystems\IRIS\CSP\factory\wait.csv")
  set sc=lock.Open("WN")
  do lock.Close()
- set target=##class(%File).%New("D:\InterSystems\IRIS\CSP\factory\work.csv")
+ set target=##class(%File).%New("C:\InterSystems\IRIS\CSP\factory\work.csv")
  set sc=target.Open("WN")
  set source=context.source
  for i=1:1:context.batchsize-1 { if 'source.AtEnd { set line=source.ReadLine() do target.WriteLine(line) } else { do source.Rewind() set line=source.ReadLine() do target.WriteLine(line) } }
  if 'source.AtEnd { set line=source.ReadLine() do target.Write(line) } else { do source.Rewind() set line=source.Read() do target.Write(line) }
  do target.Close()
- do ##class(%File).Delete("D:\InterSystems\IRIS\CSP\factory\wait.csv",.sc)]]]]><![CDATA[>
+ do ##class(%File).Delete("C:\InterSystems\IRIS\CSP\factory\wait.csv",.sc)]]]]><![CDATA[>
 </code>
 </false>
 </if>
@@ -508,9 +526,9 @@ BPL Definition</Description>
 <Class name="CONVERGENCE.WEB.FACTORYMONITOR">
 <Description>
 Author: Sergey Lukyanchikov
-Version: 1</Description>
+Version: 2</Description>
 <Super>Ens.BusinessProcessBPL,isc.py.ens.ProcessUtils</Super>
-<TimeChanged>65218,77983.839585</TimeChanged>
+<TimeChanged>65513,52249.327693</TimeChanged>
 <TimeCreated>65169,42747.39401</TimeCreated>
 
 <Storage name="Default">
@@ -545,7 +563,7 @@ BPL Definition</Description>
  set context.erasebatches=12
  set context.idletime=15]]]]><![CDATA[>
 </code>
-<while name='Monitoring Loop' condition='##class(%File).Exists("D:\InterSystems\IRIS\CSP\factory\go.txt")' xpos='200' ypos='450' xend='200' yend='1350' >
+<while name='Monitoring Loop' condition='##class(%File).Exists("C:\InterSystems\IRIS\CSP\factory\go.txt")' xpos='200' ypos='450' xend='200' yend='1350' >
 <code name='Calculate Batch Levels' xpos='200' ypos='250' >
 <![CDATA[ &sql(SELECT MAX(BATCH) INTO :levelm FROM User_WEB.FACTORYMONITOR)
  set context.maxbatchm=levelm
@@ -562,13 +580,13 @@ BPL Definition</Description>
 <true>
 <code name='Monitor Classification' xpos='605' ypos='750' >
 <![CDATA[ &sql(SELECT SUM(ABS(Y-YHAT))/COUNT(*) INTO :pwc FROM User_WEB.FACTORYMONITOR)
- if pwc>0.2 { if '##class(%File).Exists("D:\InterSystems\IRIS\CSP\factory\retrain.txt") { set trigger=##class(%File).%New("D:\InterSystems\IRIS\CSP\factory\retrain.txt") set sc=trigger.Open("WN") do trigger.Close() } }]]]]><![CDATA[>
+ if pwc>0.2 { if '##class(%File).Exists("C:\InterSystems\IRIS\CSP\factory\retrain.txt") { set trigger=##class(%File).%New("C:\InterSystems\IRIS\CSP\factory\retrain.txt") set sc=trigger.Open("WN") do trigger.Close() } }]]]]><![CDATA[>
 </code>
 </true>
 <false>
 <code name='Monitor Estimation' xpos='335' ypos='750' >
 <![CDATA[ &sql(SELECT SUM(ABS(Y-YHAT)/Y)/COUNT(*) INTO :mape FROM User_WEB.FACTORYMONITOR)
- if mape>0.2 { if '##class(%File).Exists("D:\InterSystems\IRIS\CSP\factory\retrain.txt") { set trigger=##class(%File).%New("D:\InterSystems\IRIS\CSP\factory\retrain.txt") set sc=trigger.Open("WN") do trigger.Close() } }]]]]><![CDATA[>
+ if mape>0.2 { if '##class(%File).Exists("C:\InterSystems\IRIS\CSP\factory\retrain.txt") { set trigger=##class(%File).%New("C:\InterSystems\IRIS\CSP\factory\retrain.txt") set sc=trigger.Open("WN") do trigger.Close() } }]]]]><![CDATA[>
 </code>
 </false>
 </if>
@@ -606,7 +624,7 @@ BPL Definition</Description>
 <SqlRowIdPrivate>1</SqlRowIdPrivate>
 <SqlTableName>FACTORYANALYZER</SqlTableName>
 <Super>%Persistent,%XML.Adaptor</Super>
-<TimeChanged>65171,55655.901684</TimeChanged>
+<TimeChanged>65508,4473.165745</TimeChanged>
 <TimeCreated>65087,53157.136343</TimeCreated>
 
 <Parameter name="DSTIME">
@@ -2247,15 +2265,15 @@ Cube definition from Architect.</Description>
 
 
 <Document name="FACTORYANALYZERDASHBOARD.dashboard.DFI">
-<dashboard xmlns="http://www.intersystems.com/deepsee/library" name="FACTORYANALYZERDASHBOARD" folderName="" title="Analyzer Monitor" description="" keywords="" owner="" shared="true" public="true" locked="false" resource="" timeCreated="2019-06-20T07:19:03.521Z" createdBy="slukyanc" category="" bookCover="" scheme="" worklistCount="2" snapTo="true" snapGrid="true" gridRows="10" gridCols="10" canResize="true" canModify="true" showTitleBar="true" titleBarOpacity="" titleBarColor="" selectedTitleBarOpacity="" selectedTitleBarColor="" titleBarTextColor="" selectedTitleBarTextColor="" titleBarFont="" companyName="" companyLogo="" companyStyle="" backgroundColor="white" backgroundImage="none" backgroundRepeat="no-repeat" backgroundSize="100% 100%" backgroundOpacity="1" widgetBorders="1px solid #F0F0F0" widgetBordersSwitch="edit" widgetBordersColor="#F0F0F0" widgetBordersStyle="solid" widgetBordersWidth="1" widgetBordersToggle="true">
+<dashboard xmlns="http://www.intersystems.com/deepsee/library" name="FACTORYANALYZERDASHBOARD" folderName="" title="Analyzer Monitor" description="" keywords="" owner="" shared="true" public="true" locked="false" resource="" timeCreated="2019-06-20T07:19:03.521Z" createdBy="slukyanc" category="" bookCover="" scheme="" worklistCount="0" snapTo="true" snapGrid="true" gridRows="10" gridCols="10" canResize="true" canModify="true" showTitleBar="true" titleBarOpacity="" titleBarColor="" selectedTitleBarOpacity="" selectedTitleBarColor="" titleBarTextColor="" selectedTitleBarTextColor="" titleBarFont="" companyName="" companyLogo="" companyStyle="" backgroundColor="white" backgroundImage="none" backgroundRepeat="no-repeat" backgroundSize="100% 100%" backgroundOpacity="1" widgetBorders="1px solid #F0F0F0" widgetBordersSwitch="edit" widgetBordersColor="#F0F0F0" widgetBordersStyle="solid" widgetBordersWidth="1" widgetBordersToggle="true">
   <widget name="FACTORYANALYZERMONITOR01" type="pivot" subtype="lineChart" subtypeClass="lineChart" title="Parameter Model Observed vs. Predicted" dataSource="FACTORYANALYZERPIVOT01.pivot" dataLink="" drillDownDataSource="" width="200" height="200" sidebarContent="" showSidebar="false" sidebarWidth="" maximized="false" homeRowL="0" homeColL="0" colSpanL="5" rowSpanL="5" showToolbar="true" showToolbarBottomBorder="true" showToolbarOnlyWhenMaximized="false" colorToolbar="#F0F0F0" opacityToolbar="1" backgroundColor="#F0F0F0" opacity="1" theme="" dataColorList="">
-    <control name="" action="refresh" target="" targetProperty="" location="widget" type="timer" controlClass="" timeout="60" label="" title="" value="" text="" readOnly="false" valueList="" displayList="" activeWhen="">
+    <control name="" action="refresh" target="" targetProperty="" location="widget" type="timer" controlClass="" timeout="15" label="" title="" value="" text="" readOnly="false" valueList="" displayList="" activeWhen="">
       <valueRequired>false</valueRequired>
     </control>
     <override name="lineChart">{legendVisible:'false',seriesColorsOverride:'rgb(0,167,153),rgb(220,88,0)',xAxis:{_type:'axis'},yAxisList:[{title:'VALUES',_type:'axis'}],_type:'lineChart'}</override>
   </widget>
   <widget name="FACTORYANALYZERMONITOR02" type="pivot" subtype="columnChart" subtypeClass="barChart" title="Percentage of Wrong Classifications (PWC)/Mean Absolute Percentage Error (MAPE)" dataSource="FACTORYANALYZERPIVOT02.pivot" dataLink="" drillDownDataSource="" width="200" height="200" sidebarContent="" showSidebar="false" sidebarWidth="" maximized="false" homeRowL="5" homeColL="0" colSpanL="5" rowSpanL="5" showToolbar="true" showToolbarBottomBorder="true" showToolbarOnlyWhenMaximized="false" colorToolbar="#F0F0F0" opacityToolbar="1" backgroundColor="#F0F0F0" opacity="1" theme="" dataColorList="">
-    <control name="" action="refresh" target="" targetProperty="" location="widget" type="timer" controlClass="" timeout="60" label="" title="" value="" text="" readOnly="false" valueList="" displayList="" activeWhen="">
+    <control name="" action="refresh" target="" targetProperty="" location="widget" type="timer" controlClass="" timeout="15" label="" title="" value="" text="" readOnly="false" valueList="" displayList="" activeWhen="">
       <valueRequired>false</valueRequired>
     </control>
     <property name="legendPos">none</property>
@@ -2263,7 +2281,7 @@ Cube definition from Architect.</Description>
     <override name="legend">{hidden:true,legendLabels:'PCC',legendPosition:'right',legendTitle:'PCC',_type:'chartLegend'}</override>
   </widget>
   <widget name="FACTORYANALYZERMONITOR03" type="pivot" subtype="xyChart" subtypeClass="xyChart" title="Modeled Parameter vs. Parameter Model Observed" dataSource="FACTORYANALYZERPIVOT03.pivot" dataLink="" drillDownDataSource="" width="200" height="200" sidebarContent="" showSidebar="false" sidebarWidth="" maximized="false" homeRowL="0" homeColL="5" colSpanL="5" rowSpanL="5" showToolbar="true" showToolbarBottomBorder="true" showToolbarOnlyWhenMaximized="false" colorToolbar="#F0F0F0" opacityToolbar="1" backgroundColor="#F0F0F0" opacity="1" theme="" dataColorList="">
-    <control name="" action="refresh" target="" targetProperty="" location="widget" type="timer" controlClass="" timeout="60" label="" title="" value="" text="" readOnly="false" valueList="" displayList="" activeWhen="">
+    <control name="" action="refresh" target="" targetProperty="" location="widget" type="timer" controlClass="" timeout="15" label="" title="" value="" text="" readOnly="false" valueList="" displayList="" activeWhen="">
       <valueRequired>false</valueRequired>
     </control>
     <property name="legendPos">none</property>
@@ -2271,7 +2289,7 @@ Cube definition from Architect.</Description>
     <override name="xyChart">{legendVisible:'false',seriesColorsOverride:'rgb(80,122,164)',xAxis:{title:'PARAMETER MODEL OBSERVED VALUES',_type:'axis'},yAxisList:[{title:'MODELED PARAMETER VALUES',_type:'axis'}],_type:'xyChart'}</override>
   </widget>
   <widget name="FACTORYANALYZERMONITOR04" type="pivot" subtype="xyChart" subtypeClass="xyChart" title="Modeled Parameter vs. Parameter Model Prediction" dataSource="FACTORYANALYZERPIVOT04.pivot" dataLink="" drillDownDataSource="" width="200" height="200" sidebarContent="" showSidebar="false" sidebarWidth="" maximized="false" homeRowL="5" homeColL="5" colSpanL="5" rowSpanL="5" showToolbar="true" showToolbarBottomBorder="true" showToolbarOnlyWhenMaximized="false" colorToolbar="#F0F0F0" opacityToolbar="1" backgroundColor="#F0F0F0" opacity="1" theme="" dataColorList="">
-    <control name="" action="refresh" target="" targetProperty="" location="widget" type="timer" controlClass="" timeout="60" label="" title="" value="" text="" readOnly="false" valueList="" displayList="" activeWhen="">
+    <control name="" action="refresh" target="" targetProperty="" location="widget" type="timer" controlClass="" timeout="15" label="" title="" value="" text="" readOnly="false" valueList="" displayList="" activeWhen="">
       <valueRequired>false</valueRequired>
     </control>
     <property name="legendPos">none</property>
@@ -2282,7 +2300,7 @@ Cube definition from Architect.</Description>
 </Document>
 
 <Document name="FACTORYANALYZERPIVOT01.pivot.DFI">
-<pivot xmlns="http://www.intersystems.com/deepsee/library" name="FACTORYANALYZERPIVOT01" folderName="" title="" description="" keywords="" owner="" shared="true" public="true" locked="false" resource="" timeCreated="2019-06-20T08:07:32.31Z" createdBy="slukyanc" category="" bookCover="" mdx="" cellWidth="120" columnHeaderStyle="" rowHeaderStyle="" cellStyle="" rowLabelSpan="true" columnLabelSpan="true" cellHeight="22" showEmptyRows="false" showEmptyColumns="false" cubeName="FACTORYANALYZERCUBE" caption="" listing="" listingRows="" showStatus="true" pageSize="100" colorScale="" rowTotals="false" columnTotals="false" rowTotalAgg="sum" columnTotalAgg="sum" rowTotalSource="page" showZebra="false" showRowCaption="true" printTitle="" printSubtitle="" printSubtitleOn="" showUser="" printPageSize="" printOrientation="1" printMarginTop="" printMarginLeft="" printMarginRight="" printMarginBottom="" printLabelWidth="" printCellWidth="" autoExecute="true" manualMode="false" userMDX="" chartMarginTop="" chartMarginLeft="" chartMarginRight="" chartMarginBottom="" maxRows="" borderLeftCell="" borderRightCell="" borderTopCell="" borderBottomCell="" borderLeftCol="" borderRightCol="" borderTopCol="" borderBottomCol="" borderLeftRow="" borderRightRow="" borderTopRow="" borderBottomRow="" fontFamilyCell="" fontSizeCell="" fontFamilyCol="" fontSizeCol="" fontFamilyRow="" fontSizeRow="" showFilters="" showListingFilters="" showDate="" listingFontSize="" showZebraStripes="" filterTableStyle="" filterTableCaptionStyle="" filterTableItemStyle="" nowDisplayFormat="" measureLocation="columns" hideMeasures="1" backgroundImage="" backgroundOpacity=".12">
+<pivot xmlns="http://www.intersystems.com/deepsee/library" name="FACTORYANALYZERPIVOT01" folderName="" title="" description="" keywords="" owner="" shared="true" public="true" locked="false" resource="" timeCreated="2019-06-20T08:07:32.31Z" createdBy="slukyanc" category="" bookCover="" mdx="" cellWidth="120" columnHeaderStyle="" rowHeaderStyle="" cellStyle="" rowLabelSpan="true" columnLabelSpan="true" cellHeight="22" showEmptyRows="false" showEmptyColumns="false" cubeName="FACTORYANALYZERCUBE" caption="" listing="" listingRows="" showStatus="true" pageSize="100" colorScale="" rowTotals="false" columnTotals="false" rowTotalAgg="sum" columnTotalAgg="sum" rowTotalSource="page" showZebra="false" showRowCaption="true" printTitle="" printSubtitle="" printSubtitleOn="" showUser="" printPageSize="" printOrientation="1" printMarginTop="" printMarginLeft="" printMarginRight="" printMarginBottom="" printLabelWidth="" printCellWidth="" autoExecute="true" previewMode="false" manualMode="false" userMDX="" chartMarginTop="" chartMarginLeft="" chartMarginRight="" chartMarginBottom="" maxRows="" borderLeftCell="" borderRightCell="" borderTopCell="" borderBottomCell="" borderLeftCol="" borderRightCol="" borderTopCol="" borderBottomCol="" borderLeftRow="" borderRightRow="" borderTopRow="" borderBottomRow="" fontFamilyCell="" fontSizeCell="" fontFamilyCol="" fontSizeCol="" fontFamilyRow="" fontSizeRow="" showFilters="" showListingFilters="" showDate="" listingFontSize="" showZebraStripes="" filterTableStyle="" filterTableCaptionStyle="" filterTableItemStyle="" nowDisplayFormat="" measureLocation="columns" hideMeasures="1" backgroundImage="" backgroundOpacity=".12">
   <rowAxisOptions spec="" key="" value="" text="" headEnabled="false" headCount="" filterEnabled="false" filterExpression="" orderEnabled="false" orderExpression="" orderDirection="BDESC" aggEnabled="false" aggFunction="" aggFunctionParm="" levelCaption="" levelFormat="" levelSummary="" levelType="" drillLevel="0" advanced="false" levelStyle="" levelHeaderStyle="" suppress8020="false" drilldownSpec="" enabled="true">
   </rowAxisOptions>
   <columnAxisOptions spec="" key="" value="" text="" headEnabled="false" headCount="" filterEnabled="false" filterExpression="" orderEnabled="false" orderExpression="" orderDirection="BDESC" aggEnabled="false" aggFunction="" aggFunctionParm="" levelCaption="" levelFormat="" levelSummary="" levelType="" drillLevel="0" advanced="false" levelStyle="" levelHeaderStyle="" suppress8020="false" drilldownSpec="" enabled="true">
@@ -2293,24 +2311,26 @@ Cube definition from Architect.</Description>
   </columnLevel>
   <columnLevel spec="[Measures].[YHAT]" key="" value="" text="YHAT" headEnabled="false" headCount="" filterEnabled="false" filterExpression="" orderEnabled="false" orderExpression="" orderDirection="BDESC" aggEnabled="false" aggFunction="" aggFunctionParm="" levelCaption="" levelFormat="" levelSummary="" levelType="" drillLevel="0" advanced="false" levelStyle="" levelHeaderStyle="" suppress8020="false" drilldownSpec="" enabled="true">
   </columnLevel>
+  <sqlRestriction></sqlRestriction>
 </pivot>
 </Document>
 
 <Document name="FACTORYANALYZERPIVOT02.pivot.DFI">
-<pivot xmlns="http://www.intersystems.com/deepsee/library" name="FACTORYANALYZERPIVOT02" folderName="" title="" description="" keywords="" owner="" shared="true" public="true" locked="false" resource="" timeCreated="2019-06-20T12:53:34.627Z" createdBy="slukyanc" category="" bookCover="" mdx="" cellWidth="120" columnHeaderStyle="" rowHeaderStyle="" cellStyle="" rowLabelSpan="true" columnLabelSpan="true" cellHeight="22" showEmptyRows="false" showEmptyColumns="false" cubeName="FACTORYANALYZERCUBE" caption="" listing="" listingRows="" showStatus="true" pageSize="100" colorScale="" rowTotals="false" columnTotals="false" rowTotalAgg="sum" columnTotalAgg="sum" rowTotalSource="page" showZebra="false" showRowCaption="true" printTitle="" printSubtitle="" printSubtitleOn="" showUser="" printPageSize="" printOrientation="1" printMarginTop="" printMarginLeft="" printMarginRight="" printMarginBottom="" printLabelWidth="" printCellWidth="" autoExecute="true" manualMode="false" userMDX="" chartMarginTop="" chartMarginLeft="" chartMarginRight="" chartMarginBottom="" maxRows="" borderLeftCell="" borderRightCell="" borderTopCell="" borderBottomCell="" borderLeftCol="" borderRightCol="" borderTopCol="" borderBottomCol="" borderLeftRow="" borderRightRow="" borderTopRow="" borderBottomRow="" fontFamilyCell="" fontSizeCell="" fontFamilyCol="" fontSizeCol="" fontFamilyRow="" fontSizeRow="" showFilters="" showListingFilters="" showDate="" listingFontSize="" showZebraStripes="" filterTableStyle="" filterTableCaptionStyle="" filterTableItemStyle="" nowDisplayFormat="" measureLocation="columns" hideMeasures="1" backgroundImage="" backgroundOpacity=".12">
+<pivot xmlns="http://www.intersystems.com/deepsee/library" name="FACTORYANALYZERPIVOT02" folderName="" title="" description="" keywords="" owner="" shared="true" public="true" locked="false" resource="" timeCreated="2019-06-20T12:53:34.627Z" createdBy="slukyanc" category="" bookCover="" mdx="" cellWidth="120" columnHeaderStyle="" rowHeaderStyle="" cellStyle="" rowLabelSpan="true" columnLabelSpan="true" cellHeight="22" showEmptyRows="false" showEmptyColumns="false" cubeName="FACTORYANALYZERCUBE" caption="" listing="" listingRows="" showStatus="true" pageSize="100" colorScale="" rowTotals="false" columnTotals="false" rowTotalAgg="sum" columnTotalAgg="sum" rowTotalSource="page" showZebra="false" showRowCaption="true" printTitle="" printSubtitle="" printSubtitleOn="" showUser="" printPageSize="" printOrientation="1" printMarginTop="" printMarginLeft="" printMarginRight="" printMarginBottom="" printLabelWidth="" printCellWidth="" autoExecute="true" previewMode="false" manualMode="false" userMDX="" chartMarginTop="" chartMarginLeft="" chartMarginRight="" chartMarginBottom="" maxRows="" borderLeftCell="" borderRightCell="" borderTopCell="" borderBottomCell="" borderLeftCol="" borderRightCol="" borderTopCol="" borderBottomCol="" borderLeftRow="" borderRightRow="" borderTopRow="" borderBottomRow="" fontFamilyCell="" fontSizeCell="" fontFamilyCol="" fontSizeCol="" fontFamilyRow="" fontSizeRow="" showFilters="" showListingFilters="" showDate="" listingFontSize="" showZebraStripes="" filterTableStyle="" filterTableCaptionStyle="" filterTableItemStyle="" nowDisplayFormat="" measureLocation="columns" hideMeasures="1" backgroundImage="" backgroundOpacity=".12">
   <rowAxisOptions spec="" key="" value="" text="" headEnabled="false" headCount="" filterEnabled="false" filterExpression="" orderEnabled="false" orderExpression="" orderDirection="BDESC" aggEnabled="false" aggFunction="" aggFunctionParm="" levelCaption="" levelFormat="" levelSummary="" levelType="" drillLevel="0" advanced="false" levelStyle="" levelHeaderStyle="" suppress8020="false" drilldownSpec="" enabled="true">
   </rowAxisOptions>
   <columnAxisOptions spec="" key="" value="" text="" headEnabled="false" headCount="" filterEnabled="false" filterExpression="" orderEnabled="false" orderExpression="" orderDirection="BDESC" aggEnabled="false" aggFunction="" aggFunctionParm="" levelCaption="" levelFormat="" levelSummary="" levelType="" drillLevel="0" advanced="false" levelStyle="" levelHeaderStyle="" suppress8020="false" drilldownSpec="" enabled="true">
   </columnAxisOptions>
   <rowLevel spec="[BATCH].[H1].[BATCH].Members" key="" value="" text="BATCH" headEnabled="false" headCount="" filterEnabled="false" filterExpression="" orderEnabled="false" orderExpression="" orderDirection="BDESC" aggEnabled="false" aggFunction="" aggFunctionParm="" levelCaption="" levelFormat="" levelSummary="" levelType="" drillLevel="0" advanced="false" levelStyle="" levelHeaderStyle="" suppress8020="false" drilldownSpec="" enabled="true">
   </rowLevel>
+  <sqlRestriction></sqlRestriction>
   <measure spec="[MEASURES].[PWC_MAPE]" key="" value="" text="PWC_MAPE" headEnabled="false" headCount="" filterEnabled="false" filterExpression="" orderEnabled="false" orderExpression="" orderDirection="BDESC" aggEnabled="false" aggFunction="" aggFunctionParm="" levelCaption="" levelFormat="" levelSummary="" levelType="" drillLevel="0" advanced="false" levelStyle="" levelHeaderStyle="" suppress8020="false" drilldownSpec="" enabled="true">
   </measure>
 </pivot>
 </Document>
 
 <Document name="FACTORYANALYZERPIVOT03.pivot.DFI">
-<pivot xmlns="http://www.intersystems.com/deepsee/library" name="FACTORYANALYZERPIVOT03" folderName="" title="" description="" keywords="" owner="" shared="true" public="true" locked="false" resource="" timeCreated="2019-06-20T13:18:58.818Z" createdBy="slukyanc" category="" bookCover="" mdx="" cellWidth="120" columnHeaderStyle="" rowHeaderStyle="" cellStyle="" rowLabelSpan="true" columnLabelSpan="true" cellHeight="22" showEmptyRows="false" showEmptyColumns="false" cubeName="FACTORYANALYZERCUBE" caption="" listing="" listingRows="" showStatus="true" pageSize="100" colorScale="" rowTotals="false" columnTotals="false" rowTotalAgg="sum" columnTotalAgg="sum" rowTotalSource="page" showZebra="false" showRowCaption="true" printTitle="" printSubtitle="" printSubtitleOn="" showUser="" printPageSize="" printOrientation="1" printMarginTop="" printMarginLeft="" printMarginRight="" printMarginBottom="" printLabelWidth="" printCellWidth="" autoExecute="true" manualMode="false" userMDX="" chartMarginTop="" chartMarginLeft="" chartMarginRight="" chartMarginBottom="" maxRows="" borderLeftCell="" borderRightCell="" borderTopCell="" borderBottomCell="" borderLeftCol="" borderRightCol="" borderTopCol="" borderBottomCol="" borderLeftRow="" borderRightRow="" borderTopRow="" borderBottomRow="" fontFamilyCell="" fontSizeCell="" fontFamilyCol="" fontSizeCol="" fontFamilyRow="" fontSizeRow="" showFilters="" showListingFilters="" showDate="" listingFontSize="" showZebraStripes="" filterTableStyle="" filterTableCaptionStyle="" filterTableItemStyle="" nowDisplayFormat="" measureLocation="columns" hideMeasures="1" backgroundImage="" backgroundOpacity=".12">
+<pivot xmlns="http://www.intersystems.com/deepsee/library" name="FACTORYANALYZERPIVOT03" folderName="" title="" description="" keywords="" owner="" shared="true" public="true" locked="false" resource="" timeCreated="2019-06-20T13:18:58.818Z" createdBy="slukyanc" category="" bookCover="" mdx="" cellWidth="120" columnHeaderStyle="" rowHeaderStyle="" cellStyle="" rowLabelSpan="true" columnLabelSpan="true" cellHeight="22" showEmptyRows="false" showEmptyColumns="false" cubeName="FACTORYANALYZERCUBE" caption="" listing="" listingRows="" showStatus="true" pageSize="100" colorScale="" rowTotals="false" columnTotals="false" rowTotalAgg="sum" columnTotalAgg="sum" rowTotalSource="page" showZebra="false" showRowCaption="true" printTitle="" printSubtitle="" printSubtitleOn="" showUser="" printPageSize="" printOrientation="1" printMarginTop="" printMarginLeft="" printMarginRight="" printMarginBottom="" printLabelWidth="" printCellWidth="" autoExecute="true" previewMode="false" manualMode="false" userMDX="" chartMarginTop="" chartMarginLeft="" chartMarginRight="" chartMarginBottom="" maxRows="" borderLeftCell="" borderRightCell="" borderTopCell="" borderBottomCell="" borderLeftCol="" borderRightCol="" borderTopCol="" borderBottomCol="" borderLeftRow="" borderRightRow="" borderTopRow="" borderBottomRow="" fontFamilyCell="" fontSizeCell="" fontFamilyCol="" fontSizeCol="" fontFamilyRow="" fontSizeRow="" showFilters="" showListingFilters="" showDate="" listingFontSize="" showZebraStripes="" filterTableStyle="" filterTableCaptionStyle="" filterTableItemStyle="" nowDisplayFormat="" measureLocation="columns" hideMeasures="1" backgroundImage="" backgroundOpacity=".12">
   <rowAxisOptions spec="" key="" value="" text="" headEnabled="false" headCount="" filterEnabled="false" filterExpression="" orderEnabled="false" orderExpression="" orderDirection="BDESC" aggEnabled="false" aggFunction="" aggFunctionParm="" levelCaption="" levelFormat="" levelSummary="" levelType="" drillLevel="0" advanced="false" levelStyle="" levelHeaderStyle="" suppress8020="false" drilldownSpec="" enabled="true">
   </rowAxisOptions>
   <columnAxisOptions spec="" key="" value="" text="" headEnabled="false" headCount="" filterEnabled="false" filterExpression="" orderEnabled="false" orderExpression="" orderDirection="BDESC" aggEnabled="false" aggFunction="" aggFunctionParm="" levelCaption="" levelFormat="" levelSummary="" levelType="" drillLevel="0" advanced="false" levelStyle="" levelHeaderStyle="" suppress8020="false" drilldownSpec="" enabled="true">
@@ -2321,11 +2341,12 @@ Cube definition from Architect.</Description>
   </columnLevel>
   <columnLevel spec="[Measures].[R11]" key="" value="" text="R11" headEnabled="false" headCount="" filterEnabled="false" filterExpression="" orderEnabled="false" orderExpression="" orderDirection="BDESC" aggEnabled="false" aggFunction="" aggFunctionParm="" levelCaption="" levelFormat="" levelSummary="" levelType="" drillLevel="0" advanced="false" levelStyle="" levelHeaderStyle="" suppress8020="false" drilldownSpec="" enabled="true">
   </columnLevel>
+  <sqlRestriction></sqlRestriction>
 </pivot>
 </Document>
 
 <Document name="FACTORYANALYZERPIVOT04.pivot.DFI">
-<pivot xmlns="http://www.intersystems.com/deepsee/library" name="FACTORYANALYZERPIVOT04" folderName="" title="" description="" keywords="" owner="" shared="true" public="true" locked="false" resource="" timeCreated="2019-06-20T14:31:05.019Z" createdBy="slukyanc" category="" bookCover="" mdx="" cellWidth="120" columnHeaderStyle="" rowHeaderStyle="" cellStyle="" rowLabelSpan="true" columnLabelSpan="true" cellHeight="22" showEmptyRows="false" showEmptyColumns="false" cubeName="FACTORYANALYZERCUBE" caption="" listing="" listingRows="" showStatus="true" pageSize="100" colorScale="" rowTotals="false" columnTotals="false" rowTotalAgg="sum" columnTotalAgg="sum" rowTotalSource="page" showZebra="false" showRowCaption="true" printTitle="" printSubtitle="" printSubtitleOn="" showUser="" printPageSize="" printOrientation="1" printMarginTop="" printMarginLeft="" printMarginRight="" printMarginBottom="" printLabelWidth="" printCellWidth="" autoExecute="true" manualMode="false" userMDX="" chartMarginTop="" chartMarginLeft="" chartMarginRight="" chartMarginBottom="" maxRows="" borderLeftCell="" borderRightCell="" borderTopCell="" borderBottomCell="" borderLeftCol="" borderRightCol="" borderTopCol="" borderBottomCol="" borderLeftRow="" borderRightRow="" borderTopRow="" borderBottomRow="" fontFamilyCell="" fontSizeCell="" fontFamilyCol="" fontSizeCol="" fontFamilyRow="" fontSizeRow="" showFilters="" showListingFilters="" showDate="" listingFontSize="" showZebraStripes="" filterTableStyle="" filterTableCaptionStyle="" filterTableItemStyle="" nowDisplayFormat="" measureLocation="columns" hideMeasures="1" backgroundImage="" backgroundOpacity=".12">
+<pivot xmlns="http://www.intersystems.com/deepsee/library" name="FACTORYANALYZERPIVOT04" folderName="" title="" description="" keywords="" owner="" shared="true" public="true" locked="false" resource="" timeCreated="2019-06-20T14:31:05.019Z" createdBy="slukyanc" category="" bookCover="" mdx="" cellWidth="120" columnHeaderStyle="" rowHeaderStyle="" cellStyle="" rowLabelSpan="true" columnLabelSpan="true" cellHeight="22" showEmptyRows="false" showEmptyColumns="false" cubeName="FACTORYANALYZERCUBE" caption="" listing="" listingRows="" showStatus="true" pageSize="100" colorScale="" rowTotals="false" columnTotals="false" rowTotalAgg="sum" columnTotalAgg="sum" rowTotalSource="page" showZebra="false" showRowCaption="true" printTitle="" printSubtitle="" printSubtitleOn="" showUser="" printPageSize="" printOrientation="1" printMarginTop="" printMarginLeft="" printMarginRight="" printMarginBottom="" printLabelWidth="" printCellWidth="" autoExecute="true" previewMode="false" manualMode="false" userMDX="" chartMarginTop="" chartMarginLeft="" chartMarginRight="" chartMarginBottom="" maxRows="" borderLeftCell="" borderRightCell="" borderTopCell="" borderBottomCell="" borderLeftCol="" borderRightCol="" borderTopCol="" borderBottomCol="" borderLeftRow="" borderRightRow="" borderTopRow="" borderBottomRow="" fontFamilyCell="" fontSizeCell="" fontFamilyCol="" fontSizeCol="" fontFamilyRow="" fontSizeRow="" showFilters="" showListingFilters="" showDate="" listingFontSize="" showZebraStripes="" filterTableStyle="" filterTableCaptionStyle="" filterTableItemStyle="" nowDisplayFormat="" measureLocation="columns" hideMeasures="1" backgroundImage="" backgroundOpacity=".12">
   <rowAxisOptions spec="" key="" value="" text="" headEnabled="false" headCount="" filterEnabled="false" filterExpression="" orderEnabled="false" orderExpression="" orderDirection="BDESC" aggEnabled="false" aggFunction="" aggFunctionParm="" levelCaption="" levelFormat="" levelSummary="" levelType="" drillLevel="0" advanced="false" levelStyle="" levelHeaderStyle="" suppress8020="false" drilldownSpec="" enabled="true">
   </rowAxisOptions>
   <columnAxisOptions spec="" key="" value="" text="" headEnabled="false" headCount="" filterEnabled="false" filterExpression="" orderEnabled="false" orderExpression="" orderDirection="BDESC" aggEnabled="false" aggFunction="" aggFunctionParm="" levelCaption="" levelFormat="" levelSummary="" levelType="" drillLevel="0" advanced="false" levelStyle="" levelHeaderStyle="" suppress8020="false" drilldownSpec="" enabled="true">
@@ -2336,13 +2357,14 @@ Cube definition from Architect.</Description>
   </columnLevel>
   <columnLevel spec="[Measures].[R11]" key="" value="" text="R11" headEnabled="false" headCount="" filterEnabled="false" filterExpression="" orderEnabled="false" orderExpression="" orderDirection="BDESC" aggEnabled="false" aggFunction="" aggFunctionParm="" levelCaption="" levelFormat="" levelSummary="" levelType="" drillLevel="0" advanced="false" levelStyle="" levelHeaderStyle="" suppress8020="false" drilldownSpec="" enabled="true">
   </columnLevel>
+  <sqlRestriction></sqlRestriction>
 </pivot>
 </Document>
 
 <Document name="FACTORYBUFFERDASHBOARD.dashboard.DFI">
-<dashboard xmlns="http://www.intersystems.com/deepsee/library" name="FACTORYBUFFERDASHBOARD" folderName="" title="Buffer Monitor" description="" keywords="" owner="" shared="true" public="true" locked="false" resource="" timeCreated="2019-06-05T09:00:28.086Z" createdBy="slukyanc" category="" bookCover="" scheme="" worklistCount="2" snapTo="true" snapGrid="true" gridRows="10" gridCols="10" canResize="true" canModify="true" showTitleBar="true" titleBarOpacity="" titleBarColor="" selectedTitleBarOpacity="" selectedTitleBarColor="" titleBarTextColor="" selectedTitleBarTextColor="" titleBarFont="" companyName="" companyLogo="" companyStyle="" backgroundColor="white" backgroundImage="none" backgroundRepeat="no-repeat" backgroundSize="100% 100%" backgroundOpacity="1" widgetBorders="1px solid #F0F0F0" widgetBordersSwitch="edit" widgetBordersColor="#F0F0F0" widgetBordersStyle="solid" widgetBordersWidth="1" widgetBordersToggle="true">
+<dashboard xmlns="http://www.intersystems.com/deepsee/library" name="FACTORYBUFFERDASHBOARD" folderName="" title="Buffer Monitor" description="" keywords="" owner="" shared="true" public="true" locked="false" resource="" timeCreated="2019-06-05T09:00:28.086Z" createdBy="slukyanc" category="" bookCover="" scheme="" worklistCount="0" snapTo="true" snapGrid="true" gridRows="10" gridCols="10" canResize="true" canModify="true" showTitleBar="true" titleBarOpacity="" titleBarColor="" selectedTitleBarOpacity="" selectedTitleBarColor="" titleBarTextColor="" selectedTitleBarTextColor="" titleBarFont="" companyName="" companyLogo="" companyStyle="" backgroundColor="white" backgroundImage="none" backgroundRepeat="no-repeat" backgroundSize="100% 100%" backgroundOpacity="1" widgetBorders="1px solid #F0F0F0" widgetBordersSwitch="edit" widgetBordersColor="#F0F0F0" widgetBordersStyle="solid" widgetBordersWidth="1" widgetBordersToggle="true">
   <widget name="FACTORYBUFFERMONITOR01" type="pivot" subtype="lineChart" subtypeClass="lineChart" title="Insert Seconds per Batch" dataSource="FACTORYBUFFERPIVOT01.pivot" dataLink="" drillDownDataSource="" width="200" height="200" sidebarContent="" showSidebar="false" sidebarWidth="" maximized="false" homeRowL="0" homeColL="0" colSpanL="5" rowSpanL="5" showToolbar="true" showToolbarBottomBorder="true" showToolbarOnlyWhenMaximized="false" colorToolbar="#F0F0F0" opacityToolbar="1" backgroundColor="#F0F0F0" opacity="1" theme="" dataColorList="">
-    <control name="" action="refresh" target="" targetProperty="" location="widget" type="timer" controlClass="" timeout="60" label="" title="" value="" text="" readOnly="false" valueList="" displayList="" activeWhen="">
+    <control name="" action="refresh" target="" targetProperty="" location="widget" type="timer" controlClass="" timeout="15" label="" title="" value="" text="" readOnly="false" valueList="" displayList="" activeWhen="">
       <valueRequired>false</valueRequired>
     </control>
     <dataProperty name="THRUPUT" label="THRUPUT" width="" align="" subtype="" style="" display="hidden" format="" showAs="" valueColumn="true" summary="" summaryValue="" dataValue="THRUPUT" targetValue="" thresholdLower="" thresholdUpper="" rangeLower="" rangeUpper="" baseValue="" override=""></dataProperty>
@@ -2352,7 +2374,7 @@ Cube definition from Architect.</Description>
     <override name="lineChart">{legendVisible:'false',maxLabelLen:20,seriesColorScheme:'pastel',xAxis:{_type:'axis'},yAxisList:[{labelPosition:'left',title:'INSERT SECONDS',_type:'axis'}],_type:'lineChart'}</override>
   </widget>
   <widget name="Buffer Monitor 02" type="pivot" subtype="lineChart" subtypeClass="lineChart" title="Records per Batch" dataSource="FACTORYBUFFERPIVOT02.pivot" dataLink="" drillDownDataSource="" width="200" height="200" sidebarContent="" showSidebar="false" sidebarWidth="" maximized="false" homeRowL="5" homeColL="0" colSpanL="5" rowSpanL="5" showToolbar="true" showToolbarBottomBorder="true" showToolbarOnlyWhenMaximized="false" colorToolbar="#F0F0F0" opacityToolbar="1" backgroundColor="#F0F0F0" opacity="1" theme="" dataColorList="">
-    <control name="" action="refresh" target="" targetProperty="" location="widget" type="timer" controlClass="" timeout="60" label="" title="" value="" text="" readOnly="false" valueList="" displayList="" activeWhen="">
+    <control name="" action="refresh" target="" targetProperty="" location="widget" type="timer" controlClass="" timeout="15" label="" title="" value="" text="" readOnly="false" valueList="" displayList="" activeWhen="">
       <valueRequired>false</valueRequired>
     </control>
     <property name="legendPos">none</property>
@@ -2360,7 +2382,7 @@ Cube definition from Architect.</Description>
     <override name="lineChart">{legendVisible:'false',seriesColorScheme:'caribbean',xAxis:{_type:'axis'},yAxisList:[{title:'RECORDS',_type:'axis'}],_type:'lineChart'}</override>
   </widget>
   <widget name="FACTORYBUFFERMONITOR03" type="pivot" subtype="lineChart" subtypeClass="lineChart" title="Sensor Readings: Process" dataSource="FACTORYBUFFERPIVOT03.pivot" dataLink="" drillDownDataSource="" width="200" height="200" sidebarContent="" showSidebar="false" sidebarWidth="" maximized="false" homeRowL="0" homeColL="5" colSpanL="5" rowSpanL="5" showToolbar="true" showToolbarBottomBorder="true" showToolbarOnlyWhenMaximized="false" colorToolbar="#F0F0F0" opacityToolbar="1" backgroundColor="#F0F0F0" opacity="1" theme="" dataColorList="">
-    <control name="" action="refresh" target="" targetProperty="" location="widget" type="timer" controlClass="" timeout="60" label="" title="" value="" text="" readOnly="false" valueList="" displayList="" activeWhen="">
+    <control name="" action="refresh" target="" targetProperty="" location="widget" type="timer" controlClass="" timeout="15" label="" title="" value="" text="" readOnly="false" valueList="" displayList="" activeWhen="">
       <valueRequired>false</valueRequired>
     </control>
     <property name="legendPos">right</property>
@@ -2368,7 +2390,7 @@ Cube definition from Architect.</Description>
     <override name="lineChart">{legendVisible:'false',xAxis:{_type:'axis'},yAxisList:[{title:'READING',_type:'axis'}],_type:'lineChart'}</override>
   </widget>
   <widget name="FACTORYBUFFERMONITOR04" type="pivot" subtype="lineChartMarkers" subtypeClass="lineChart" title="Sensor Readings: States" dataSource="FACTORYBUFFERPIVOT04.pivot" dataLink="" drillDownDataSource="" width="200" height="200" sidebarContent="" showSidebar="false" sidebarWidth="" maximized="false" homeRowL="5" homeColL="5" colSpanL="5" rowSpanL="5" showToolbar="true" showToolbarBottomBorder="true" showToolbarOnlyWhenMaximized="false" colorToolbar="#F0F0F0" opacityToolbar="1" backgroundColor="#F0F0F0" opacity="1" theme="" dataColorList="">
-    <control name="" action="refresh" target="" targetProperty="" location="widget" type="timer" controlClass="" timeout="60" label="" title="" value="" text="" readOnly="false" valueList="" displayList="" activeWhen="">
+    <control name="" action="refresh" target="" targetProperty="" location="widget" type="timer" controlClass="" timeout="15" label="" title="" value="" text="" readOnly="false" valueList="" displayList="" activeWhen="">
       <valueRequired>false</valueRequired>
     </control>
     <override name="lineChart">{legendVisible:'false',markersVisible:true,seriesColorScheme:'rustbelt',xAxis:{_type:'axis'},yAxisList:[{title:'READING',_type:'axis'}],_type:'lineChart'}</override>
@@ -2377,7 +2399,7 @@ Cube definition from Architect.</Description>
 </Document>
 
 <Document name="FACTORYBUFFERPIVOT01.pivot.DFI">
-<pivot xmlns="http://www.intersystems.com/deepsee/library" name="FACTORYBUFFERPIVOT01" folderName="" title="" description="" keywords="" owner="" shared="true" public="true" locked="false" resource="" timeCreated="2019-06-05T11:37:43.367Z" createdBy="slukyanc" category="" bookCover="" mdx="" cellWidth="120" columnHeaderStyle="" rowHeaderStyle="" cellStyle="" rowLabelSpan="true" columnLabelSpan="true" cellHeight="22" showEmptyRows="false" showEmptyColumns="false" cubeName="FACTORYBUFFERCUBE" caption="" listing="" listingRows="" showStatus="true" pageSize="100" colorScale="" rowTotals="false" columnTotals="false" rowTotalAgg="sum" columnTotalAgg="sum" rowTotalSource="page" showZebra="false" showRowCaption="true" printTitle="" printSubtitle="" printSubtitleOn="" showUser="" printPageSize="" printOrientation="1" printMarginTop="" printMarginLeft="" printMarginRight="" printMarginBottom="" printLabelWidth="" printCellWidth="" autoExecute="true" manualMode="false" userMDX="" chartMarginTop="" chartMarginLeft="" chartMarginRight="" chartMarginBottom="" maxRows="" borderLeftCell="" borderRightCell="" borderTopCell="" borderBottomCell="" borderLeftCol="" borderRightCol="" borderTopCol="" borderBottomCol="" borderLeftRow="" borderRightRow="" borderTopRow="" borderBottomRow="" fontFamilyCell="" fontSizeCell="" fontFamilyCol="" fontSizeCol="" fontFamilyRow="" fontSizeRow="" showFilters="" showListingFilters="" showDate="" listingFontSize="" showZebraStripes="" filterTableStyle="" filterTableCaptionStyle="" filterTableItemStyle="" nowDisplayFormat="" measureLocation="columns" hideMeasures="1" backgroundImage="" backgroundOpacity=".12">
+<pivot xmlns="http://www.intersystems.com/deepsee/library" name="FACTORYBUFFERPIVOT01" folderName="" title="" description="" keywords="" owner="" shared="true" public="true" locked="false" resource="" timeCreated="2019-06-05T11:37:43.367Z" createdBy="slukyanc" category="" bookCover="" mdx="" cellWidth="120" columnHeaderStyle="" rowHeaderStyle="" cellStyle="" rowLabelSpan="true" columnLabelSpan="true" cellHeight="22" showEmptyRows="false" showEmptyColumns="false" cubeName="FACTORYBUFFERCUBE" caption="" listing="" listingRows="" showStatus="true" pageSize="100" colorScale="" rowTotals="false" columnTotals="false" rowTotalAgg="sum" columnTotalAgg="sum" rowTotalSource="page" showZebra="false" showRowCaption="true" printTitle="" printSubtitle="" printSubtitleOn="" showUser="" printPageSize="" printOrientation="1" printMarginTop="" printMarginLeft="" printMarginRight="" printMarginBottom="" printLabelWidth="" printCellWidth="" autoExecute="true" previewMode="false" manualMode="false" userMDX="" chartMarginTop="" chartMarginLeft="" chartMarginRight="" chartMarginBottom="" maxRows="" borderLeftCell="" borderRightCell="" borderTopCell="" borderBottomCell="" borderLeftCol="" borderRightCol="" borderTopCol="" borderBottomCol="" borderLeftRow="" borderRightRow="" borderTopRow="" borderBottomRow="" fontFamilyCell="" fontSizeCell="" fontFamilyCol="" fontSizeCol="" fontFamilyRow="" fontSizeRow="" showFilters="" showListingFilters="" showDate="" listingFontSize="" showZebraStripes="" filterTableStyle="" filterTableCaptionStyle="" filterTableItemStyle="" nowDisplayFormat="" measureLocation="columns" hideMeasures="1" backgroundImage="" backgroundOpacity=".12">
   <rowAxisOptions spec="" key="" value="" text="" headEnabled="false" headCount="" filterEnabled="false" filterExpression="" orderEnabled="false" orderExpression="" orderDirection="BDESC" aggEnabled="false" aggFunction="" aggFunctionParm="" levelCaption="" levelFormat="" levelSummary="" levelType="" drillLevel="0" advanced="false" levelStyle="" levelHeaderStyle="" suppress8020="false" drilldownSpec="" enabled="true">
   </rowAxisOptions>
   <columnAxisOptions spec="" key="" value="" text="" headEnabled="false" headCount="" filterEnabled="false" filterExpression="" orderEnabled="false" orderExpression="" orderDirection="BDESC" aggEnabled="false" aggFunction="" aggFunctionParm="" levelCaption="" levelFormat="" levelSummary="" levelType="" drillLevel="0" advanced="false" levelStyle="" levelHeaderStyle="" suppress8020="false" drilldownSpec="" enabled="true">
@@ -2386,11 +2408,12 @@ Cube definition from Architect.</Description>
   </rowLevel>
   <columnLevel spec="[MEASURES].[THRUPUT]" key="" value="" text="THRUPUT" headEnabled="false" headCount="" filterEnabled="false" filterExpression="" orderEnabled="false" orderExpression="" orderDirection="BDESC" aggEnabled="false" aggFunction="" aggFunctionParm="" levelCaption="" levelFormat="" levelSummary="" levelType="" drillLevel="0" advanced="false" levelStyle="" levelHeaderStyle="" suppress8020="false" drilldownSpec="" enabled="true">
   </columnLevel>
+  <sqlRestriction></sqlRestriction>
 </pivot>
 </Document>
 
 <Document name="FACTORYBUFFERPIVOT02.pivot.DFI">
-<pivot xmlns="http://www.intersystems.com/deepsee/library" name="FACTORYBUFFERPIVOT02" folderName="" title="" description="" keywords="" owner="" shared="true" public="true" locked="false" resource="" timeCreated="2019-06-05T11:39:33.799Z" createdBy="slukyanc" category="" bookCover="" mdx="" cellWidth="120" columnHeaderStyle="" rowHeaderStyle="" cellStyle="" rowLabelSpan="true" columnLabelSpan="true" cellHeight="22" showEmptyRows="false" showEmptyColumns="false" cubeName="FACTORYBUFFERCUBE" caption="" listing="" listingRows="" showStatus="true" pageSize="100" colorScale="" rowTotals="false" columnTotals="false" rowTotalAgg="sum" columnTotalAgg="sum" rowTotalSource="page" showZebra="false" showRowCaption="true" printTitle="" printSubtitle="" printSubtitleOn="" showUser="" printPageSize="" printOrientation="1" printMarginTop="" printMarginLeft="" printMarginRight="" printMarginBottom="" printLabelWidth="" printCellWidth="" autoExecute="true" manualMode="false" userMDX="" chartMarginTop="" chartMarginLeft="" chartMarginRight="" chartMarginBottom="" maxRows="" borderLeftCell="" borderRightCell="" borderTopCell="" borderBottomCell="" borderLeftCol="" borderRightCol="" borderTopCol="" borderBottomCol="" borderLeftRow="" borderRightRow="" borderTopRow="" borderBottomRow="" fontFamilyCell="" fontSizeCell="" fontFamilyCol="" fontSizeCol="" fontFamilyRow="" fontSizeRow="" showFilters="" showListingFilters="" showDate="" listingFontSize="" showZebraStripes="" filterTableStyle="" filterTableCaptionStyle="" filterTableItemStyle="" nowDisplayFormat="" measureLocation="columns" hideMeasures="1" backgroundImage="" backgroundOpacity=".12">
+<pivot xmlns="http://www.intersystems.com/deepsee/library" name="FACTORYBUFFERPIVOT02" folderName="" title="" description="" keywords="" owner="" shared="true" public="true" locked="false" resource="" timeCreated="2019-06-05T11:39:33.799Z" createdBy="slukyanc" category="" bookCover="" mdx="" cellWidth="120" columnHeaderStyle="" rowHeaderStyle="" cellStyle="" rowLabelSpan="true" columnLabelSpan="true" cellHeight="22" showEmptyRows="false" showEmptyColumns="false" cubeName="FACTORYBUFFERCUBE" caption="" listing="" listingRows="" showStatus="true" pageSize="100" colorScale="" rowTotals="false" columnTotals="false" rowTotalAgg="sum" columnTotalAgg="sum" rowTotalSource="page" showZebra="false" showRowCaption="true" printTitle="" printSubtitle="" printSubtitleOn="" showUser="" printPageSize="" printOrientation="1" printMarginTop="" printMarginLeft="" printMarginRight="" printMarginBottom="" printLabelWidth="" printCellWidth="" autoExecute="true" previewMode="false" manualMode="false" userMDX="" chartMarginTop="" chartMarginLeft="" chartMarginRight="" chartMarginBottom="" maxRows="" borderLeftCell="" borderRightCell="" borderTopCell="" borderBottomCell="" borderLeftCol="" borderRightCol="" borderTopCol="" borderBottomCol="" borderLeftRow="" borderRightRow="" borderTopRow="" borderBottomRow="" fontFamilyCell="" fontSizeCell="" fontFamilyCol="" fontSizeCol="" fontFamilyRow="" fontSizeRow="" showFilters="" showListingFilters="" showDate="" listingFontSize="" showZebraStripes="" filterTableStyle="" filterTableCaptionStyle="" filterTableItemStyle="" nowDisplayFormat="" measureLocation="columns" hideMeasures="1" backgroundImage="" backgroundOpacity=".12">
   <rowAxisOptions spec="" key="" value="" text="" headEnabled="false" headCount="" filterEnabled="false" filterExpression="" orderEnabled="false" orderExpression="" orderDirection="BDESC" aggEnabled="false" aggFunction="" aggFunctionParm="" levelCaption="" levelFormat="" levelSummary="" levelType="" drillLevel="0" advanced="false" levelStyle="" levelHeaderStyle="" suppress8020="false" drilldownSpec="" enabled="true">
   </rowAxisOptions>
   <columnAxisOptions spec="" key="" value="" text="" headEnabled="false" headCount="" filterEnabled="false" filterExpression="" orderEnabled="false" orderExpression="" orderDirection="BDESC" aggEnabled="false" aggFunction="" aggFunctionParm="" levelCaption="" levelFormat="" levelSummary="" levelType="" drillLevel="0" advanced="false" levelStyle="" levelHeaderStyle="" suppress8020="false" drilldownSpec="" enabled="true">
@@ -2399,11 +2422,12 @@ Cube definition from Architect.</Description>
   </rowLevel>
   <columnLevel spec="[Measures].[%COUNT]" key="" value="" text="Count" headEnabled="false" headCount="" filterEnabled="false" filterExpression="" orderEnabled="false" orderExpression="" orderDirection="BDESC" aggEnabled="false" aggFunction="" aggFunctionParm="" levelCaption="" levelFormat="" levelSummary="" levelType="" drillLevel="0" advanced="false" levelStyle="" levelHeaderStyle="" suppress8020="false" drilldownSpec="" enabled="true">
   </columnLevel>
+  <sqlRestriction></sqlRestriction>
 </pivot>
 </Document>
 
 <Document name="FACTORYBUFFERPIVOT03.pivot.DFI">
-<pivot xmlns="http://www.intersystems.com/deepsee/library" name="FACTORYBUFFERPIVOT03" folderName="" title="" description="" keywords="" owner="" shared="true" public="true" locked="false" resource="" timeCreated="2019-06-05T11:56:35.636Z" createdBy="slukyanc" category="" bookCover="" mdx="" cellWidth="120" columnHeaderStyle="" rowHeaderStyle="" cellStyle="" rowLabelSpan="true" columnLabelSpan="true" cellHeight="22" showEmptyRows="false" showEmptyColumns="false" cubeName="FACTORYBUFFERCUBE" caption="" listing="" listingRows="" showStatus="true" pageSize="100" colorScale="" rowTotals="false" columnTotals="false" rowTotalAgg="sum" columnTotalAgg="sum" rowTotalSource="page" showZebra="false" showRowCaption="true" printTitle="" printSubtitle="" printSubtitleOn="" showUser="" printPageSize="" printOrientation="1" printMarginTop="" printMarginLeft="" printMarginRight="" printMarginBottom="" printLabelWidth="" printCellWidth="" autoExecute="true" manualMode="false" userMDX="" chartMarginTop="" chartMarginLeft="" chartMarginRight="" chartMarginBottom="" maxRows="" borderLeftCell="" borderRightCell="" borderTopCell="" borderBottomCell="" borderLeftCol="" borderRightCol="" borderTopCol="" borderBottomCol="" borderLeftRow="" borderRightRow="" borderTopRow="" borderBottomRow="" fontFamilyCell="" fontSizeCell="" fontFamilyCol="" fontSizeCol="" fontFamilyRow="" fontSizeRow="" showFilters="" showListingFilters="" showDate="" listingFontSize="" showZebraStripes="" filterTableStyle="" filterTableCaptionStyle="" filterTableItemStyle="" nowDisplayFormat="" measureLocation="columns" hideMeasures="1" backgroundImage="" backgroundOpacity=".12">
+<pivot xmlns="http://www.intersystems.com/deepsee/library" name="FACTORYBUFFERPIVOT03" folderName="" title="" description="" keywords="" owner="" shared="true" public="true" locked="false" resource="" timeCreated="2019-06-05T11:56:35.636Z" createdBy="slukyanc" category="" bookCover="" mdx="" cellWidth="120" columnHeaderStyle="" rowHeaderStyle="" cellStyle="" rowLabelSpan="true" columnLabelSpan="true" cellHeight="22" showEmptyRows="false" showEmptyColumns="false" cubeName="FACTORYBUFFERCUBE" caption="" listing="" listingRows="" showStatus="true" pageSize="100" colorScale="" rowTotals="false" columnTotals="false" rowTotalAgg="sum" columnTotalAgg="sum" rowTotalSource="page" showZebra="false" showRowCaption="true" printTitle="" printSubtitle="" printSubtitleOn="" showUser="" printPageSize="" printOrientation="1" printMarginTop="" printMarginLeft="" printMarginRight="" printMarginBottom="" printLabelWidth="" printCellWidth="" autoExecute="true" previewMode="false" manualMode="false" userMDX="" chartMarginTop="" chartMarginLeft="" chartMarginRight="" chartMarginBottom="" maxRows="" borderLeftCell="" borderRightCell="" borderTopCell="" borderBottomCell="" borderLeftCol="" borderRightCol="" borderTopCol="" borderBottomCol="" borderLeftRow="" borderRightRow="" borderTopRow="" borderBottomRow="" fontFamilyCell="" fontSizeCell="" fontFamilyCol="" fontSizeCol="" fontFamilyRow="" fontSizeRow="" showFilters="" showListingFilters="" showDate="" listingFontSize="" showZebraStripes="" filterTableStyle="" filterTableCaptionStyle="" filterTableItemStyle="" nowDisplayFormat="" measureLocation="columns" hideMeasures="1" backgroundImage="" backgroundOpacity=".12">
   <rowAxisOptions spec="" key="" value="" text="" headEnabled="false" headCount="" filterEnabled="false" filterExpression="" orderEnabled="false" orderExpression="" orderDirection="BDESC" aggEnabled="false" aggFunction="" aggFunctionParm="" levelCaption="" levelFormat="" levelSummary="" levelType="" drillLevel="0" advanced="false" levelStyle="" levelHeaderStyle="" suppress8020="false" drilldownSpec="" enabled="true">
   </rowAxisOptions>
   <columnAxisOptions spec="" key="" value="" text="" headEnabled="false" headCount="" filterEnabled="false" filterExpression="" orderEnabled="false" orderExpression="" orderDirection="BDESC" aggEnabled="false" aggFunction="" aggFunctionParm="" levelCaption="" levelFormat="" levelSummary="" levelType="" drillLevel="0" advanced="false" levelStyle="" levelHeaderStyle="" suppress8020="false" drilldownSpec="" enabled="true">
@@ -2444,11 +2468,12 @@ Cube definition from Architect.</Description>
   </columnLevel>
   <columnLevel spec="[Measures].[R42]" key="" value="" text="R42" headEnabled="false" headCount="" filterEnabled="false" filterExpression="" orderEnabled="false" orderExpression="" orderDirection="BDESC" aggEnabled="false" aggFunction="" aggFunctionParm="" levelCaption="" levelFormat="" levelSummary="" levelType="" drillLevel="0" advanced="false" levelStyle="" levelHeaderStyle="" suppress8020="false" drilldownSpec="" enabled="true">
   </columnLevel>
+  <sqlRestriction></sqlRestriction>
 </pivot>
 </Document>
 
 <Document name="FACTORYBUFFERPIVOT04.pivot.DFI">
-<pivot xmlns="http://www.intersystems.com/deepsee/library" name="FACTORYBUFFERPIVOT04" folderName="" title="" description="" keywords="" owner="" shared="true" public="true" locked="false" resource="" timeCreated="2019-06-05T12:13:33.215Z" createdBy="slukyanc" category="" bookCover="" mdx="" cellWidth="120" columnHeaderStyle="" rowHeaderStyle="" cellStyle="" rowLabelSpan="true" columnLabelSpan="true" cellHeight="22" showEmptyRows="false" showEmptyColumns="false" cubeName="FACTORYBUFFERCUBE" caption="" listing="" listingRows="" showStatus="true" pageSize="100" colorScale="" rowTotals="false" columnTotals="false" rowTotalAgg="sum" columnTotalAgg="sum" rowTotalSource="page" showZebra="false" showRowCaption="true" printTitle="" printSubtitle="" printSubtitleOn="" showUser="" printPageSize="" printOrientation="1" printMarginTop="" printMarginLeft="" printMarginRight="" printMarginBottom="" printLabelWidth="" printCellWidth="" autoExecute="true" manualMode="false" userMDX="" chartMarginTop="" chartMarginLeft="" chartMarginRight="" chartMarginBottom="" maxRows="" borderLeftCell="" borderRightCell="" borderTopCell="" borderBottomCell="" borderLeftCol="" borderRightCol="" borderTopCol="" borderBottomCol="" borderLeftRow="" borderRightRow="" borderTopRow="" borderBottomRow="" fontFamilyCell="" fontSizeCell="" fontFamilyCol="" fontSizeCol="" fontFamilyRow="" fontSizeRow="" showFilters="" showListingFilters="" showDate="" listingFontSize="" showZebraStripes="" filterTableStyle="" filterTableCaptionStyle="" filterTableItemStyle="" nowDisplayFormat="" measureLocation="columns" hideMeasures="1" backgroundImage="" backgroundOpacity=".12">
+<pivot xmlns="http://www.intersystems.com/deepsee/library" name="FACTORYBUFFERPIVOT04" folderName="" title="" description="" keywords="" owner="" shared="true" public="true" locked="false" resource="" timeCreated="2019-06-05T12:13:33.215Z" createdBy="slukyanc" category="" bookCover="" mdx="" cellWidth="120" columnHeaderStyle="" rowHeaderStyle="" cellStyle="" rowLabelSpan="true" columnLabelSpan="true" cellHeight="22" showEmptyRows="false" showEmptyColumns="false" cubeName="FACTORYBUFFERCUBE" caption="" listing="" listingRows="" showStatus="true" pageSize="100" colorScale="" rowTotals="false" columnTotals="false" rowTotalAgg="sum" columnTotalAgg="sum" rowTotalSource="page" showZebra="false" showRowCaption="true" printTitle="" printSubtitle="" printSubtitleOn="" showUser="" printPageSize="" printOrientation="1" printMarginTop="" printMarginLeft="" printMarginRight="" printMarginBottom="" printLabelWidth="" printCellWidth="" autoExecute="true" previewMode="false" manualMode="false" userMDX="" chartMarginTop="" chartMarginLeft="" chartMarginRight="" chartMarginBottom="" maxRows="" borderLeftCell="" borderRightCell="" borderTopCell="" borderBottomCell="" borderLeftCol="" borderRightCol="" borderTopCol="" borderBottomCol="" borderLeftRow="" borderRightRow="" borderTopRow="" borderBottomRow="" fontFamilyCell="" fontSizeCell="" fontFamilyCol="" fontSizeCol="" fontFamilyRow="" fontSizeRow="" showFilters="" showListingFilters="" showDate="" listingFontSize="" showZebraStripes="" filterTableStyle="" filterTableCaptionStyle="" filterTableItemStyle="" nowDisplayFormat="" measureLocation="columns" hideMeasures="1" backgroundImage="" backgroundOpacity=".12">
   <rowAxisOptions spec="" key="" value="" text="" headEnabled="false" headCount="" filterEnabled="false" filterExpression="" orderEnabled="false" orderExpression="" orderDirection="BDESC" aggEnabled="false" aggFunction="" aggFunctionParm="" levelCaption="" levelFormat="" levelSummary="" levelType="" drillLevel="0" advanced="false" levelStyle="" levelHeaderStyle="" suppress8020="false" drilldownSpec="" enabled="true">
   </rowAxisOptions>
   <columnAxisOptions spec="" key="" value="" text="" headEnabled="false" headCount="" filterEnabled="false" filterExpression="" orderEnabled="false" orderExpression="" orderDirection="BDESC" aggEnabled="false" aggFunction="" aggFunctionParm="" levelCaption="" levelFormat="" levelSummary="" levelType="" drillLevel="0" advanced="false" levelStyle="" levelHeaderStyle="" suppress8020="false" drilldownSpec="" enabled="true">
@@ -2459,19 +2484,20 @@ Cube definition from Architect.</Description>
   </columnLevel>
   <columnLevel spec="[Measures].[R41]" key="" value="" text="R41" headEnabled="false" headCount="" filterEnabled="false" filterExpression="" orderEnabled="false" orderExpression="" orderDirection="BDESC" aggEnabled="false" aggFunction="" aggFunctionParm="" levelCaption="" levelFormat="" levelSummary="" levelType="" drillLevel="0" advanced="false" levelStyle="" levelHeaderStyle="" suppress8020="false" drilldownSpec="" enabled="true">
   </columnLevel>
+  <sqlRestriction></sqlRestriction>
 </pivot>
 </Document>
 
 <Document name="FACTORYMONITORDASHBOARD.dashboard.DFI">
-<dashboard xmlns="http://www.intersystems.com/deepsee/library" name="FACTORYMONITORDASHBOARD" folderName="" title="Monitor Monitor" description="Author: Sergey Lukyanchikov" keywords="" owner="" shared="true" public="true" locked="false" resource="" timeCreated="2019-06-20T15:39:00.207Z" createdBy="slukyanc" category="" bookCover="" scheme="" worklistCount="2" snapTo="true" snapGrid="true" gridRows="10" gridCols="10" canResize="true" canModify="true" showTitleBar="true" titleBarOpacity="" titleBarColor="" selectedTitleBarOpacity="" selectedTitleBarColor="" titleBarTextColor="" selectedTitleBarTextColor="" titleBarFont="" companyName="" companyLogo="" companyStyle="" backgroundColor="white" backgroundImage="none" backgroundRepeat="no-repeat" backgroundSize="100% 100%" backgroundOpacity="1" widgetBorders="1px solid #F0F0F0" widgetBordersSwitch="edit" widgetBordersColor="#F0F0F0" widgetBordersStyle="solid" widgetBordersWidth="1" widgetBordersToggle="true">
+<dashboard xmlns="http://www.intersystems.com/deepsee/library" name="FACTORYMONITORDASHBOARD" folderName="" title="Monitor Monitor" description="Author: Sergey Lukyanchikov" keywords="" owner="" shared="true" public="true" locked="false" resource="" timeCreated="2019-06-20T15:39:00.207Z" createdBy="slukyanc" category="" bookCover="" scheme="" worklistCount="0" snapTo="true" snapGrid="true" gridRows="10" gridCols="10" canResize="true" canModify="true" showTitleBar="true" titleBarOpacity="" titleBarColor="" selectedTitleBarOpacity="" selectedTitleBarColor="" titleBarTextColor="" selectedTitleBarTextColor="" titleBarFont="" companyName="" companyLogo="" companyStyle="" backgroundColor="white" backgroundImage="none" backgroundRepeat="no-repeat" backgroundSize="100% 100%" backgroundOpacity="1" widgetBorders="1px solid #F0F0F0" widgetBordersSwitch="edit" widgetBordersColor="#F0F0F0" widgetBordersStyle="solid" widgetBordersWidth="1" widgetBordersToggle="true">
   <widget name="FACTORYMONITORMONITOR01" type="pivot" subtype="lineChart" subtypeClass="lineChart" title="Parameter Model Observed vs. Predicted" dataSource="FACTORYMONITORPIVOT01.pivot" dataLink="" drillDownDataSource="" width="200" height="200" sidebarContent="" showSidebar="false" sidebarWidth="" maximized="false" homeRowL="0" homeColL="0" colSpanL="5" rowSpanL="5" showToolbar="true" showToolbarBottomBorder="true" showToolbarOnlyWhenMaximized="false" colorToolbar="#F0F0F0" opacityToolbar="1" backgroundColor="#F0F0F0" opacity="1" theme="" dataColorList="">
-    <control name="" action="refresh" target="" targetProperty="" location="widget" type="timer" controlClass="" timeout="60" label="" title="" value="" text="" readOnly="false" valueList="" displayList="" activeWhen="">
+    <control name="" action="refresh" target="" targetProperty="" location="widget" type="timer" controlClass="" timeout="15" label="" title="" value="" text="" readOnly="false" valueList="" displayList="" activeWhen="">
       <valueRequired>false</valueRequired>
     </control>
     <override name="lineChart">{legendVisible:'false',seriesColorsOverride:'rgb(0,167,153),rgb(123,0,0)',xAxis:{_type:'axis'},yAxisList:[{title:'VALUES',_type:'axis'}],_type:'lineChart'}</override>
   </widget>
   <widget name="FACTORYMONITORMONITOR02" type="pivot" subtype="columnChart" subtypeClass="barChart" title="Percentage of Wrong Classifications (PWC)/Mean Absolute Percentage Error (MAPE)" dataSource="FACTORYMONITORPIVOT02.pivot" dataLink="" drillDownDataSource="" width="200" height="200" sidebarContent="" showSidebar="false" sidebarWidth="" maximized="false" homeRowL="5" homeColL="0" colSpanL="5" rowSpanL="5" showToolbar="true" showToolbarBottomBorder="true" showToolbarOnlyWhenMaximized="false" colorToolbar="#F0F0F0" opacityToolbar="1" backgroundColor="#F0F0F0" opacity="1" theme="" dataColorList="">
-    <control name="" action="refresh" target="" targetProperty="" location="widget" type="timer" controlClass="" timeout="60" label="" title="" value="" text="" readOnly="false" valueList="" displayList="" activeWhen="">
+    <control name="" action="refresh" target="" targetProperty="" location="widget" type="timer" controlClass="" timeout="15" label="" title="" value="" text="" readOnly="false" valueList="" displayList="" activeWhen="">
       <valueRequired>false</valueRequired>
     </control>
     <property name="legendPos">none</property>
@@ -2479,7 +2505,7 @@ Cube definition from Architect.</Description>
     <override name="legend">{hidden:true,legendLabels:'PWC_MAE',legendPosition:'right',legendTitle:'PWC_MAE',_type:'chartLegend'}</override>
   </widget>
   <widget name="FACTORYMONITORMONITOR03" type="pivot" subtype="xyChart" subtypeClass="xyChart" title="Modeled Parameter vs. Parameter Model Observed" dataSource="FACTORYMONITORPIVOT03.pivot" dataLink="" drillDownDataSource="" width="200" height="200" sidebarContent="" showSidebar="false" sidebarWidth="" maximized="false" homeRowL="0" homeColL="5" colSpanL="5" rowSpanL="5" showToolbar="true" showToolbarBottomBorder="true" showToolbarOnlyWhenMaximized="false" colorToolbar="#F0F0F0" opacityToolbar="1" backgroundColor="#F0F0F0" opacity="1" theme="" dataColorList="">
-    <control name="" action="refresh" target="" targetProperty="" location="widget" type="timer" controlClass="" timeout="60" label="" title="" value="" text="" readOnly="false" valueList="" displayList="" activeWhen="">
+    <control name="" action="refresh" target="" targetProperty="" location="widget" type="timer" controlClass="" timeout="15" label="" title="" value="" text="" readOnly="false" valueList="" displayList="" activeWhen="">
       <valueRequired>false</valueRequired>
     </control>
     <property name="legendPos">none</property>
@@ -2487,7 +2513,7 @@ Cube definition from Architect.</Description>
     <override name="xyChart">{legendVisible:'false',seriesColorsOverride:'rgb(80,122,164)',xAxis:{title:'PARAMETER MODEL OBSERVED VALUES',_type:'axis'},yAxisList:[{title:'MODELED PARAMETER VALUES',_type:'axis'}],_type:'xyChart'}</override>
   </widget>
   <widget name="FACTORYANALYZERMONITOR04" type="pivot" subtype="xyChart" subtypeClass="xyChart" title="Modeled Parameter vs. Parameter Model Prediction" dataSource="FACTORYMONITORPIVOT04.pivot" dataLink="" drillDownDataSource="" width="200" height="200" sidebarContent="" showSidebar="false" sidebarWidth="" maximized="false" homeRowL="5" homeColL="5" colSpanL="5" rowSpanL="5" showToolbar="true" showToolbarBottomBorder="true" showToolbarOnlyWhenMaximized="false" colorToolbar="#F0F0F0" opacityToolbar="1" backgroundColor="#F0F0F0" opacity="1" theme="" dataColorList="">
-    <control name="" action="refresh" target="" targetProperty="" location="widget" type="timer" controlClass="" timeout="60" label="" title="" value="" text="" readOnly="false" valueList="" displayList="" activeWhen="">
+    <control name="" action="refresh" target="" targetProperty="" location="widget" type="timer" controlClass="" timeout="15" label="" title="" value="" text="" readOnly="false" valueList="" displayList="" activeWhen="">
       <valueRequired>false</valueRequired>
     </control>
     <property name="legendPos">none</property>
@@ -2498,7 +2524,7 @@ Cube definition from Architect.</Description>
 </Document>
 
 <Document name="FACTORYMONITORPIVOT01.pivot.DFI">
-<pivot xmlns="http://www.intersystems.com/deepsee/library" name="FACTORYMONITORPIVOT01" folderName="" title="" description="" keywords="" owner="" shared="true" public="true" locked="false" resource="" timeCreated="2019-06-20T15:27:45.964Z" createdBy="slukyanc" category="" bookCover="" mdx="" cellWidth="120" columnHeaderStyle="" rowHeaderStyle="" cellStyle="" rowLabelSpan="true" columnLabelSpan="true" cellHeight="22" showEmptyRows="false" showEmptyColumns="false" cubeName="FACTORYMONITORCUBE" caption="" listing="" listingRows="" showStatus="true" pageSize="100" colorScale="" rowTotals="false" columnTotals="false" rowTotalAgg="sum" columnTotalAgg="sum" rowTotalSource="page" showZebra="false" showRowCaption="true" printTitle="" printSubtitle="" printSubtitleOn="" showUser="" printPageSize="" printOrientation="1" printMarginTop="" printMarginLeft="" printMarginRight="" printMarginBottom="" printLabelWidth="" printCellWidth="" autoExecute="true" manualMode="false" userMDX="" chartMarginTop="" chartMarginLeft="" chartMarginRight="" chartMarginBottom="" maxRows="" borderLeftCell="" borderRightCell="" borderTopCell="" borderBottomCell="" borderLeftCol="" borderRightCol="" borderTopCol="" borderBottomCol="" borderLeftRow="" borderRightRow="" borderTopRow="" borderBottomRow="" fontFamilyCell="" fontSizeCell="" fontFamilyCol="" fontSizeCol="" fontFamilyRow="" fontSizeRow="" showFilters="" showListingFilters="" showDate="" listingFontSize="" showZebraStripes="" filterTableStyle="" filterTableCaptionStyle="" filterTableItemStyle="" nowDisplayFormat="" measureLocation="columns" hideMeasures="1" backgroundImage="" backgroundOpacity=".12">
+<pivot xmlns="http://www.intersystems.com/deepsee/library" name="FACTORYMONITORPIVOT01" folderName="" title="" description="" keywords="" owner="" shared="true" public="true" locked="false" resource="" timeCreated="2019-06-20T15:27:45.964Z" createdBy="slukyanc" category="" bookCover="" mdx="" cellWidth="120" columnHeaderStyle="" rowHeaderStyle="" cellStyle="" rowLabelSpan="true" columnLabelSpan="true" cellHeight="22" showEmptyRows="false" showEmptyColumns="false" cubeName="FACTORYMONITORCUBE" caption="" listing="" listingRows="" showStatus="true" pageSize="100" colorScale="" rowTotals="false" columnTotals="false" rowTotalAgg="sum" columnTotalAgg="sum" rowTotalSource="page" showZebra="false" showRowCaption="true" printTitle="" printSubtitle="" printSubtitleOn="" showUser="" printPageSize="" printOrientation="1" printMarginTop="" printMarginLeft="" printMarginRight="" printMarginBottom="" printLabelWidth="" printCellWidth="" autoExecute="true" previewMode="false" manualMode="false" userMDX="" chartMarginTop="" chartMarginLeft="" chartMarginRight="" chartMarginBottom="" maxRows="" borderLeftCell="" borderRightCell="" borderTopCell="" borderBottomCell="" borderLeftCol="" borderRightCol="" borderTopCol="" borderBottomCol="" borderLeftRow="" borderRightRow="" borderTopRow="" borderBottomRow="" fontFamilyCell="" fontSizeCell="" fontFamilyCol="" fontSizeCol="" fontFamilyRow="" fontSizeRow="" showFilters="" showListingFilters="" showDate="" listingFontSize="" showZebraStripes="" filterTableStyle="" filterTableCaptionStyle="" filterTableItemStyle="" nowDisplayFormat="" measureLocation="columns" hideMeasures="1" backgroundImage="" backgroundOpacity=".12">
   <rowAxisOptions spec="" key="" value="" text="" headEnabled="false" headCount="" filterEnabled="false" filterExpression="" orderEnabled="false" orderExpression="" orderDirection="BDESC" aggEnabled="false" aggFunction="" aggFunctionParm="" levelCaption="" levelFormat="" levelSummary="" levelType="" drillLevel="0" advanced="false" levelStyle="" levelHeaderStyle="" suppress8020="false" drilldownSpec="" enabled="true">
   </rowAxisOptions>
   <columnAxisOptions spec="" key="" value="" text="" headEnabled="false" headCount="" filterEnabled="false" filterExpression="" orderEnabled="false" orderExpression="" orderDirection="BDESC" aggEnabled="false" aggFunction="" aggFunctionParm="" levelCaption="" levelFormat="" levelSummary="" levelType="" drillLevel="0" advanced="false" levelStyle="" levelHeaderStyle="" suppress8020="false" drilldownSpec="" enabled="true">
@@ -2509,24 +2535,26 @@ Cube definition from Architect.</Description>
   </columnLevel>
   <columnLevel spec="[Measures].[YHAT]" key="" value="" text="YHAT" headEnabled="false" headCount="" filterEnabled="false" filterExpression="" orderEnabled="false" orderExpression="" orderDirection="BDESC" aggEnabled="false" aggFunction="" aggFunctionParm="" levelCaption="" levelFormat="" levelSummary="" levelType="" drillLevel="0" advanced="false" levelStyle="" levelHeaderStyle="" suppress8020="false" drilldownSpec="" enabled="true">
   </columnLevel>
+  <sqlRestriction></sqlRestriction>
 </pivot>
 </Document>
 
 <Document name="FACTORYMONITORPIVOT02.pivot.DFI">
-<pivot xmlns="http://www.intersystems.com/deepsee/library" name="FACTORYMONITORPIVOT02" folderName="" title="" description="" keywords="" owner="" shared="true" public="true" locked="false" resource="" timeCreated="2019-06-20T15:29:39.081Z" createdBy="slukyanc" category="" bookCover="" mdx="" cellWidth="120" columnHeaderStyle="" rowHeaderStyle="" cellStyle="" rowLabelSpan="true" columnLabelSpan="true" cellHeight="22" showEmptyRows="false" showEmptyColumns="false" cubeName="FACTORYMONITORCUBE" caption="" listing="" listingRows="" showStatus="true" pageSize="100" colorScale="" rowTotals="false" columnTotals="false" rowTotalAgg="sum" columnTotalAgg="sum" rowTotalSource="page" showZebra="false" showRowCaption="true" printTitle="" printSubtitle="" printSubtitleOn="" showUser="" printPageSize="" printOrientation="1" printMarginTop="" printMarginLeft="" printMarginRight="" printMarginBottom="" printLabelWidth="" printCellWidth="" autoExecute="true" manualMode="false" userMDX="" chartMarginTop="" chartMarginLeft="" chartMarginRight="" chartMarginBottom="" maxRows="" borderLeftCell="" borderRightCell="" borderTopCell="" borderBottomCell="" borderLeftCol="" borderRightCol="" borderTopCol="" borderBottomCol="" borderLeftRow="" borderRightRow="" borderTopRow="" borderBottomRow="" fontFamilyCell="" fontSizeCell="" fontFamilyCol="" fontSizeCol="" fontFamilyRow="" fontSizeRow="" showFilters="" showListingFilters="" showDate="" listingFontSize="" showZebraStripes="" filterTableStyle="" filterTableCaptionStyle="" filterTableItemStyle="" nowDisplayFormat="" measureLocation="columns" hideMeasures="1" backgroundImage="" backgroundOpacity=".12">
+<pivot xmlns="http://www.intersystems.com/deepsee/library" name="FACTORYMONITORPIVOT02" folderName="" title="" description="" keywords="" owner="" shared="true" public="true" locked="false" resource="" timeCreated="2019-06-20T15:29:39.081Z" createdBy="slukyanc" category="" bookCover="" mdx="" cellWidth="120" columnHeaderStyle="" rowHeaderStyle="" cellStyle="" rowLabelSpan="true" columnLabelSpan="true" cellHeight="22" showEmptyRows="false" showEmptyColumns="false" cubeName="FACTORYMONITORCUBE" caption="" listing="" listingRows="" showStatus="true" pageSize="100" colorScale="" rowTotals="false" columnTotals="false" rowTotalAgg="sum" columnTotalAgg="sum" rowTotalSource="page" showZebra="false" showRowCaption="true" printTitle="" printSubtitle="" printSubtitleOn="" showUser="" printPageSize="" printOrientation="1" printMarginTop="" printMarginLeft="" printMarginRight="" printMarginBottom="" printLabelWidth="" printCellWidth="" autoExecute="true" previewMode="false" manualMode="false" userMDX="" chartMarginTop="" chartMarginLeft="" chartMarginRight="" chartMarginBottom="" maxRows="" borderLeftCell="" borderRightCell="" borderTopCell="" borderBottomCell="" borderLeftCol="" borderRightCol="" borderTopCol="" borderBottomCol="" borderLeftRow="" borderRightRow="" borderTopRow="" borderBottomRow="" fontFamilyCell="" fontSizeCell="" fontFamilyCol="" fontSizeCol="" fontFamilyRow="" fontSizeRow="" showFilters="" showListingFilters="" showDate="" listingFontSize="" showZebraStripes="" filterTableStyle="" filterTableCaptionStyle="" filterTableItemStyle="" nowDisplayFormat="" measureLocation="columns" hideMeasures="1" backgroundImage="" backgroundOpacity=".12">
   <rowAxisOptions spec="" key="" value="" text="" headEnabled="false" headCount="" filterEnabled="false" filterExpression="" orderEnabled="false" orderExpression="" orderDirection="BDESC" aggEnabled="false" aggFunction="" aggFunctionParm="" levelCaption="" levelFormat="" levelSummary="" levelType="" drillLevel="0" advanced="false" levelStyle="" levelHeaderStyle="" suppress8020="false" drilldownSpec="" enabled="true">
   </rowAxisOptions>
   <columnAxisOptions spec="" key="" value="" text="" headEnabled="false" headCount="" filterEnabled="false" filterExpression="" orderEnabled="false" orderExpression="" orderDirection="BDESC" aggEnabled="false" aggFunction="" aggFunctionParm="" levelCaption="" levelFormat="" levelSummary="" levelType="" drillLevel="0" advanced="false" levelStyle="" levelHeaderStyle="" suppress8020="false" drilldownSpec="" enabled="true">
   </columnAxisOptions>
   <rowLevel spec="[BATCH].[H1].[BATCH].Members" key="" value="" text="BATCH" headEnabled="false" headCount="" filterEnabled="false" filterExpression="" orderEnabled="false" orderExpression="" orderDirection="BDESC" aggEnabled="false" aggFunction="" aggFunctionParm="" levelCaption="" levelFormat="" levelSummary="" levelType="" drillLevel="0" advanced="false" levelStyle="" levelHeaderStyle="" suppress8020="false" drilldownSpec="" enabled="true">
   </rowLevel>
+  <sqlRestriction></sqlRestriction>
   <measure spec="[MEASURES].[PWC_MAPE]" key="" value="" text="PWC_MAPE" headEnabled="false" headCount="" filterEnabled="false" filterExpression="" orderEnabled="false" orderExpression="" orderDirection="BDESC" aggEnabled="false" aggFunction="" aggFunctionParm="" levelCaption="" levelFormat="" levelSummary="" levelType="" drillLevel="0" advanced="false" levelStyle="" levelHeaderStyle="" suppress8020="false" drilldownSpec="" enabled="true">
   </measure>
 </pivot>
 </Document>
 
 <Document name="FACTORYMONITORPIVOT03.pivot.DFI">
-<pivot xmlns="http://www.intersystems.com/deepsee/library" name="FACTORYMONITORPIVOT03" folderName="" title="" description="" keywords="" owner="" shared="true" public="true" locked="false" resource="" timeCreated="2019-06-20T15:30:29.042Z" createdBy="slukyanc" category="" bookCover="" mdx="" cellWidth="120" columnHeaderStyle="" rowHeaderStyle="" cellStyle="" rowLabelSpan="true" columnLabelSpan="true" cellHeight="22" showEmptyRows="false" showEmptyColumns="false" cubeName="FACTORYMONITORCUBE" caption="" listing="" listingRows="" showStatus="true" pageSize="100" colorScale="" rowTotals="false" columnTotals="false" rowTotalAgg="sum" columnTotalAgg="sum" rowTotalSource="page" showZebra="false" showRowCaption="true" printTitle="" printSubtitle="" printSubtitleOn="" showUser="" printPageSize="" printOrientation="1" printMarginTop="" printMarginLeft="" printMarginRight="" printMarginBottom="" printLabelWidth="" printCellWidth="" autoExecute="true" manualMode="false" userMDX="" chartMarginTop="" chartMarginLeft="" chartMarginRight="" chartMarginBottom="" maxRows="" borderLeftCell="" borderRightCell="" borderTopCell="" borderBottomCell="" borderLeftCol="" borderRightCol="" borderTopCol="" borderBottomCol="" borderLeftRow="" borderRightRow="" borderTopRow="" borderBottomRow="" fontFamilyCell="" fontSizeCell="" fontFamilyCol="" fontSizeCol="" fontFamilyRow="" fontSizeRow="" showFilters="" showListingFilters="" showDate="" listingFontSize="" showZebraStripes="" filterTableStyle="" filterTableCaptionStyle="" filterTableItemStyle="" nowDisplayFormat="" measureLocation="columns" hideMeasures="1" backgroundImage="" backgroundOpacity=".12">
+<pivot xmlns="http://www.intersystems.com/deepsee/library" name="FACTORYMONITORPIVOT03" folderName="" title="" description="" keywords="" owner="" shared="true" public="true" locked="false" resource="" timeCreated="2019-06-20T15:30:29.042Z" createdBy="slukyanc" category="" bookCover="" mdx="" cellWidth="120" columnHeaderStyle="" rowHeaderStyle="" cellStyle="" rowLabelSpan="true" columnLabelSpan="true" cellHeight="22" showEmptyRows="false" showEmptyColumns="false" cubeName="FACTORYMONITORCUBE" caption="" listing="" listingRows="" showStatus="true" pageSize="100" colorScale="" rowTotals="false" columnTotals="false" rowTotalAgg="sum" columnTotalAgg="sum" rowTotalSource="page" showZebra="false" showRowCaption="true" printTitle="" printSubtitle="" printSubtitleOn="" showUser="" printPageSize="" printOrientation="1" printMarginTop="" printMarginLeft="" printMarginRight="" printMarginBottom="" printLabelWidth="" printCellWidth="" autoExecute="true" previewMode="false" manualMode="false" userMDX="" chartMarginTop="" chartMarginLeft="" chartMarginRight="" chartMarginBottom="" maxRows="" borderLeftCell="" borderRightCell="" borderTopCell="" borderBottomCell="" borderLeftCol="" borderRightCol="" borderTopCol="" borderBottomCol="" borderLeftRow="" borderRightRow="" borderTopRow="" borderBottomRow="" fontFamilyCell="" fontSizeCell="" fontFamilyCol="" fontSizeCol="" fontFamilyRow="" fontSizeRow="" showFilters="" showListingFilters="" showDate="" listingFontSize="" showZebraStripes="" filterTableStyle="" filterTableCaptionStyle="" filterTableItemStyle="" nowDisplayFormat="" measureLocation="columns" hideMeasures="1" backgroundImage="" backgroundOpacity=".12">
   <rowAxisOptions spec="" key="" value="" text="" headEnabled="false" headCount="" filterEnabled="false" filterExpression="" orderEnabled="false" orderExpression="" orderDirection="BDESC" aggEnabled="false" aggFunction="" aggFunctionParm="" levelCaption="" levelFormat="" levelSummary="" levelType="" drillLevel="0" advanced="false" levelStyle="" levelHeaderStyle="" suppress8020="false" drilldownSpec="" enabled="true">
   </rowAxisOptions>
   <columnAxisOptions spec="" key="" value="" text="" headEnabled="false" headCount="" filterEnabled="false" filterExpression="" orderEnabled="false" orderExpression="" orderDirection="BDESC" aggEnabled="false" aggFunction="" aggFunctionParm="" levelCaption="" levelFormat="" levelSummary="" levelType="" drillLevel="0" advanced="false" levelStyle="" levelHeaderStyle="" suppress8020="false" drilldownSpec="" enabled="true">
@@ -2537,11 +2565,12 @@ Cube definition from Architect.</Description>
   </columnLevel>
   <columnLevel spec="[Measures].[R11]" key="" value="" text="R11" headEnabled="false" headCount="" filterEnabled="false" filterExpression="" orderEnabled="false" orderExpression="" orderDirection="BDESC" aggEnabled="false" aggFunction="" aggFunctionParm="" levelCaption="" levelFormat="" levelSummary="" levelType="" drillLevel="0" advanced="false" levelStyle="" levelHeaderStyle="" suppress8020="false" drilldownSpec="" enabled="true">
   </columnLevel>
+  <sqlRestriction></sqlRestriction>
 </pivot>
 </Document>
 
 <Document name="FACTORYMONITORPIVOT04.pivot.DFI">
-<pivot xmlns="http://www.intersystems.com/deepsee/library" name="FACTORYMONITORPIVOT04" folderName="" title="" description="" keywords="" owner="" shared="true" public="true" locked="false" resource="" timeCreated="2019-06-20T15:31:19.717Z" createdBy="slukyanc" category="" bookCover="" mdx="" cellWidth="120" columnHeaderStyle="" rowHeaderStyle="" cellStyle="" rowLabelSpan="true" columnLabelSpan="true" cellHeight="22" showEmptyRows="false" showEmptyColumns="false" cubeName="FACTORYMONITORCUBE" caption="" listing="" listingRows="" showStatus="true" pageSize="100" colorScale="" rowTotals="false" columnTotals="false" rowTotalAgg="sum" columnTotalAgg="sum" rowTotalSource="page" showZebra="false" showRowCaption="true" printTitle="" printSubtitle="" printSubtitleOn="" showUser="" printPageSize="" printOrientation="1" printMarginTop="" printMarginLeft="" printMarginRight="" printMarginBottom="" printLabelWidth="" printCellWidth="" autoExecute="true" manualMode="false" userMDX="" chartMarginTop="" chartMarginLeft="" chartMarginRight="" chartMarginBottom="" maxRows="" borderLeftCell="" borderRightCell="" borderTopCell="" borderBottomCell="" borderLeftCol="" borderRightCol="" borderTopCol="" borderBottomCol="" borderLeftRow="" borderRightRow="" borderTopRow="" borderBottomRow="" fontFamilyCell="" fontSizeCell="" fontFamilyCol="" fontSizeCol="" fontFamilyRow="" fontSizeRow="" showFilters="" showListingFilters="" showDate="" listingFontSize="" showZebraStripes="" filterTableStyle="" filterTableCaptionStyle="" filterTableItemStyle="" nowDisplayFormat="" measureLocation="columns" hideMeasures="1" backgroundImage="" backgroundOpacity=".12">
+<pivot xmlns="http://www.intersystems.com/deepsee/library" name="FACTORYMONITORPIVOT04" folderName="" title="" description="" keywords="" owner="" shared="true" public="true" locked="false" resource="" timeCreated="2019-06-20T15:31:19.717Z" createdBy="slukyanc" category="" bookCover="" mdx="" cellWidth="120" columnHeaderStyle="" rowHeaderStyle="" cellStyle="" rowLabelSpan="true" columnLabelSpan="true" cellHeight="22" showEmptyRows="false" showEmptyColumns="false" cubeName="FACTORYMONITORCUBE" caption="" listing="" listingRows="" showStatus="true" pageSize="100" colorScale="" rowTotals="false" columnTotals="false" rowTotalAgg="sum" columnTotalAgg="sum" rowTotalSource="page" showZebra="false" showRowCaption="true" printTitle="" printSubtitle="" printSubtitleOn="" showUser="" printPageSize="" printOrientation="1" printMarginTop="" printMarginLeft="" printMarginRight="" printMarginBottom="" printLabelWidth="" printCellWidth="" autoExecute="true" previewMode="false" manualMode="false" userMDX="" chartMarginTop="" chartMarginLeft="" chartMarginRight="" chartMarginBottom="" maxRows="" borderLeftCell="" borderRightCell="" borderTopCell="" borderBottomCell="" borderLeftCol="" borderRightCol="" borderTopCol="" borderBottomCol="" borderLeftRow="" borderRightRow="" borderTopRow="" borderBottomRow="" fontFamilyCell="" fontSizeCell="" fontFamilyCol="" fontSizeCol="" fontFamilyRow="" fontSizeRow="" showFilters="" showListingFilters="" showDate="" listingFontSize="" showZebraStripes="" filterTableStyle="" filterTableCaptionStyle="" filterTableItemStyle="" nowDisplayFormat="" measureLocation="columns" hideMeasures="1" backgroundImage="" backgroundOpacity=".12">
   <rowAxisOptions spec="" key="" value="" text="" headEnabled="false" headCount="" filterEnabled="false" filterExpression="" orderEnabled="false" orderExpression="" orderDirection="BDESC" aggEnabled="false" aggFunction="" aggFunctionParm="" levelCaption="" levelFormat="" levelSummary="" levelType="" drillLevel="0" advanced="false" levelStyle="" levelHeaderStyle="" suppress8020="false" drilldownSpec="" enabled="true">
   </rowAxisOptions>
   <columnAxisOptions spec="" key="" value="" text="" headEnabled="false" headCount="" filterEnabled="false" filterExpression="" orderEnabled="false" orderExpression="" orderDirection="BDESC" aggEnabled="false" aggFunction="" aggFunctionParm="" levelCaption="" levelFormat="" levelSummary="" levelType="" drillLevel="0" advanced="false" levelStyle="" levelHeaderStyle="" suppress8020="false" drilldownSpec="" enabled="true">
@@ -2552,5 +2581,6 @@ Cube definition from Architect.</Description>
   </columnLevel>
   <columnLevel spec="[Measures].[R11]" key="" value="" text="R11" headEnabled="false" headCount="" filterEnabled="false" filterExpression="" orderEnabled="false" orderExpression="" orderDirection="BDESC" aggEnabled="false" aggFunction="" aggFunctionParm="" levelCaption="" levelFormat="" levelSummary="" levelType="" drillLevel="0" advanced="false" levelStyle="" levelHeaderStyle="" suppress8020="false" drilldownSpec="" enabled="true">
   </columnLevel>
+  <sqlRestriction></sqlRestriction>
 </pivot>
 </Document></Export>

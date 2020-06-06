@@ -63,7 +63,7 @@
 
 # Root Resources
 
-- Download the illustrated ML Toolkit learning guide [here](ML_Toolkit_Fundamentals_v01_2.pdf) - for the most recent documentation and showcases, consider joining the private dedicated ML Toolkit repo by [writing us](mailto:MLToolkit@intersystems.com)
+- Download the illustrated ML Toolkit learning guide [here](ML_Toolkit_Fundamentals_v02.pdf) - for the most recent documentation and showcases, consider joining the private dedicated ML Toolkit repo by [writing us](mailto:MLToolkit@intersystems.com)
 - Check how to edit BPL annotations [here](Annotation_Button.md)
 
 # Showcases (Programs/Data/Tables):
