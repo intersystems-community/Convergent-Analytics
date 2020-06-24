@@ -2,6 +2,18 @@
 
 # In English
 
+## Breaking News:
+
+[Take part in the InterSystems IRIS AI Programming Contest!](https://community.intersystems.com/post/take-part-intersystems-iris-ai-programming-contest)
+
+[![announcement_-_4rd_iris-contest-dc-banner](https://community.intersystems.com/sites/default/files/inline/images/announcement_-_4rd_iris-contest-dc-banner.jpg)](https://community.intersystems.com/post/take-part-intersystems-iris-ai-programming-contest)
+
+We will choose the best AI/ML solution built with InterSystems IRIS. Your application could be a library, package, tool, or any AI/ML solution which uses InterSystems IRIS.
+
+The application should work either on IRIS Community Edition or IRIS for Health Community Edition or IRIS Advanced Analytics Community Edition.
+
+The application should be Open Source and published on GitHub.
+
 ## Webinars
 
 - [Best Practices of In-Platform AI/ML](https://youtu.be/N6tN48hCnE4) on April 28th, 2020
