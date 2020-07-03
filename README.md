@@ -58,8 +58,13 @@ The application should be Open Source and published on GitHub.
 
 ## Tutorials
 
+- [Learn IntegratedML in InterSystems IRIS](https://learning.intersystems.com/course/view.php?id=1346&ssoPass=1) on June 1st, 2020
 - [Predictive Modeling with the Machine Learning Toolkit](https://learning.intersystems.com/course/view.php?id=1182&ssoPass=1) on September 23rd and 25th, 2019
 
+## Demos
+
+- [integratedml-demo-template](https://openexchange.intersystems.com/package/integratedml-demo-template) on June 15th, 2020
+- [PythonGateway-Template](https://openexchange.intersystems.com/package/PythonGateway-Template) on May 29th, 2020
 
 # Links to Required Downloads
 
