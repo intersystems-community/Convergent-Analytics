@@ -34,7 +34,13 @@ The application should be Open Source and published on GitHub.
 
 ## Tutorials
 
+- [Learn IntegratedML in InterSystems IRIS](https://learning.intersystems.com/course/view.php?id=1346&ssoPass=1) on June 1st, 2020
 - [Predictive Modeling with the Machine Learning Toolkit](https://learning.intersystems.com/course/view.php?id=1182&ssoPass=1) on September 23rd and 25th, 2019
+
+## Demos
+
+- [integratedml-demo-template](https://openexchange.intersystems.com/package/integratedml-demo-template) on June 15th, 2020
+- [PythonGateway-Template](https://openexchange.intersystems.com/package/PythonGateway-Template) on May 29th, 2020
 
 # In German
 
@@ -55,16 +61,6 @@ The application should be Open Source and published on GitHub.
 
 - [Python Gateway в InterSystems IRIS](https://habr.com/ru/company/intersystems/blog/486984/) as of February 5th, 2020
 - [Роботизация искусственного интеллекта на платформе InterSystems IRIS](https://habr.com/ru/company/intersystems/blog/473452/) as of October 28th, 2019
-
-## Tutorials
-
-- [Learn IntegratedML in InterSystems IRIS](https://learning.intersystems.com/course/view.php?id=1346&ssoPass=1) on June 1st, 2020
-- [Predictive Modeling with the Machine Learning Toolkit](https://learning.intersystems.com/course/view.php?id=1182&ssoPass=1) on September 23rd and 25th, 2019
-
-## Demos
-
-- [integratedml-demo-template](https://openexchange.intersystems.com/package/integratedml-demo-template) on June 15th, 2020
-- [PythonGateway-Template](https://openexchange.intersystems.com/package/PythonGateway-Template) on May 29th, 2020
 
 # Links to Required Downloads
 
