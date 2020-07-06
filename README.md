@@ -39,6 +39,7 @@ The application should be Open Source and published on GitHub.
 
 ## Demos
 
+- [Machine Learning Made Easy - Advanced Exercise](https://github.com/renesto/mlmept2020) on July 6th, 2020
 - [integratedml-demo-template](https://openexchange.intersystems.com/package/integratedml-demo-template) on June 15th, 2020
 - [PythonGateway-Template](https://openexchange.intersystems.com/package/PythonGateway-Template) on May 29th, 2020
 
@@ -90,4 +91,3 @@ The application should be Open Source and published on GitHub.
 - 006 Rail Time Series Discovery - `INTRA.cls`/`INTRA.txt`
 - 007 Housing Debts Prediction - `HOUSING.cls`/`HOUSING_TEST.txt`, `HOUSING_TRAIN.txt`/`HOUSINGTEST.cls`, `HOUSINGTRAIN.cls`
 - 008 Diseases Network Analysis - `DISEASES.cls`/`DISEASES_MATRIX.txt`, `DISEASES_NODES.txt`/`DISEASESMATRIX.cls`, `DISEASESNODES.cls`
-`
