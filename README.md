@@ -42,6 +42,7 @@ The application should be Open Source and published on GitHub.
 - [Machine Learning Made Easy - Advanced Exercise](https://github.com/renesto/mlmept2020) on July 6th, 2020
 - [integratedml-demo-template](https://openexchange.intersystems.com/package/integratedml-demo-template) on June 15th, 2020
 - [PythonGateway-Template](https://openexchange.intersystems.com/package/PythonGateway-Template) on May 29th, 2020
+- [InterSystems IRIS Machine Learning Experience](https://github.com/renesto/MLExperience2019) on November 12th, 2019
 
 # In German
 
