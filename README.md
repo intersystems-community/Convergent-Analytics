@@ -39,6 +39,7 @@ The application should be Open Source and published on GitHub.
 
 ## Demos
 
+- [ESKLP](https://openexchange.intersystems.com/package/ESKLP) on July 12th, 2020 | Acknowledgements: [Aleksandr Kalinin](https://github.com/drakut), Software Engineer, [Escape](http://esc.ru/), Russia
 - [Machine Learning Made Easy - Advanced Exercise](https://github.com/renesto/mlmept2020) on July 6th, 2020
 - [integratedml-demo-template](https://openexchange.intersystems.com/package/integratedml-demo-template) on June 15th, 2020
 - [PythonGateway-Template](https://openexchange.intersystems.com/package/PythonGateway-Template) on May 29th, 2020
