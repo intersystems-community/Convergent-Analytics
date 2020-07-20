@@ -4,15 +4,13 @@
 
 ## Breaking News:
 
-[Take part in the InterSystems IRIS AI Programming Contest!](https://community.intersystems.com/post/take-part-intersystems-iris-ai-programming-contest)
+[Applause to the winners of the InterSystems IRIS AI Programming Contest!](https://community.intersystems.com/post/applause-winners-intersystems-iris-ai-programming-contest)
 
-[![announcement_-_4rd_iris-contest-dc-banner](https://community.intersystems.com/sites/default/files/inline/images/announcement_-_4rd_iris-contest-dc-banner.jpg)](https://community.intersystems.com/post/take-part-intersystems-iris-ai-programming-contest)
+[![winners_-_4rd_iris-contest-dc-banner](https://community.intersystems.com/sites/default/files/inline/images/winners_-_4rd_iris-contest-dc-banner.jpg)](https://community.intersystems.com/post/applause-winners-intersystems-iris-ai-programming-contest)
 
-We will choose the best AI/ML solution built with InterSystems IRIS. Your application could be a library, package, tool, or any AI/ML solution which uses InterSystems IRIS.
+The InterSystems IRIS AI Contest is over. Thank you all for participating in our IRIS AI Competition!
 
-The application should work either on IRIS Community Edition or IRIS for Health Community Edition or IRIS Advanced Analytics Community Edition.
-
-The application should be Open Source and published on GitHub.
+And now it's time to announce the winners!
 
 ## Webinars
 
