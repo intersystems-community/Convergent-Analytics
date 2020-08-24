@@ -52,6 +52,14 @@ And now it's time to announce the winners!
 
 # In Russian
 
+## Breaking News:
+
+[InterSystems IRIS – универсальная AI/ML-платформа реального времени](https://habr.com/ru/company/intersystems/blog/516344/)
+
+[![zpqmpjjakiuwqn9ebsedkzvvwpe](https://habrastorage.org/webt/zp/qm/pj/zpqmpjjakiuwqn9ebsedkzvvwpe.png)](https://habr.com/ru/company/intersystems/blog/516344/)
+
+Наша статья – это обстоятельный обзор возможностей платформы InterSystems IRIS в части универсальной поддержки развертывания AI/ML-механизмов, сборки (интеграции) AI/ML-решений и обучения (тестирования) AI/ML-решений на интенсивных потоках данных. Мы обратимся к исследованиям рынка, к практическим примерам AI/ML-решений и концептуальным аспектам того, что мы называем в этой статье AI/ML-платформой реального времени.
+
 ## Webinars
 
 - [Лучшие практики платформенного AI/ML](https://youtu.be/Pc9sJa9Q7aU) on April 10th, 2020 | Acknowledgements: [Aleksandr Kalinin](https://github.com/drakut), Software Engineer, [Escape](http://esc.ru/), Russia
