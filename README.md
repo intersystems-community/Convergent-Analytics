@@ -60,6 +60,7 @@ And now it's time to announce the winners!
 
 ## Articles
 
+- [InterSystems IRIS – универсальная AI/ML-платформа реального времени](https://habr.com/ru/company/intersystems/blog/516344/) as of August 24th, 2020
 - [Python Gateway в InterSystems IRIS](https://habr.com/ru/company/intersystems/blog/486984/) as of February 5th, 2020
 - [Роботизация искусственного интеллекта на платформе InterSystems IRIS](https://habr.com/ru/company/intersystems/blog/473452/) as of October 28th, 2019
 
