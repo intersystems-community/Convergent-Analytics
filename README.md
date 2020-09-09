@@ -4,13 +4,11 @@
 
 ## Breaking News:
 
-[Applause to the winners of the InterSystems IRIS AI Programming Contest!](https://community.intersystems.com/post/applause-winners-intersystems-iris-ai-programming-contest)
+[Coming to Wherever You Are: Virtual Summit Oct 20 - Nov 5](https://community.intersystems.com/post/coming-wherever-you-are-virtual-summit-oct-20-nov-5)
 
-[![winners_-_4rd_iris-contest-dc-banner](https://community.intersystems.com/sites/default/files/inline/images/winners_-_4rd_iris-contest-dc-banner.jpg)](https://community.intersystems.com/post/applause-winners-intersystems-iris-ai-programming-contest)
+[![gs20-artwork-graphic-background](https://community.intersystems.com/sites/default/files/inline/images/images/gs20-artwork-graphic-background.png)](https://community.intersystems.com/post/coming-wherever-you-are-virtual-summit-oct-20-nov-5)
 
-The InterSystems IRIS AI Contest is over. Thank you all for participating in our IRIS AI Competition!
-
-And now it's time to announce the winners!
+The general theme of the summit is Interaction & Information, because peer interaction and technical information have always been the most valuable benefits of attending our Global Summit. While we can’t meet in person this year, we are going to make every effort to highlight these benefits virtually.
 
 ## Webinars
 
