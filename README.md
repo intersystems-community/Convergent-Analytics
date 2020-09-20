@@ -10,6 +10,13 @@
 
 The general theme of the summit is Interaction & Information, because peer interaction and technical information have always been the most valuable benefits of attending our Global Summit. While we can’t meet in person this year, we are going to make every effort to highlight these benefits virtually.
 
+[InterSystems IRIS – the All-Purpose Universal Platform for Real-Time AI/ML](https://habr.com/ru/company/intersystems/blog/519926/)
+
+[![bjyg7ithpcalckr35c_uanlmsoa](https://habrastorage.org/webt/bj/yg/7i/bjyg7ithpcalckr35c_uanlmsoa.png)](https://habr.com/ru/company/intersystems/blog/519926/)
+
+This article is a comprehensive overview of InterSystems IRIS platform capabilities relative to universal support of AI/ML mechanism deployment, of AI/ML solution assembly (integration) and of AI/ML solution training (testing) based on intense data flows. We will turn to market research, to practical examples of AI/ML solutions and to the conceptual aspects of what we refer to in this article as real-time AI/ML platform.
+
+
 ## Webinars
 
 - [Best Practices of In-Platform AI/ML](https://youtu.be/N6tN48hCnE4) on April 28th, 2020
