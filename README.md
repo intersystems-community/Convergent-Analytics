@@ -25,6 +25,7 @@ This article is a comprehensive overview of InterSystems IRIS platform capabilit
 
 ## Articles
 
+- [InterSystems IRIS – the All-Purpose Universal Platform for Real-Time AI/ML](https://habr.com/ru/company/intersystems/blog/519926/) as of September 20th, 2020
 - [AI Robotization with InterSystems IRIS Data Platform](https://habr.com/en/company/intersystems/blog/478822/) as of December 5th, 2019
 - [MLOps can help overcome risk in AI and ML projects](https://dataconomy.com/2019/10/mlops-can-help-overcome-risk-in-ai-and-ml-projects/) as of October 30th, 2019
 - [Python Gateway](https://community.intersystems.com/post/python-gateway-part-i-introduction) as of 12 April 2019
