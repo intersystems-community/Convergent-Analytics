@@ -8,7 +8,7 @@
 
 [![AI+ sessions at VS v05](https://github.com/intersystems-community/Convergent-Analytics/blob/master/AI%2B%20sessions%20at%20VS%20v05.PNG)](https://github.com/intersystems-community/Convergent-Analytics/blob/master/AI%2B%20sessions%20at%20VS%20v05.pdf)
 
-Convergent Analytics has compiled a list of the sessions from InterSystems Virtual Summit 2020 that are related to AI in the broad sense of the term ("AI+ Playlist"). The functional portfolio of InterSystems IRIS as AI platform is growing very dynamically, watch to learn the details.
+Convergent Analytics has compiled a list of the sessions from InterSystems Virtual Summit 2020 that are related to AI in the broad sense of the term ("AI+ Playlist"). The functional portfolio of InterSystems IRIS as AI platform is growing very dynamically, watch to learn the details (click to download the .pdf with web links).
 
 [InterSystems IRIS – the All-Purpose Universal Platform for Real-Time AI/ML](https://habr.com/ru/company/intersystems/blog/519926/)
 
