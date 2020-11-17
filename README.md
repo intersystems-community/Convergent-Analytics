@@ -4,18 +4,17 @@
 
 ## Breaking News:
 
-[Coming to Wherever You Are: Virtual Summit Oct 20 - Nov 5](https://community.intersystems.com/post/coming-wherever-you-are-virtual-summit-oct-20-nov-5)
+[AI+ Playlist from Virtual Summit 2020](https://github.com/intersystems-community/Convergent-Analytics/blob/master/AI%2B%20sessions%20at%20VS%20v05.pdf)
 
-[![gs20-artwork-graphic-background](https://community.intersystems.com/sites/default/files/inline/images/images/gs20-artwork-graphic-background.png)](https://community.intersystems.com/post/coming-wherever-you-are-virtual-summit-oct-20-nov-5)
+[![AI+ sessions at VS v05](https://github.com/intersystems-community/Convergent-Analytics/blob/master/AI%2B%20sessions%20at%20VS%20v05.PNG)](https://github.com/intersystems-community/Convergent-Analytics/blob/master/AI%2B%20sessions%20at%20VS%20v05.pdf)
 
-The general theme of the summit is Interaction & Information, because peer interaction and technical information have always been the most valuable benefits of attending our Global Summit. While we can’t meet in person this year, we are going to make every effort to highlight these benefits virtually.
+Convergent Analytics has compiled a list of the sessions from InterSystems Virtual Summit 2020 that are related to AI in the broad sense of the term ("AI+ Playlist"). The functional portfolio of InterSystems IRIS as AI platform is growing very dynamically, watch to learn the details.
 
 [InterSystems IRIS – the All-Purpose Universal Platform for Real-Time AI/ML](https://habr.com/ru/company/intersystems/blog/519926/)
 
 [![bjyg7ithpcalckr35c_uanlmsoa](https://habrastorage.org/webt/bj/yg/7i/bjyg7ithpcalckr35c_uanlmsoa.png)](https://habr.com/ru/company/intersystems/blog/519926/)
 
 This article is a comprehensive overview of InterSystems IRIS platform capabilities relative to universal support of AI/ML mechanism deployment, of AI/ML solution assembly (integration) and of AI/ML solution training (testing) based on intense data flows. We will turn to market research, to practical examples of AI/ML solutions and to the conceptual aspects of what we refer to in this article as real-time AI/ML platform.
-
 
 ## Webinars
 
