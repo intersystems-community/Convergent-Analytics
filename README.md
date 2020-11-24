@@ -77,6 +77,16 @@ This article is a comprehensive overview of InterSystems IRIS platform capabilit
 - [Python Gateway в InterSystems IRIS](https://habr.com/ru/company/intersystems/blog/486984/) as of February 5th, 2020
 - [Роботизация искусственного интеллекта на платформе InterSystems IRIS](https://habr.com/ru/company/intersystems/blog/473452/) as of October 28th, 2019
 
+# In French
+
+## Breaking News:
+
+[Digital SCE 2020](https://events.intersystems.com/fr/SCE2020)
+
+[![logosDigitalSCE-Full-1-](https://badge.supplychain-event.com/Data/DO/tgSkin/1192/fr/banner/image/logosDigitalSCE-Full-1-.png)](https://badge.supplychain-event.com/visiteur.htm)
+
+L'incertitude de la demande se traduit souvent par l'ajout d'un stock de sécurité arbitraire dans les systèmes d'approvisionnement. Snext présentera comment ses services complètent vos systèmes de gestion Supply Chain pour adapter vos méthodes de gestion de stock et d'approvisionnement.
+
 # Links to Required Downloads
 
 - `InterSystems IRIS Community Edition`: download a community edition of InterSystems IRIS data platform [here](https://download.intersystems.com/download) - create an account to start the download
