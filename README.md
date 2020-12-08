@@ -8,7 +8,7 @@
 
 [![analytics_welcome_wide](https://community.intersystems.com/sites/default/files/inline/images/analytics_welcome_wide.jpg)](https://community.intersystems.com/post/join-intersystems-analytics-contest)
 
-We're pleased to invite you all to the next competition of creating open-source solutions using InterSystems IRIS! Please [join](https://openexchange.intersystems.com/contest/current): 
+We're pleased to invite you all to the next competition of creating open-source solutions using InterSystems IRIS! Please [join here](https://openexchange.intersystems.com/contest/current).
 
 [InterSystems IRIS – the All-Purpose Universal Platform for Real-Time AI/ML](https://habr.com/ru/company/intersystems/blog/519926/)
 
