@@ -4,11 +4,11 @@
 
 ## Breaking News:
 
-[AI+ Playlist from Virtual Summit 2020](https://github.com/intersystems-community/Convergent-Analytics/blob/master/AI%2B%20sessions%20at%20VS%20v05.pdf)
+[Join the InterSystems Analytics Contest!](https://community.intersystems.com/post/join-intersystems-analytics-contest)
 
-[![AI+ sessions at VS v05](https://github.com/intersystems-community/Convergent-Analytics/blob/master/AI%2B%20sessions%20at%20VS%20v05.PNG)](https://github.com/intersystems-community/Convergent-Analytics/blob/master/AI%2B%20sessions%20at%20VS%20v05.pdf)
+[![analytics_welcome_wide](https://community.intersystems.com/sites/default/files/inline/images/analytics_welcome_wide.jpg)](https://community.intersystems.com/post/join-intersystems-analytics-contest)
 
-Convergent Analytics has compiled a list of the sessions from InterSystems Virtual Summit 2020 that are related to AI in the broad sense of the term ("AI+ Playlist"). The functional portfolio of InterSystems IRIS as AI platform is growing very dynamically, watch to learn the details (click to download the .pdf with web links).
+We're pleased to invite you all to the next competition of creating open-source solutions using InterSystems IRIS! Please [join](https://openexchange.intersystems.com/contest/current): 
 
 [InterSystems IRIS – the All-Purpose Universal Platform for Real-Time AI/ML](https://habr.com/ru/company/intersystems/blog/519926/)
 
@@ -105,6 +105,7 @@ L'incertitude de la demande se traduit souvent par l'ajout d'un stock de sécuri
 - Check how to edit BPL annotations [here](Annotation_Button.md)
 - Check how to disable journaling [here](Stop_Journaling.md)
 - Check how to disable auto-refresh [here](Stop_AutoRefresh.md)
+- [AI+ Playlist from Virtual Summit 2020](https://github.com/intersystems-community/Convergent-Analytics/blob/master/AI%2B%20sessions%20at%20VS%20v05.pdf)
 
 # Showcases (Programs/Data/Tables):
 
