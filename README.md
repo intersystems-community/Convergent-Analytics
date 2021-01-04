@@ -4,17 +4,15 @@
 
 ## Breaking News:
 
-[Join the InterSystems Analytics Contest!](https://community.intersystems.com/post/join-intersystems-analytics-contest)
+[Online Meetup with the InterSystems Analytics Contest Winners](https://community.intersystems.com/post/online-meetup-intersystems-analytics-contest-winners)
 
-[![analytics_welcome_wide](https://community.intersystems.com/sites/default/files/inline/images/analytics_welcome_wide.jpg)](https://community.intersystems.com/post/join-intersystems-analytics-contest)
+[![analytics_online_meetup_0.jpg](https://community.intersystems.com/sites/default/files/inline/images/analytics_online_meetup_0.jpg)](https://community.intersystems.com/post/online-meetup-intersystems-analytics-contest-winners)
 
-We're pleased to invite you all to the next competition of creating open-source solutions using InterSystems IRIS! Please [join here](https://openexchange.intersystems.com/contest/current).
+What awaits you at this virtual Meetup? 
 
-[InterSystems IRIS – the All-Purpose Universal Platform for Real-Time AI/ML](https://habr.com/ru/company/intersystems/blog/519926/)
-
-[![bjyg7ithpcalckr35c_uanlmsoa](https://habrastorage.org/webt/bj/yg/7i/bjyg7ithpcalckr35c_uanlmsoa.png)](https://habr.com/ru/company/intersystems/blog/519926/)
-
-This article is a comprehensive overview of InterSystems IRIS platform capabilities relative to universal support of AI/ML mechanism deployment, of AI/ML solution assembly (integration) and of AI/ML solution training (testing) based on intense data flows. We will turn to market research, to practical examples of AI/ML solutions and to the conceptual aspects of what we refer to in this article as real-time AI/ML platform.
+- Our winners' bios.
+- Short demos on their applications.
+- An open discussion about technologies being used, bonuses, questions. Plans for the next contests.
 
 ## Webinars
 
@@ -49,6 +47,15 @@ This article is a comprehensive overview of InterSystems IRIS platform capabilit
 - [InterSystems IRIS Machine Learning Experience](https://github.com/renesto/MLExperience2019) on November 12th, 2019
 
 # In German
+
+
+## Breaking News:
+
+[Entdecken Sie neue Perspektiven. Gestalten Sie die Zukunft aktiv.](https://www.intersystems.com/de/news-events/events/veranstaltung/ai_ml/)
+
+[![AIML-Summit21-smPost-v4-1.png](https://www.intersystems.com/de/wp-content/uploads/sites/4/2020/12/AIML-Summit21-smPost-v4-1.png)](https://www.intersystems.com/de/news-events/events/veranstaltung/ai_ml/)
+
+Verpassen Sie deshalb nicht den virtuellen InterSystems AI + ML Summit 2021 vom 25. Januar – 4. Februar 2021, in dessen Rahmen Sie unter der Überschrift „Neue Perspektiven entdecken. Zukunft aktiv gestalten.“ alles Wissenswerte über den aktuellen Stand in Sachen KI und ML erfahren. Das vielfältige Themenspektrum reicht von detaillierten Beschreibungen der Ist-Situation und „heißen“ KI-Trends über konkrete Anwendungsfälle in unterschiedlichen Branchen bis hin zu interaktiven Workshops. In der ersten Woche fokussieren wir uns auf KI und ML in der Gesundheitsversorgung, während wir uns in der zweiten Woche branchenübergreifend mit den Themen beschäftigen. Jetzt [registrieren](https://intersystems-virtuell.expo-ip.com/registrieren).
 
 ## Webinars
 - [Wie Machine Learning zu Advanced Analytics führt](https://youtu.be/Fyh7aMuFAkc) on August 9th, 2019
