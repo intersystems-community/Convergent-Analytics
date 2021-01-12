@@ -88,11 +88,11 @@ Verpassen Sie deshalb nicht den virtuellen InterSystems AI + ML Summit 2021 vom 
 
 ## Breaking News:
 
-[Digital SCE 2020](https://events.intersystems.com/fr/SCE2020)
+[Agora Live Supply Chain](https://www.agoramanagers-events.com/agora-live-supply-chain/keynote?k=5FDFB16A20942)
 
-[![logosDigitalSCE-Full-1-](https://badge.supplychain-event.com/Data/DO/tgSkin/1192/fr/banner/image/logosDigitalSCE-Full-1-.png)](https://badge.supplychain-event.com/visiteur.htm)
+[![C4E22AQEUY3DHtzhH0Q](https://media-exp1.licdn.com/dms/image/sync/C4E22AQEUY3DHtzhH0Q/feedshare-shrink_800-alternative/0/1610441241120?e=1613606400&v=beta&t=CXEGG-HfqurBBoA2sNXm09Sur7L4vl_C3fGFXiM_lwA)](https://www.agoramanagers-events.com/agora-live-supply-chain/inscription?k=5FDFB16A20942)
 
-L'incertitude de la demande se traduit souvent par l'ajout d'un stock de sécurité arbitraire dans les systèmes d'approvisionnement. Snext présentera comment ses services complètent vos systèmes de gestion Supply Chain pour adapter vos méthodes de gestion de stock et d'approvisionnement.
+Libérez du cash dans le stock et améliorer son taux de service : comment concilier ces deux impératifs ?
 
 # Links to Required Downloads
 
