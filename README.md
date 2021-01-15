@@ -94,6 +94,10 @@ Verpassen Sie deshalb nicht den virtuellen InterSystems AI + ML Summit 2021 vom 
 
 Libérez du cash dans le stock et améliorer son taux de service : comment concilier ces deux impératifs ?
 
+## Webinars
+
+- [Digital SCE](https://youtu.be/6bBXS-GwRDQ) on December 8th, 2020 | Acknowledgements: [Blaise Zarka](https://github.com/blaise-za), Technology Architect, [snext](https://www.snext-solutions.com/), France
+
 # Links to Required Downloads
 
 - `InterSystems IRIS Community Edition`: download a community edition of InterSystems IRIS data platform [here](https://download.intersystems.com/download) - create an account to start the download
