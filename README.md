@@ -8,9 +8,9 @@
 
 [AI+ML Summit Convergent Analytics Healthcare](https://youtu.be/YYglAT7RJbA)
 
-[![analytics_online_meetup_0.jpg](https://community.intersystems.com/sites/default/files/inline/images/analytics_online_meetup_0.jpg)](https://community.intersystems.com/post/online-meetup-intersystems-analytics-contest-winners)
+[![AI%2BML_Summit_Convergent_Analytics.png](https://github.com/intersystems-community/Convergent-Analytics/blob/master/AI%2BML_Summit_Convergent_Analytics.png)](https://community.intersystems.com/post/intersystems-aiml-summit-2021-agenda)
 
-Real-time AI/ML computations in a decentralized setup are becoming more and more in demand. Explaining it using an industry real-time example, involving occasionally a cloud provider, sharing a cross-industry and a healthcare use cases in our AI+ML Summit online sessions with @eduard93
+Real-time AI/ML computations in a decentralized setup are becoming more and more in demand. Explaining it using an industry real-time example, involving occasionally a cloud provider, sharing a cross-industry and a healthcare use cases in our AI+ML Summit online sessions with [eduard93](https://github.com/eduard93)
 
 ## Webinars
 
