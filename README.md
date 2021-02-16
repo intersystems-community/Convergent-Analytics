@@ -4,15 +4,13 @@
 
 ## Breaking News:
 
-[Online Meetup with the InterSystems Analytics Contest Winners](https://community.intersystems.com/post/online-meetup-intersystems-analytics-contest-winners)
+[AI+ML Summit Convergent Analytics Cross Industry](https://youtu.be/bxSHWfaNjtk)
+
+[AI+ML Summit Convergent Analytics Healthcare](https://youtu.be/YYglAT7RJbA)
 
 [![analytics_online_meetup_0.jpg](https://community.intersystems.com/sites/default/files/inline/images/analytics_online_meetup_0.jpg)](https://community.intersystems.com/post/online-meetup-intersystems-analytics-contest-winners)
 
-What awaits you at this virtual Meetup? 
-
-- Our winners' bios.
-- Short demos on their applications.
-- An open discussion about technologies being used, bonuses, questions. Plans for the next contests.
+Real-time AI/ML computations in a decentralized setup are becoming more and more in demand. Explaining it using an industry real-time example, involving occasionally a cloud provider, sharing a cross-industry and a healthcare use cases in our AI+ML Summit online sessions with @eduard93
 
 ## Webinars
 
