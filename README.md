@@ -86,11 +86,11 @@ Verpassen Sie deshalb nicht den virtuellen InterSystems AI + ML Summit 2021 vom 
 
 ## Breaking News:
 
-[Agora Live Supply Chain](https://www.agoramanagers-events.com/agora-live-supply-chain/keynote?k=5FDFB16A20942)
+[MARDI 9 MARS 2021 À 14H30: Exploitation des données de santé : de la théorie à la pratique](https://santexpo.live/register)
 
-[![C4E22AQEUY3DHtzhH0Q](https://media-exp1.licdn.com/dms/image/sync/C4E22AQEUY3DHtzhH0Q/feedshare-shrink_800-alternative/0/1610441241120?e=1613606400&v=beta&t=CXEGG-HfqurBBoA2sNXm09Sur7L4vl_C3fGFXiM_lwA)](https://www.agoramanagers-events.com/agora-live-supply-chain/inscription?k=5FDFB16A20942)
+[![Agora-InterSystems-thumbnail.jpg](https://storage.googleapis.com/santexpo-prod-media/public-sessions-covers/d72fbbccd9fe64c3a14f85d225a046f4/conversions/Agora-InterSystems-thumbnail.jpg)](https://santexpo.live/register)
 
-Libérez du cash dans le stock et améliorer son taux de service : comment concilier ces deux impératifs ?
+Nous assistons à une accélération des usages du numérique en santé et des applications utilisant l'IA mais la source d'énergie nécessaire à leur valeur (la donnée) est encore aujourd'hui trop peu accessible et raffinée. La dynamique actuelle va se confronter à la réalité technologique. Or, il apparaît vital d'avoir accès à des données massives, structurées, de vie réelle et en temps réel pour exploiter tout le potentiel du numérique en santé.
 
 ## Webinars
 
