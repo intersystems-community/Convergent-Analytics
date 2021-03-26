@@ -72,7 +72,6 @@ Verpassen Sie deshalb nicht den virtuellen InterSystems AI + ML Summit 2021 vom 
 
 ## Webinars
 
-- [InterSystems IRIS – универсальная AI/ML-платформа реального времени](https://habr.com/ru/company/intersystems/blog/516344/) on August 24th, 2020
 - [Лучшие практики платформенного AI/ML](https://youtu.be/Pc9sJa9Q7aU) on April 10th, 2020 | Acknowledgements: [Aleksandr Kalinin](https://github.com/drakut), Software Engineer, [Escape](http://esc.ru/), Russia
 - [InterSystems ML Toolkit: роботизация искусственного интеллекта](https://youtu.be/mk3iqBQHGVM) on September 18th, 2019
 - [Machine Learning Toolkit (Python, R, ObjectScript, Interoperability, Analytics) для InterSystems IRIS](https://youtu.be/FteNyfLOjyA) on March 26th, 2019 
