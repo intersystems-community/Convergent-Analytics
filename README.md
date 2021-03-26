@@ -64,14 +64,15 @@ Verpassen Sie deshalb nicht den virtuellen InterSystems AI + ML Summit 2021 vom 
 
 ## Breaking News:
 
-[InterSystems IRIS – универсальная AI/ML-платформа реального времени](https://habr.com/ru/company/intersystems/blog/516344/)
+[Распределенный искусственный интеллект на платформе InterSystems IRIS](https://habr.com/ru/company/intersystems/blog/549132/)
 
-[![zpqmpjjakiuwqn9ebsedkzvvwpe](https://habrastorage.org/webt/zp/qm/pj/zpqmpjjakiuwqn9ebsedkzvvwpe.png)](https://habr.com/ru/company/intersystems/blog/516344/)
+[![e425cf0d93a50500daa2d79733b2291c](https://hsto.org/getpro/habr/upload_files/e42/5cf/0d9/e425cf0d93a50500daa2d79733b2291c.PNG)](https://habr.com/ru/company/intersystems/blog/549132/)
 
-Наша статья – это обстоятельный обзор возможностей платформы InterSystems IRIS в части универсальной поддержки развертывания AI/ML-механизмов, сборки (интеграции) AI/ML-решений и обучения (тестирования) AI/ML-решений на интенсивных потоках данных. Мы обратимся к исследованиям рынка, к практическим примерам AI/ML-решений и концептуальным аспектам того, что мы называем в этой статье AI/ML-платформой реального времени.
+Речь не пойдет о периферийных вычислениях, операторах конфиденциальных данных, поисковых запросах на мобильных телефонах и тому подобных увлекательных, но не самых (пока что) осознанно применяемых в широких кругах пользователей сценариях. Гораздо более «жизненным» может стать, например, следующий сценарий (детальную демонстрацию можно и нужно [посмотреть здесь](https://youtu.be/rRJ8_O4Y3gs?t=906)).
 
 ## Webinars
 
+- [InterSystems IRIS – универсальная AI/ML-платформа реального времени](https://habr.com/ru/company/intersystems/blog/516344/) on August 24th, 2020
 - [Лучшие практики платформенного AI/ML](https://youtu.be/Pc9sJa9Q7aU) on April 10th, 2020 | Acknowledgements: [Aleksandr Kalinin](https://github.com/drakut), Software Engineer, [Escape](http://esc.ru/), Russia
 - [InterSystems ML Toolkit: роботизация искусственного интеллекта](https://youtu.be/mk3iqBQHGVM) on September 18th, 2019
 - [Machine Learning Toolkit (Python, R, ObjectScript, Interoperability, Analytics) для InterSystems IRIS](https://youtu.be/FteNyfLOjyA) on March 26th, 2019 
