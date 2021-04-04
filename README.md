@@ -4,13 +4,11 @@
 
 ## Breaking News:
 
-[AI+ML Summit Convergent Analytics Cross Industry](https://youtu.be/bxSHWfaNjtk)
+[Distributed Artificial Intelligence with InterSystems IRIS](https://www.datasciencecentral.com/profiles/blogs/distributed-artificial-intelligence-with-intersystems-iris)
 
-[AI+ML Summit Convergent Analytics Healthcare](https://youtu.be/YYglAT7RJbA)
+[![https://storage.ning.com/topology/rest/1.0/file/get/8753372271?profile=RESIZE_710x](https://storage.ning.com/topology/rest/1.0/file/get/8753372271?profile=RESIZE_710x)](https://www.datasciencecentral.com/profiles/blogs/distributed-artificial-intelligence-with-intersystems-iris)
 
-[![AI%2BML_Summit_Convergent_Analytics.png](https://github.com/intersystems-community/Convergent-Analytics/blob/master/AI%2BML_Summit_Convergent_Analytics.png)](https://community.intersystems.com/post/intersystems-aiml-summit-2021-agenda)
-
-Real-time AI/ML computations in a decentralized setup are becoming more and more in demand. Explaining it using an industry real-time example, involving occasionally a cloud provider, sharing a cross-industry and a healthcare use cases in our AI+ML Summit online sessions with [eduard93](https://github.com/eduard93)
+We will not be discussing edge computations, confidential data operators, scattered mobile searches, or similar fascinating yet not the most consciously and wide-applied (not at this moment) scenarios. We will be much “closer to life” if, for instance, we consider the following scenario (its detailed demo can and should be [watched here](https://youtu.be/rRJ8_O4Y3gs?t=906)): a company runs a production-level AI/ML solution, the quality of its functioning is being systematically checked by an external data scientist (i.e., an expert that is not an employee of the company).
 
 ## Webinars
 
@@ -20,6 +18,7 @@ Real-time AI/ML computations in a decentralized setup are becoming more and more
 
 ## Articles
 
+- [Distributed Artificial Intelligence with InterSystems IRIS](https://habr.com/en/company/intersystems/blog/550512/) as of April 3rd, 2021
 - [InterSystems IRIS – the All-Purpose Universal Platform for Real-Time AI/ML](https://habr.com/ru/company/intersystems/blog/519926/) as of September 20th, 2020
 - [AI Robotization with InterSystems IRIS Data Platform](https://habr.com/en/company/intersystems/blog/478822/) as of December 5th, 2019
 - [MLOps can help overcome risk in AI and ML projects](https://dataconomy.com/2019/10/mlops-can-help-overcome-risk-in-ai-and-ml-projects/) as of October 30th, 2019
