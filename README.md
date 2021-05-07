@@ -85,11 +85,11 @@ Verpassen Sie deshalb nicht den virtuellen InterSystems AI + ML Summit 2021 vom 
 
 ## Breaking News:
 
-[MARDI 9 MARS 2021 À 14H30: Exploitation des données de santé : de la théorie à la pratique](https://santexpo.live/register)
+[26 mai 2021: Comment réduire le temps du Build et augmenter la performance du Run ?](https://www.crip-asso.fr/crip/decouvrir/webinars.html/uuid/67f6472756f556d61696c604164627563737560727f6e236f6d6/provenance/77562696e6162737f5e6567737c65647475627/u_subscribe/1/u_webinar/430323/direct/1)
 
-[![Agora-InterSystems-thumbnail.jpg](https://storage.googleapis.com/santexpo-prod-media/public-sessions-covers/d72fbbccd9fe64c3a14f85d225a046f4/conversions/Agora-InterSystems-thumbnail.jpg)](https://santexpo.live/register)
+[![webinar_402_1617797902.png](https://www.itiforums.com/beeiti//fichiers/solext/webinar_402_1617797902.png)](https://www.crip-asso.fr/crip/decouvrir/webinars.html/uuid/67f6472756f556d61696c604164627563737560727f6e236f6d6/provenance/77562696e6162737f5e6567737c65647475627/u_subscribe/1/u_webinar/430323/direct/1)
 
-Nous assistons à une accélération des usages du numérique en santé et des applications utilisant l'IA mais la source d'énergie nécessaire à leur valeur (la donnée) est encore aujourd'hui trop peu accessible et raffinée. La dynamique actuelle va se confronter à la réalité technologique. Or, il apparaît vital d'avoir accès à des données massives, structurées, de vie réelle et en temps réel pour exploiter tout le potentiel du numérique en santé.
+De même que l'eau, la donnée ne devient une ressource intéressante et vitale qu'à partir du moment où elle est saine, facilement accessible, et partagée avec le plus grand nombre. Cependant, dans la plupart des cas, avant de permettre aux usagers d'exploiter des données, le service informatique aura dû mettre en œuvre toute une série d’outils et de technologies hétérogènes, depuis la collecte jusqu’à la restitution des données.
 
 ## Webinars
 
