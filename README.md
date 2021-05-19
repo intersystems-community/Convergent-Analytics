@@ -109,7 +109,7 @@ De même que l'eau, la donnée ne devient une ressource intéressante et vitale 
 
 # Root Resources
 
-- Download the illustrated ML Toolkit learning guide [here](ML_Toolkit_Fundamentals_v03.pdf) - for the most recent documentation and showcases, consider joining the private dedicated ML Toolkit repo by [writing us](mailto:MLToolkit@intersystems.com)
+- Download the illustrated ML Toolkit learning guide [here](ML_Toolkit_Fundamentals_v04_0.pdf) - for the most recent documentation and showcases, consider joining the private dedicated ML Toolkit repo by [writing us](mailto:MLToolkit@intersystems.com)
 - Check how to edit BPL annotations [here](Annotation_Button.md)
 - Check how to disable journaling [here](Stop_Journaling.md)
 - Check how to disable auto-refresh [here](Stop_AutoRefresh.md)
