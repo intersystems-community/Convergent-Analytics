@@ -4,11 +4,11 @@
 
 ## Breaking News:
 
-[Distributed Artificial Intelligence with InterSystems IRIS](https://www.datasciencecentral.com/profiles/blogs/distributed-artificial-intelligence-with-intersystems-iris)
+[InterSystems AI Programming Contest](https://community.intersystems.com/post/intersystems-ai-programming-contest)
 
-[![https://storage.ning.com/topology/rest/1.0/file/get/8753372271?profile=RESIZE_710x](https://storage.ning.com/topology/rest/1.0/file/get/8753372271?profile=RESIZE_710x)](https://www.datasciencecentral.com/profiles/blogs/distributed-artificial-intelligence-with-intersystems-iris)
+[![/ai_welcome_wide_2](https://community.intersystems.com/sites/default/files/inline/images/ai_welcome_wide_2.jpg)](https://community.intersystems.com/post/intersystems-ai-programming-contest)
 
-We will not be discussing edge computations, confidential data operators, scattered mobile searches, or similar fascinating yet not the most consciously and wide-applied (not at this moment) scenarios. We will be much “closer to life” if, for instance, we consider the following scenario (its detailed demo can and should be [watched here](https://youtu.be/rRJ8_O4Y3gs?t=906)): a company runs a production-level AI/ML solution, the quality of its functioning is being systematically checked by an external data scientist (i.e., an expert that is not an employee of the company).
+Develop an AI/ML solution using InterSystems IRIS. Your application could be a library, package, tool, or any AI/ML solution which uses InterSystems IRIS.
 
 ## Webinars
 
