@@ -6,7 +6,7 @@
 
 [Online Meetup with the InterSystems AI Contest Winners](https://community.intersystems.com/post/online-meetup-intersystems-ai-contest-winners)
 
-[![27vE9o9U3nM](https://youtu.be/27vE9o9U3nM)](https://youtu.be/27vE9o9U3nM)
+[![ESKLP](ESKLP.PNG)](https://youtu.be/27vE9o9U3nM)
 
 We're pleased to invite you to watch the recording of the online meetup with the winners of the InterSystems AI contest!
 
