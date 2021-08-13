@@ -12,6 +12,8 @@ We're pleased to invite you to watch the recording of the online meetup with the
 
 ## Webinars
 
+- [AI+ML Summit Convergent Analytics – Healthcare Stream](https://youtu.be/yDRZwK3maeQ) on February 3rd, 2021
+- [AI+ML Summit Convergent Analytics – Cross-Industry Stream](https://youtu.be/rRJ8_O4Y3gs) on January 28th, 2021
 - [Best Practices of In-Platform AI/ML](https://youtu.be/N6tN48hCnE4) on April 28th, 2020
 - [AI Robotization (Python, R, Interoperability) for InterSystems IRIS](https://youtu.be/-gyvCTBHh-0) on November 7th, 2019
 - [Machine Learning Toolkit (Python, R, ObjectScript, Interoperability, Analytics) for InterSystems IRIS](https://youtu.be/z9O0F1ovBUY) on April 23rd, 2019
