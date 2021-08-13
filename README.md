@@ -4,11 +4,11 @@
 
 ## Breaking News:
 
-[InterSystems AI Programming Contest](https://community.intersystems.com/post/intersystems-ai-programming-contest)
+[Online Meetup with the InterSystems AI Contest Winners](https://community.intersystems.com/post/online-meetup-intersystems-ai-contest-winners)
 
-[![/ai_welcome_wide_2](https://community.intersystems.com/sites/default/files/inline/images/ai_welcome_wide_2.jpg)](https://community.intersystems.com/post/intersystems-ai-programming-contest)
+[![27vE9o9U3nM](https://youtu.be/27vE9o9U3nM)](https://youtu.be/27vE9o9U3nM)
 
-Develop an AI/ML solution using InterSystems IRIS. Your application could be a library, package, tool, or any AI/ML solution which uses InterSystems IRIS.
+We're pleased to invite you to watch the recording of the online meetup with the winners of the InterSystems AI contest!
 
 ## Webinars
 
