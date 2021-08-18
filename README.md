@@ -50,11 +50,12 @@ We're pleased to invite you to watch the recording of the online meetup with the
 
 ## Breaking News:
 
-[Entdecken Sie neue Perspektiven. Gestalten Sie die Zukunft aktiv.](https://www.intersystems.com/de/news-events/events/veranstaltung/ai_ml/)
+[KONGRESS FÜR DIGITALE TRANSFORMATION](https://2021.solutions.hamburg/programm/)
 
-[![AIML-Summit21-smPost-v4-1.png](https://www.intersystems.com/de/wp-content/uploads/sites/4/2020/12/AIML-Summit21-smPost-v4-1.png)](https://www.intersystems.com/de/news-events/events/veranstaltung/ai_ml/)
+[![C4D22AQHZNQu8eXwn6Q](https://media-exp1.licdn.com/dms/image/C4D22AQHZNQu8eXwn6Q/feedshare-shrink_800/0/1629270904206?e=1632355200&v=beta&t=wki5NaVtd35kurKbFDDJwxpomwaDjZRfV20WRuKpwHI)](https://2021.solutions.hamburg/programm/)
 
-Verpassen Sie deshalb nicht den virtuellen InterSystems AI + ML Summit 2021 vom 25. Januar – 4. Februar 2021, in dessen Rahmen Sie unter der Überschrift „Neue Perspektiven entdecken. Zukunft aktiv gestalten.“ alles Wissenswerte über den aktuellen Stand in Sachen KI und ML erfahren. Das vielfältige Themenspektrum reicht von detaillierten Beschreibungen der Ist-Situation und „heißen“ KI-Trends über konkrete Anwendungsfälle in unterschiedlichen Branchen bis hin zu interaktiven Workshops. In der ersten Woche fokussieren wir uns auf KI und ML in der Gesundheitsversorgung, während wir uns in der zweiten Woche branchenübergreifend mit den Themen beschäftigen. Jetzt [registrieren](https://intersystems-virtuell.expo-ip.com/registrieren).
+Vom 01.-03.09.2021 findet die Solutions 2021 in Hamburg statt. Rund um #DigitaleTransformation wird diskutiert & inspiriert - live vor Ort #inecht! 🎙 @Jannis Stegmann von #InterSystems spricht z.B. über die Relevanz der Abschaffung von Datensilos, um einen umfassenden Zugriff auf Ihre #Daten zu erhalten und den Weg für den reibungslosen Einsatz von #KI und #MachineLearning zu ebnen👀
+Tickets hier [sichern:](https://solutions.hamburg/#tickets).
 
 ## Webinars
 - [Wie Machine Learning zu Advanced Analytics führt](https://youtu.be/Fyh7aMuFAkc) on August 9th, 2019
