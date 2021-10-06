@@ -50,12 +50,11 @@ We're pleased to invite you to watch the recording of the online meetup with the
 
 ## Breaking News:
 
-[KONGRESS FÜR DIGITALE TRANSFORMATION](https://2021.solutions.hamburg/programm/)
+[InterSystems AI+ML Summit 2021: Join Us Virtually!](https://community.intersystems.com/post/intersystems-aiml-summit-2021-join-us-virtually)
 
-[![C4D22AQHZNQu8eXwn6Q](https://media-exp1.licdn.com/dms/image/C4D22AQHZNQu8eXwn6Q/feedshare-shrink_800/0/1629270904206?e=1632355200&v=beta&t=wki5NaVtd35kurKbFDDJwxpomwaDjZRfV20WRuKpwHI)](https://2021.solutions.hamburg/programm/)
+[![lin-banner-aiml-summit21_1](https://community.intersystems.com/sites/default/files/inline/images/lin-banner-aiml-summit21_1.jpg)](https://community.intersystems.com/post/intersystems-aiml-summit-2021-join-us-virtually)
 
 Vom 01.-03.09.2021 findet die Solutions 2021 in Hamburg statt. Rund um #DigitaleTransformation wird diskutiert & inspiriert - live vor Ort #inecht! 🎙 @Jannis Stegmann von #InterSystems spricht z.B. über die Relevanz der Abschaffung von Datensilos, um einen umfassenden Zugriff auf Ihre #Daten zu erhalten und den Weg für den reibungslosen Einsatz von #KI und #MachineLearning zu ebnen👀
-Tickets hier [sichern](https://solutions.hamburg/#tickets).
 
 ## Webinars
 - [Wie Machine Learning zu Advanced Analytics führt](https://youtu.be/Fyh7aMuFAkc) on August 9th, 2019
