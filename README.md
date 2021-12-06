@@ -115,6 +115,7 @@ De même que l'eau, la donnée ne devient une ressource intéressante et vitale 
 - Check how to edit BPL annotations [here](Annotation_Button.md)
 - Check how to disable journaling [here](Stop_Journaling.md)
 - Check how to disable auto-refresh [here](Stop_AutoRefresh.md)
+- [AI+ Playlist from Virtual Summit 2021](https://github.com/intersystems-community/Convergent-Analytics/blob/master/AI%2B%20sessions%20at%20VS21%20v01.pdf)
 - [AI+ Playlist from Virtual Summit 2020](https://github.com/intersystems-community/Convergent-Analytics/blob/master/AI%2B%20sessions%20at%20VS%20v05.pdf)
 
 # Showcases (Programs/Data/Tables):
