@@ -14,7 +14,7 @@ In this paper we prototype and explore how multiple agent-based models of roboti
 
 ## Webinars
 
-- [Online Meetup with the InterSystems AI Contest Winners](https://community.intersystems.com/post/online-meetup-intersystems-ai-contest-winners) on July 30th, 2021
+- [Online Meetup with the InterSystems AI Contest Winners](https://youtu.be/27vE9o9U3nM) on July 30th, 2021
 - [AI+ML Summit Convergent Analytics – Healthcare Stream](https://youtu.be/yDRZwK3maeQ) on February 3rd, 2021
 - [AI+ML Summit Convergent Analytics – Cross-Industry Stream](https://youtu.be/rRJ8_O4Y3gs) on January 28th, 2021
 - [Best Practices of In-Platform AI/ML](https://youtu.be/N6tN48hCnE4) on April 28th, 2020
