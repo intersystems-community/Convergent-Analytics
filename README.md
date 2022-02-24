@@ -6,7 +6,7 @@
 
 [Agent IRIS*](https://www.datasciencecentral.com/agent-iris)
 
-[![Agent-IRIS](EN-220201-Agent-IRIS-In-Platform-Agent-Based-Simulation-of-a-Connected-Factory-Cluster-banner.jpg)](https://www.datasciencecentral.com/wp-content/uploads/2022/02/EN-220201-Agent-IRIS-In-Platform-Agent-Based-Simulation-of-a-Connected-Factory-Cluster-banner.jpg)
+[![Agent-IRIS](https://www.datasciencecentral.com/wp-content/uploads/2022/02/EN-220201-Agent-IRIS-In-Platform-Agent-Based-Simulation-of-a-Connected-Factory-Cluster-banner.jpg)](https://www.datasciencecentral.com/agent-iris)
 
 * In-Platform Agent-Based Simulation of a Connected Factory Cluster
 
@@ -103,7 +103,7 @@ Améliorer vos processus opérationnels ou prendre les bonnes décisions, la don
 
 ## Webinars
 
-- [Comment réduire le temps du Build et augmenter la performance du Run ?](https://youtu.be/xZ4cyRWcHWI) on May 26th, 2021 | Acknowledgements: Sani Imini, Manager Data, DataValue Consulting, France and Mélanie Froment, Responsable SI Corporate, CFAO, France
+- [Comment réduire le temps du Build et augmenter la performance du Run ?](https://youtu.be/xZ4cyRWcHWI) on May 26th, 2021 | Acknowledgements: Sani Imini, Manager Data, [DataValue Consulting](https://datavalue-consulting.com/), France and Mélanie Froment, Responsable SI Corporate, [CFAO](https://www.cfaogroup.com/), France
 - [Digital SCE](https://youtu.be/6bBXS-GwRDQ) on December 8th, 2020 | Acknowledgements: [Blaise Zarka](https://github.com/blaise-za), Technology Architect, [snext](https://www.snext-solutions.com/), France
 
 # Links to Required Downloads
