@@ -8,9 +8,8 @@
 
 [![Agent-IRIS](https://www.datasciencecentral.com/wp-content/uploads/2022/02/EN-220201-Agent-IRIS-In-Platform-Agent-Based-Simulation-of-a-Connected-Factory-Cluster-banner.jpg)](https://www.datasciencecentral.com/agent-iris)
 
-* In-Platform Agent-Based Simulation of a Connected Factory Cluster
+*In-Platform Agent-Based Simulation of a Connected Factory Cluster
 
-1. Purpose
 In this paper we prototype and explore how multiple agent-based models of robotic factories connected to other robotic factories (represented by their respective models) can be orchestrated using an all-purpose data platform – thereby simulating descriptive and predictive properties of a group of factories (a factory cluster). For the underlying prototype, NetLogo suite was used to do factory agent-based simulation (re-using “Robotic Factory” model [1]) while InterSystems IRIS data platform was used for NetLogo orchestration and factory/cluster end-to-end simulation.
 
 ## Webinars
@@ -75,7 +74,6 @@ Python gilt als eine der beliebtesten Programmiersprachen von Entwicklern. Doch 
 
 Платформенная агентная модель производственного кластера
 
-1. Цель
 В данной публикации мы описываем прототип и исследуем оркестровку нескольких агентных моделей связанных друг с другом роботизированных фабрик (представленных каждая своей моделью) с применением универсальной платформы данных – добиваясь симуляции наблюдаемых и прогнозных свойств группы фабрик (производственного кластера). В прототипе были задействованы программный комплекс NetLogo для агентных моделей фабрик (с моделью «Robotic Factory» [1] в качестве основы) и платформа данных InterSystems IRIS для оркестровки NetLogo и сквозной симуляции системы «фабрики-кластер».
 
 ## Webinars
