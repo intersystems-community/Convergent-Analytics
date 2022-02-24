@@ -4,14 +4,18 @@
 
 ## Breaking News:
 
-[Online Meetup with the InterSystems AI Contest Winners](https://community.intersystems.com/post/online-meetup-intersystems-ai-contest-winners)
+[Agent IRIS*](https://www.datasciencecentral.com/agent-iris)
 
-[![ESKLP](ESKLP.PNG)](https://youtu.be/27vE9o9U3nM)
+[![Agent-IRIS](EN-220201-Agent-IRIS-In-Platform-Agent-Based-Simulation-of-a-Connected-Factory-Cluster-banner.jpg)](https://www.datasciencecentral.com/wp-content/uploads/2022/02/EN-220201-Agent-IRIS-In-Platform-Agent-Based-Simulation-of-a-Connected-Factory-Cluster-banner.jpg)
 
-We're pleased to invite you to watch the recording of the online meetup with the winners of the InterSystems AI contest!
+* In-Platform Agent-Based Simulation of a Connected Factory Cluster
+
+1. Purpose
+In this paper we prototype and explore how multiple agent-based models of robotic factories connected to other robotic factories (represented by their respective models) can be orchestrated using an all-purpose data platform – thereby simulating descriptive and predictive properties of a group of factories (a factory cluster). For the underlying prototype, NetLogo suite was used to do factory agent-based simulation (re-using “Robotic Factory” model [1]) while InterSystems IRIS data platform was used for NetLogo orchestration and factory/cluster end-to-end simulation.
 
 ## Webinars
 
+- [Online Meetup with the InterSystems AI Contest Winners](https://community.intersystems.com/post/online-meetup-intersystems-ai-contest-winners) on July 30th, 2021
 - [AI+ML Summit Convergent Analytics – Healthcare Stream](https://youtu.be/yDRZwK3maeQ) on February 3rd, 2021
 - [AI+ML Summit Convergent Analytics – Cross-Industry Stream](https://youtu.be/rRJ8_O4Y3gs) on January 28th, 2021
 - [Best Practices of In-Platform AI/ML](https://youtu.be/N6tN48hCnE4) on April 28th, 2020
@@ -50,11 +54,11 @@ We're pleased to invite you to watch the recording of the online meetup with the
 
 ## Breaking News:
 
-[InterSystems AI+ML Summit 2021: Join Us Virtually!](https://community.intersystems.com/post/intersystems-aiml-summit-2021-join-us-virtually)
+[Mit der Schlange in die Produktion: Python für (I)IoT-Anwendungen](https://youtu.be/aBuUOV5NqrM)
 
-[![lin-banner-aiml-summit21_1](https://community.intersystems.com/sites/default/files/inline/images/lin-banner-aiml-summit21_1.jpg)](https://community.intersystems.com/post/intersystems-aiml-summit-2021-join-us-virtually)
+[![csm_chris-ried-ieic5Tq8YMk-unsplash_850x473_c356a515eb](https://business-services.heise.de/typo3temp/assets/_processed_/7/5/csm_chris-ried-ieic5Tq8YMk-unsplash_850x473_c356a515eb.jpg)](https://youtu.be/aBuUOV5NqrM)
 
-Vom 01.-03.09.2021 findet die Solutions 2021 in Hamburg statt. Rund um #DigitaleTransformation wird diskutiert & inspiriert - live vor Ort #inecht! 🎙 @Jannis Stegmann von #InterSystems spricht z.B. über die Relevanz der Abschaffung von Datensilos, um einen umfassenden Zugriff auf Ihre #Daten zu erhalten und den Weg für den reibungslosen Einsatz von #KI und #MachineLearning zu ebnen👀 
+Python gilt als eine der beliebtesten Programmiersprachen von Entwicklern. Doch beim Datenbankzugriff und bei der Performance weist Python einige Nachteile auf. Abhilfe versprechen Lösungen, die Python näher an das eigentliche Herz von Anwendungen – die Daten – rücken. Welche Vorteile sich dadurch ergeben und was sich hinter „Embedded Python“ konkret verbirgt, erfahren Sie in diesem Webcast. 
 
 ## Webinars
 - [Wie Machine Learning zu Advanced Analytics führt](https://youtu.be/Fyh7aMuFAkc) on August 9th, 2019
@@ -65,11 +69,14 @@ Vom 01.-03.09.2021 findet die Solutions 2021 in Hamburg statt. Rund um #Digitale
 
 ## Breaking News:
 
-[Распределенный искусственный интеллект на платформе InterSystems IRIS](https://habr.com/ru/company/intersystems/blog/549132/)
+[Эксперимент IRIS](https://habr.com/ru/company/intersystems/blog/651145/)
 
-[![e425cf0d93a50500daa2d79733b2291c](https://hsto.org/getpro/habr/upload_files/e42/5cf/0d9/e425cf0d93a50500daa2d79733b2291c.PNG)](https://habr.com/ru/company/intersystems/blog/549132/)
+[![bMFwOZ-_vbQOJkoeYiJ3WQRnzq0grIZQFvmq6lv7AEw](https://media-exp1.licdn.com/dms/image/C4E12AQFJYZ-l51GuqA/article-cover_image-shrink_600_2000/0/1644678321129?e=1651104000&v=beta&t=bMFwOZ-_vbQOJkoeYiJ3WQRnzq0grIZQFvmq6lv7AEw)](https://habr.com/ru/company/intersystems/blog/651145/)
 
-Речь не пойдет о периферийных вычислениях, операторах конфиденциальных данных, поисковых запросах на мобильных телефонах и тому подобных увлекательных, но не самых (пока что) осознанно применяемых в широких кругах пользователей сценариях. Гораздо более «жизненным» может стать, например, следующий сценарий (детальную демонстрацию можно и нужно [посмотреть здесь](https://youtu.be/rRJ8_O4Y3gs?t=906)).
+Платформенная агентная модель производственного кластера
+
+1. Цель
+В данной публикации мы описываем прототип и исследуем оркестровку нескольких агентных моделей связанных друг с другом роботизированных фабрик (представленных каждая своей моделью) с применением универсальной платформы данных – добиваясь симуляции наблюдаемых и прогнозных свойств группы фабрик (производственного кластера). В прототипе были задействованы программный комплекс NetLogo для агентных моделей фабрик (с моделью «Robotic Factory» [1] в качестве основы) и платформа данных InterSystems IRIS для оркестровки NetLogo и сквозной симуляции системы «фабрики-кластер».
 
 ## Webinars
 
@@ -79,6 +86,7 @@ Vom 01.-03.09.2021 findet die Solutions 2021 in Hamburg statt. Rund um #Digitale
 
 ## Articles
 
+- [Распределенный искусственный интеллект на платформе InterSystems IRIS](https://habr.com/ru/company/intersystems/blog/549132/) as of March 26th, 2021
 - [InterSystems IRIS – универсальная AI/ML-платформа реального времени](https://habr.com/ru/company/intersystems/blog/516344/) as of August 24th, 2020
 - [Python Gateway в InterSystems IRIS](https://habr.com/ru/company/intersystems/blog/486984/) as of February 5th, 2020
 - [Роботизация искусственного интеллекта на платформе InterSystems IRIS](https://habr.com/ru/company/intersystems/blog/473452/) as of October 28th, 2019
@@ -87,14 +95,15 @@ Vom 01.-03.09.2021 findet die Solutions 2021 in Hamburg statt. Rund um #Digitale
 
 ## Breaking News:
 
-[26 mai 2021: Comment réduire le temps du Build et augmenter la performance du Run ?](https://www.crip-asso.fr/crip/decouvrir/webinars.html/uuid/67f6472756f556d61696c604164627563737560727f6e236f6d6/provenance/77562696e6162737f5e6567737c65647475627/u_subscribe/1/u_webinar/430323/direct/1)
+[Comment construire et mettre en œuvre une stratégie Data Driven ?](https://youtu.be/gY1kZPTT7Og)
 
-[![webinar_402_1617797902.png](https://www.itiforums.com/beeiti//fichiers/solext/webinar_402_1617797902.png)](https://www.crip-asso.fr/crip/decouvrir/webinars.html/uuid/67f6472756f556d61696c604164627563737560727f6e236f6d6/provenance/77562696e6162737f5e6567737c65647475627/u_subscribe/1/u_webinar/430323/direct/1)
+[![LOGO-SCE-BLEU-2](https://badge.supplychain-event.com/Data/ElFinder/s235/Images/LOGO-SCE-BLEU-2.png)](https://youtu.be/gY1kZPTT7Og)
 
-De même que l'eau, la donnée ne devient une ressource intéressante et vitale qu'à partir du moment où elle est saine, facilement accessible, et partagée avec le plus grand nombre. Cependant, dans la plupart des cas, avant de permettre aux usagers d'exploiter des données, le service informatique aura dû mettre en œuvre toute une série d’outils et de technologies hétérogènes, depuis la collecte jusqu’à la restitution des données.
+Améliorer vos processus opérationnels ou prendre les bonnes décisions, la donnée s’impose comme un actif précieux et indispensable dans l’élaboration et la mise en œuvre d’une stratégie d’entreprise Data Driven. Pourquoi et comment mettre en place une stratégie Data Driven et avec quelles technologies ? Autant de questions abordées lors de cette prise de parole qui fera le point sur les bonnes pratiques à travers l’intervention d’experts et de témoignages clients dans la mise en place d’une stratégie Data Driven réussie.
 
 ## Webinars
 
+- [Comment réduire le temps du Build et augmenter la performance du Run ?](https://youtu.be/xZ4cyRWcHWI) on May 26th, 2021 | Acknowledgements: Sani Imini, Manager Data, DataValue Consulting, France and Mélanie Froment, Responsable SI Corporate, CFAO, France
 - [Digital SCE](https://youtu.be/6bBXS-GwRDQ) on December 8th, 2020 | Acknowledgements: [Blaise Zarka](https://github.com/blaise-za), Technology Architect, [snext](https://www.snext-solutions.com/), France
 
 # Links to Required Downloads
