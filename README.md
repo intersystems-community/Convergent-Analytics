@@ -70,7 +70,7 @@ Python gilt als eine der beliebtesten Programmiersprachen von Entwicklern. Doch 
 
 [Эксперимент IRIS](https://habr.com/ru/company/intersystems/blog/651145/)
 
-[![bMFwOZ-_vbQOJkoeYiJ3WQRnzq0grIZQFvmq6lv7AEw](https://media-exp1.licdn.com/dms/image/C4E12AQFJYZ-l51GuqA/article-cover_image-shrink_600_2000/0/1644678321129?e=1651104000&v=beta&t=bMFwOZ-_vbQOJkoeYiJ3WQRnzq0grIZQFvmq6lv7AEw)](https://habr.com/ru/company/intersystems/blog/651145/)
+[![x9I5Th3vA_sRSn-RS6QWKYwM1fdJxXY0yyhhcP0qCbo](https://media-exp1.licdn.com/dms/image/C4E12AQFJYZ-l51GuqA/article-cover_image-shrink_720_1280/0/1644678321129?e=2147483647&v=beta&t=x9I5Th3vA_sRSn-RS6QWKYwM1fdJxXY0yyhhcP0qCbo](https://habr.com/ru/company/intersystems/blog/651145/)
 
 Платформенная агентная модель производственного кластера
 
