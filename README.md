@@ -42,6 +42,7 @@ In this paper we prototype and explore how multiple agent-based models of roboti
 
 ## Demos
 
+- Healthcare AI Solutions: [Readmission Prediction in IRIS & ML Toolkit](Readmission_Prediction_IRIS_ML_Toolkit.mp4) and [Readmission Prediction in TrakCare](Readmission_Prediction_TrakCare.mov) on November 3rd, 2021
 - [ESKLP](https://openexchange.intersystems.com/package/ESKLP) on July 12th, 2020 | Acknowledgements: [Aleksandr Kalinin](https://github.com/drakut), Software Engineer, [Escape](http://esc.ru/), Russia
 - [Machine Learning Made Easy - Advanced Exercise](https://github.com/renesto/mlmept2020) on July 6th, 2020
 - [integratedml-demo-template](https://openexchange.intersystems.com/package/integratedml-demo-template) on June 15th, 2020
