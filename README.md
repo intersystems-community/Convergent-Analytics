@@ -1,16 +1,12 @@
 # Featured Materials
 
-# In English
-
 ## Breaking News:
 
-[Agent IRIS*](https://www.datasciencecentral.com/agent-iris)
+[Why AI-as-a-Service Requires an Integrated-from-Core Data Platform](https://www.linkedin.com/pulse/why-ai-as-a-service-requires-integrated-from-core-sergey-lukyanchikov/)
 
-[![Agent-IRIS](https://www.datasciencecentral.com/wp-content/uploads/2022/02/EN-220201-Agent-IRIS-In-Platform-Agent-Based-Simulation-of-a-Connected-Factory-Cluster-banner.jpg)](https://www.datasciencecentral.com/agent-iris)
+[![D4E12AQEZyWVEvfC-JQ](https://media.licdn.com/dms/image/D4E12AQEZyWVEvfC-JQ/article-cover_image-shrink_423_752/0/1664280563098?e=1679529600&v=beta&t=Wp7xPPpom_SPmKu-OqJZg_crWhwNV-Eia4RqdzpIAYI)](https://www.linkedin.com/pulse/why-ai-as-a-service-requires-integrated-from-core-sergey-lukyanchikov/)
 
-*In-Platform Agent-Based Simulation of a Connected Factory Cluster
-
-In this paper we prototype and explore how multiple agent-based models of robotic factories connected to other robotic factories (represented by their respective models) can be orchestrated using an all-purpose data platform – thereby simulating descriptive and predictive properties of a group of factories (a factory cluster). For the underlying prototype, NetLogo suite was used to do factory agent-based simulation (re-using “Robotic Factory” model [1]) while InterSystems IRIS data platform was used for NetLogo orchestration and factory/cluster end-to-end simulation.
+For one major reason: to avoid progressive technical and economic performance deterioration in an AIaaS setup characterized by increasing volume, velocity and variety of data flows (the famous Big Data’s “3 Vs”).
 
 ## Webinars
 
@@ -23,9 +19,10 @@ In this paper we prototype and explore how multiple agent-based models of roboti
 
 ## Articles
 
-- [Distributed Artificial Intelligence with InterSystems IRIS](https://habr.com/en/company/intersystems/blog/550512/) as of April 3rd, 2021
-- [InterSystems IRIS – the All-Purpose Universal Platform for Real-Time AI/ML](https://habr.com/ru/company/intersystems/blog/519926/) as of September 20th, 2020
-- [AI Robotization with InterSystems IRIS Data Platform](https://habr.com/en/company/intersystems/blog/478822/) as of December 5th, 2019
+- [Agent IRIS*](https://www.linkedin.com/pulse/agent-iris-sergey-lukyanchikov/) as of February 1st, 2022
+- [Distributed Artificial Intelligence with InterSystems IRIS](https://www.linkedin.com/pulse/distributed-artificial-intelligence-intersystems-iris-lukyanchikov/) as of April 6th, 2021
+- [InterSystems IRIS – the All-Purpose Universal Platform for Real-Time AI/ML](https://www.linkedin.com/pulse/intersystems-iris-all-purpose-universal-platform-aiml-lukyanchikov/) as of September 20th, 2020
+- [AI Robotization with InterSystems IRIS Data Platform](https://www.linkedin.com/pulse/ai-robotization-intersystems-iris-data-platform-sergey-lukyanchikov/) as of March 15th, 2020
 - [MLOps can help overcome risk in AI and ML projects](https://dataconomy.com/2019/10/mlops-can-help-overcome-risk-in-ai-and-ml-projects/) as of October 30th, 2019
 - [Python Gateway](https://community.intersystems.com/post/python-gateway-part-i-introduction) as of 12 April 2019
 
@@ -49,65 +46,9 @@ In this paper we prototype and explore how multiple agent-based models of roboti
 - [PythonGateway-Template](https://openexchange.intersystems.com/package/PythonGateway-Template) on May 29th, 2020
 - [InterSystems IRIS Machine Learning Experience](https://github.com/renesto/MLExperience2019) on November 12th, 2019
 
-# In German
-
-
-## Breaking News:
-
-[Mit der Schlange in die Produktion: Python für (I)IoT-Anwendungen](https://youtu.be/aBuUOV5NqrM)
-
-[![csm_chris-ried-ieic5Tq8YMk-unsplash_850x473_c356a515eb](https://business-services.heise.de/typo3temp/assets/_processed_/7/5/csm_chris-ried-ieic5Tq8YMk-unsplash_850x473_c356a515eb.jpg)](https://youtu.be/aBuUOV5NqrM)
-
-Python gilt als eine der beliebtesten Programmiersprachen von Entwicklern. Doch beim Datenbankzugriff und bei der Performance weist Python einige Nachteile auf. Abhilfe versprechen Lösungen, die Python näher an das eigentliche Herz von Anwendungen – die Daten – rücken. Welche Vorteile sich dadurch ergeben und was sich hinter „Embedded Python“ konkret verbirgt, erfahren Sie in diesem Webcast. 
-
-## Webinars
-- [Wie Machine Learning zu Advanced Analytics führt](https://youtu.be/Fyh7aMuFAkc) on August 9th, 2019
-- [Machine Learning Projekte mit R erfolgreich umsetzen](https://youtu.be/TPlFHsoc4QY) on August 2nd, 2019
-- [Machine Learning Projekte mit Python erfolgreich umsetzen](https://youtu.be/S_eE6yt80yo) on July 26th, 2019
-
-# In Russian
-
-## Breaking News:
-
-[Эксперимент IRIS](https://habr.com/ru/company/intersystems/blog/651145/)
-
-[![x9I5Th3vA_sRSn-RS6QWKYwM1fdJxXY0yyhhcP0qCbo](https://media-exp1.licdn.com/dms/image/C4E12AQFJYZ-l51GuqA/article-cover_image-shrink_720_1280/0/1644678321129?e=2147483647&v=beta&t=x9I5Th3vA_sRSn-RS6QWKYwM1fdJxXY0yyhhcP0qCbo)](https://habr.com/ru/company/intersystems/blog/651145/)
-
-Платформенная агентная модель производственного кластера
-
-В данной публикации мы описываем прототип и исследуем оркестровку нескольких агентных моделей связанных друг с другом роботизированных фабрик (представленных каждая своей моделью) с применением универсальной платформы данных – добиваясь симуляции наблюдаемых и прогнозных свойств группы фабрик (производственного кластера). В прототипе были задействованы программный комплекс NetLogo для агентных моделей фабрик (с моделью «Robotic Factory» [1] в качестве основы) и платформа данных InterSystems IRIS для оркестровки NetLogo и сквозной симуляции системы «фабрики-кластер».
-
-## Webinars
-
-- [Лучшие практики платформенного AI/ML](https://youtu.be/Pc9sJa9Q7aU) on April 10th, 2020 | Acknowledgements: [Aleksandr Kalinin](https://github.com/drakut), Software Engineer, [Escape](http://esc.ru/), Russia
-- [InterSystems ML Toolkit: роботизация искусственного интеллекта](https://youtu.be/mk3iqBQHGVM) on September 18th, 2019
-- [Machine Learning Toolkit (Python, R, ObjectScript, Interoperability, Analytics) для InterSystems IRIS](https://youtu.be/FteNyfLOjyA) on March 26th, 2019 
-
-## Articles
-
-- [Распределенный искусственный интеллект на платформе InterSystems IRIS](https://habr.com/ru/company/intersystems/blog/549132/) as of March 26th, 2021
-- [InterSystems IRIS – универсальная AI/ML-платформа реального времени](https://habr.com/ru/company/intersystems/blog/516344/) as of August 24th, 2020
-- [Python Gateway в InterSystems IRIS](https://habr.com/ru/company/intersystems/blog/486984/) as of February 5th, 2020
-- [Роботизация искусственного интеллекта на платформе InterSystems IRIS](https://habr.com/ru/company/intersystems/blog/473452/) as of October 28th, 2019
-
-# In French
-
-## Breaking News:
-
-[Comment construire et mettre en œuvre une stratégie Data Driven ?](https://youtu.be/gY1kZPTT7Og)
-
-[![LOGO-SCE-BLEU-2](https://badge.supplychain-event.com/Data/ElFinder/s235/Images/LOGO-SCE-BLEU-2.png)](https://youtu.be/gY1kZPTT7Og)
-
-Améliorer vos processus opérationnels ou prendre les bonnes décisions, la donnée s’impose comme un actif précieux et indispensable dans l’élaboration et la mise en œuvre d’une stratégie d’entreprise Data Driven. Pourquoi et comment mettre en place une stratégie Data Driven et avec quelles technologies ? Autant de questions abordées lors de cette prise de parole qui fera le point sur les bonnes pratiques à travers l’intervention d’experts et de témoignages clients dans la mise en place d’une stratégie Data Driven réussie.
-
-## Webinars
-
-- [Comment réduire le temps du Build et augmenter la performance du Run ?](https://youtu.be/xZ4cyRWcHWI) on May 26th, 2021 | Acknowledgements: Sani Imini, Manager Data, [DataValue Consulting](https://datavalue-consulting.com/), France and Mélanie Froment, Responsable SI Corporate, [CFAO](https://www.cfaogroup.com/), France
-- [Digital SCE](https://youtu.be/6bBXS-GwRDQ) on December 8th, 2020 | Acknowledgements: [Blaise Zarka](https://github.com/blaise-za), Technology Architect, [snext](https://www.snext-solutions.com/), France
-
 # Links to Required Downloads
 
-- `InterSystems IRIS Community Edition`: download a community edition of InterSystems IRIS data platform [here](https://download.intersystems.com/download) - create an account to start the download
+- `InterSystems IRIS Community Edition`: download a community edition of InterSystems IRIS data platform [here](https://evaluation.intersystems.com) - create an account to start the download
 - `ML Toolkit: Python Gateway`: download an open-source set of extensions to InterSystems IRIS for in-platform orchestration of Python [here](https://openexchange.intersystems.com/package/PythonGateway)
 - `ML Toolkit: R Gateway`: download an open-source set of extensions to InterSystems IRIS for in-platform orchestration of R [here](https://openexchange.intersystems.com/package/RGateway)
 - `ML Toolkit: Julia Gateway`: download an open-source set of extensions to InterSystems IRIS for in-platform orchestration of Julia [here](https://github.com/intersystems-community/JuliaGateway)
@@ -119,7 +60,7 @@ Améliorer vos processus opérationnels ou prendre les bonnes décisions, la don
 
 # Root Resources
 
-- Download the illustrated ML Toolkit learning guide [here](ML_Toolkit_Fundamentals_v04_0.pdf) - for the most recent documentation and showcases, consider joining the private dedicated ML Toolkit repo by [writing us](mailto:MLToolkit@intersystems.com)
+- Download the illustrated ML Toolkit learning guide [here](ML_Toolkit_Fundamentals_v05_1.pdf) - for the most recent documentation and showcases, consider joining the private dedicated ML Toolkit repo by [writing us](mailto:MLToolkit@intersystems.com)
 - Check how to edit BPL annotations [here](Annotation_Button.md)
 - Check how to disable journaling [here](Stop_Journaling.md)
 - Check how to disable auto-refresh [here](Stop_AutoRefresh.md)
