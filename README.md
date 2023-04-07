@@ -4,7 +4,7 @@
 
 [Why AI-as-a-Service Requires an Integrated-from-Core Data Platform](https://www.linkedin.com/pulse/why-ai-as-a-service-requires-integrated-from-core-sergey-lukyanchikov/)
 
-[![D4E12AQEZyWVEvfC-JQ](https://media.licdn.com/dms/image/D4E12AQEZyWVEvfC-JQ/article-cover_image-shrink_423_752/0/1664280563098?e=1679529600&v=beta&t=Wp7xPPpom_SPmKu-OqJZg_crWhwNV-Eia4RqdzpIAYI)](https://www.linkedin.com/pulse/why-ai-as-a-service-requires-integrated-from-core-sergey-lukyanchikov/)
+[![D4E12AQEZyWVEvfC-JQ](https://media.licdn.com/dms/image/D4E12AQEZyWVEvfC-JQ/article-cover_image-shrink_720_1280/0/1664280563098?e=2147483647&v=beta&t=QGCW5vkCXlbWKhCcctgyy7x9IkJ-PumH7pbGpEAEYlA)](https://www.linkedin.com/pulse/why-ai-as-a-service-requires-integrated-from-core-sergey-lukyanchikov/)
 
 For one major reason: to avoid progressive technical and economic performance deterioration in an AIaaS setup characterized by increasing volume, velocity and variety of data flows (the famous Big Data’s “3 Vs”).
 
