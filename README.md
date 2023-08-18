@@ -39,6 +39,7 @@ For one major reason: to avoid progressive technical and economic performance de
 
 ## Demos
 
+- [Simulation of 3 Interconnected Factories](https://www.linkedin.com/posts/lukyanchikov_agent-simulation-dataplatform-activity-7048985400312262656-ZSpe?utm_source=share&utm_medium=member_desktop) on April 4th, 2023
 - Healthcare AI Solutions: [Readmission Prediction in IRIS & ML Toolkit](Readmission_Prediction_IRIS_ML_Toolkit.mp4) and [Readmission Prediction in TrakCare](Readmission_Prediction_TrakCare.mov) on November 3rd, 2021
 - [ESKLP](https://openexchange.intersystems.com/package/ESKLP) on July 12th, 2020 | Acknowledgements: [Aleksandr Kalinin](https://github.com/drakut), Software Engineer, [Escape](http://esc.ru/), Russia
 - [Machine Learning Made Easy - Advanced Exercise](https://github.com/renesto/mlmept2020) on July 6th, 2020
