@@ -2,7 +2,7 @@
 
 ## Breaking News:
 
-[![1000_F_171824448_kcXXDct1eiILPVS1FDFlDWfq8HFX0poa.jpg](1000_F_171824448_kcXXDct1eiILPVS1FDFlDWfq8HFX0poa.jpg)]
+![1000_F_171824448_kcXXDct1eiILPVS1FDFlDWfq8HFX0poa.jpg](1000_F_171824448_kcXXDct1eiILPVS1FDFlDWfq8HFX0poa.jpg)
 
 Started in January 2019, Convergent Analytics celebrates its 5 years in January 2024. Huge thanks to all of us for being part of it!
 
