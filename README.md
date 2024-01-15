@@ -2,11 +2,9 @@
 
 ## Breaking News:
 
-[Why AI-as-a-Service Requires an Integrated-from-Core Data Platform](https://www.linkedin.com/pulse/why-ai-as-a-service-requires-integrated-from-core-sergey-lukyanchikov/)
+[![1000_F_171824448_kcXXDct1eiILPVS1FDFlDWfq8HFX0poa.jpg](1000_F_171824448_kcXXDct1eiILPVS1FDFlDWfq8HFX0poa.jpg)]
 
-[![D4E12AQEZyWVEvfC-JQ](https://media.licdn.com/dms/image/D4E12AQEZyWVEvfC-JQ/article-cover_image-shrink_720_1280/0/1664280563098?e=2147483647&v=beta&t=QGCW5vkCXlbWKhCcctgyy7x9IkJ-PumH7pbGpEAEYlA)](https://www.linkedin.com/pulse/why-ai-as-a-service-requires-integrated-from-core-sergey-lukyanchikov/)
-
-For one major reason: to avoid progressive technical and economic performance deterioration in an AIaaS setup characterized by increasing volume, velocity and variety of data flows (the famous Big Data’s “3 Vs”).
+Started in January 2019, Convergent Analytics celebrates its 5 years in January 2024. Huge thanks to all of us for being part of it!
 
 ## Webinars
 
@@ -19,6 +17,7 @@ For one major reason: to avoid progressive technical and economic performance de
 
 ## Articles
 
+- [Why AI-as-a-Service Requires an Integrated-from-Core Data Platform](https://www.linkedin.com/pulse/why-ai-as-a-service-requires-integrated-from-core-sergey-lukyanchikov/) as of September 27th, 2022
 - [Agent IRIS*](https://www.linkedin.com/pulse/agent-iris-sergey-lukyanchikov/) as of February 1st, 2022
 - [Distributed Artificial Intelligence with InterSystems IRIS](https://www.linkedin.com/pulse/distributed-artificial-intelligence-intersystems-iris-lukyanchikov/) as of April 6th, 2021
 - [InterSystems IRIS – the All-Purpose Universal Platform for Real-Time AI/ML](https://www.linkedin.com/pulse/intersystems-iris-all-purpose-universal-platform-aiml-lukyanchikov/) as of September 20th, 2020
