@@ -4,7 +4,7 @@
 
 [![How can you use machine learning to reduce patient no-show rates?](DonWoodlockNoShows.PNG)](https://www.linkedin.com/feed/update/urn:li:activity:7163900193103417344/)
 
-The works of patient no-show prediction off #InterSystemsIRIS data platform in this excellent tutorial by Don Woodlock.
+The works of patient no-show prediction off InterSystemsIRIS data platform in this excellent tutorial by Don Woodlock.
 
 ## Webinars
 
