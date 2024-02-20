@@ -2,9 +2,9 @@
 
 ## Breaking News:
 
-![1000_F_171824448_kcXXDct1eiILPVS1FDFlDWfq8HFX0poa.jpg](1000_F_171824448_kcXXDct1eiILPVS1FDFlDWfq8HFX0poa.jpg)
+[![How can you use machine learning to reduce patient no-show rates?](DonWoodlockNoShows.PNG)](https://www.linkedin.com/feed/update/urn:li:activity:7163900193103417344/)
 
-Started in January 2019, Convergent Analytics celebrates its 5 years in January 2024. Huge thanks to all of us for being part of it!
+The works of patient no-show prediction off #InterSystemsIRIS data platform in this excellent tutorial by Don Woodlock.
 
 ## Webinars
 
