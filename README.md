@@ -2,9 +2,9 @@
 
 ## Breaking News:
 
-[![How can you use machine learning to reduce patient no-show rates?](DonWoodlockNoShows.PNG)](https://www.linkedin.com/feed/update/urn:li:activity:7163900193103417344/)
+[![A meta-learning feature - Model Training Navigator (MTN)](InterSystems IRIS Model Training Navigator.png)](https://www.linkedin.com/posts/lukyanchikov_metalearning-ai-gan-activity-7185545242987646976-DoiF?utm_source=share&utm_medium=member_desktop)
 
-The works of patient no-show prediction off InterSystems IRIS data platform (with ML Toolkit added) in this excellent tutorial by Don Woodlock.
+The feature uses a GAN (Generative Adversarial Network) mechanism to learn from how accuracy achieved through various hyperparameter combinations depends on the data used for training - and generates hyperparameters that correspond to a given accuracy level.
 
 ## Webinars
 
@@ -33,6 +33,7 @@ The works of patient no-show prediction off InterSystems IRIS data platform (wit
 
 ## Tutorials
 
+- [How can you use machine learning to reduce patient no-show rates?](https://youtu.be/rgrVylRuAXs) on February 23rd, 2024
 - [Learn IntegratedML in InterSystems IRIS](https://learning.intersystems.com/course/view.php?id=1346&ssoPass=1) on June 1st, 2020
 - [Predictive Modeling with the Machine Learning Toolkit](https://learning.intersystems.com/course/view.php?id=1182&ssoPass=1) on September 23rd and 25th, 2019
 
