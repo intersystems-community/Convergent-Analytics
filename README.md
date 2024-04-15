@@ -2,7 +2,7 @@
 
 ## Breaking News:
 
-[![A meta-learning feature - Model Training Navigator (MTN)](InterSystems IRIS Model Training Navigator.png)](https://www.linkedin.com/posts/lukyanchikov_metalearning-ai-gan-activity-7185545242987646976-DoiF?utm_source=share&utm_medium=member_desktop)
+[![A meta-learning feature - Model Training Navigator](InterSystems IRIS Model Training Navigator.png)](https://www.linkedin.com/posts/lukyanchikov_metalearning-ai-gan-activity-7185545242987646976-DoiF?utm_source=share&utm_medium=member_desktop)
 
 The feature uses a GAN (Generative Adversarial Network) mechanism to learn from how accuracy achieved through various hyperparameter combinations depends on the data used for training - and generates hyperparameters that correspond to a given accuracy level.
 
