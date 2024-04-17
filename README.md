@@ -4,7 +4,7 @@
 
 [![A meta-learning feature - Model Training Navigator](InterSystemsIRISModelTrainingNavigator.png)](https://www.linkedin.com/posts/lukyanchikov_metalearning-ai-gan-activity-7185545242987646976-DoiF?utm_source=share&utm_medium=member_desktop)
 
-A meta-learning feature - Model Training Navigator (MTN) - that was waiting for its turn (i.e. enough training run records gathered) since 2021 has seen the light in our Healthcare AI series. The feature uses a GAN (Generative Adversarial Network) mechanism to learn from how accuracy achieved through various hyperparameter combinations depends on the data used for training - and generates hyperparameters that correspond to a given accuracy level. A heads-up for Convergent Analytics, this mechanism is portable across any use cases relying on model training (zero or one human in the loop).
+A meta-learning feature - [Model Training Navigator (MTN)](https://www.linkedin.com/posts/lukyanchikov_metalearning-ai-gan-activity-7185545242987646976-DoiF?utm_source=share&utm_medium=member_desktop) - that was waiting for its turn (i.e. enough training run records gathered) since 2021 has seen the light in our Healthcare AI series. The feature uses a GAN (Generative Adversarial Network) mechanism to learn from how accuracy achieved through various hyperparameter combinations depends on the data used for training - and generates hyperparameters that correspond to a given accuracy level. A heads-up for Convergent Analytics, this mechanism is portable across any use cases relying on model training (zero or one human in the loop).
 
 ## Webinars
 
