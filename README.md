@@ -6,6 +6,14 @@
 
 A meta-learning feature - [Model Training Navigator (MTN)](https://www.linkedin.com/posts/lukyanchikov_metalearning-ai-gan-activity-7185545242987646976-DoiF?utm_source=share&utm_medium=member_desktop) - that was waiting for its turn (i.e. enough training run records gathered) since 2021 has seen the light in our Healthcare AI series. The feature uses a GAN (Generative Adversarial Network) mechanism to learn from how accuracy achieved through various hyperparameter combinations depends on the data used for training - and generates hyperparameters that correspond to a given accuracy level. A heads-up for Convergent Analytics, this mechanism is portable across any use cases relying on model training (zero or one human in the loop).
 
+## Solutions Developed Using Convergent Analytics ML Toolkit Framework:
+
+Healthcare AI:
+
+[![Readmission Prediction](Healthcare_AI_READMISSION_01.png)]
+
+Automates readmission probability estimation on a real-time flow of clinical episodes.
+
 ## Webinars
 
 - [Online Meetup with the InterSystems AI Contest Winners](https://youtu.be/27vE9o9U3nM) on July 30th, 2021
