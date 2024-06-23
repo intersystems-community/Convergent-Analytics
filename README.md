@@ -12,9 +12,9 @@ Healthcare AI:
 
 - Readmission Prediction
 
-![Readmission Prediction](Healthcare_AI_READMISSION_01.png)
-
 Automates readmission probability estimation on a real-time flow of clinical episodes.
+
+![Readmission Prediction](Healthcare_AI_READMISSION_01.png)
 
 ## Webinars
 
