@@ -1,4 +1,4 @@
-# This repo is an archive. Keep following us [here](https://github.com/lukyanchikov/Convergent-Analytics).
+# This repo is an archive. Keep following us [here](https://github.com/C-NLTX).
 
 # Featured Materials
 
